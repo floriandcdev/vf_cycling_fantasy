@@ -1,0 +1,257 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PoppinsBold";
+    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-display: swap;
+}
+
+.select-races {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8%;
+}
+  
+.select-races-title {
+    width: 90%;
+    text-align: left;
+    background-color: #FFE220;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+.select-races-title h1 {
+    margin: 0;
+    font-family: "PoppinsBold";
+    font-size: 36px;
+    padding-left: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.select-races-header {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 50px 0;
+    height: 150px;
+}
+  
+.select-races-rules {
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.select-races-rules p {
+    font-family: "PoppinsBold";
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.select-races-change-step {
+    text-align: center;
+    display: flex;
+    gap: 10%;
+    align-items: center;
+    height: 100%;
+}
+
+.select-races-change-step button {
+    font-family: "Poppins";
+    cursor: pointer;
+    letter-spacing: 2px;
+    width: 300px;
+    margin: 0;
+    font-size: 20px;
+    padding: 20px 10px;
+    background-color: #FFE220;
+    border: none;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+.select-races-pannel-view {
+    display: flex;
+    width: 100%;
+}
+
+.select-races-choice {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    border-right: 1px solid #C8CBD9;
+}
+
+.select-races-choice h2 {
+    margin-left: 5%;
+}
+  
+.select-races-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 10px;
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+  
+.select-races-sort-control {
+    font-family: "PoppinsBold";
+    font-size: 18px;
+    letter-spacing: 8px;
+}
+  
+.select-races-sort-control {
+    display: flex;
+    align-items: center;
+}
+
+.select-races-sort-control select {
+    font-family: "Poppins";
+    font-size: 12px;
+    width: 200px;
+    height: 30px;
+    border-radius: 22px;
+    border: none;
+    background-color: #FAFAFA;
+}
+  
+.select-races-table-container {
+    width: 70%;
+    overflow-y: auto;
+    max-height: 1000px;
+    margin-left: 5%;
+    padding: 0;
+    letter-spacing: 0px;
+    border: 1px solid black;
+}
+
+.select-races-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Poppins";
+    font-size: 11px;
+    background-color: #FAFAFA;
+}
+
+.select-races-table-selected-row {
+    background: yellow;
+}
+
+.select-races-table-container th,
+.select-races-table-container td {
+    border: 1px solid black;
+    padding: 9px;
+    text-align: center;
+    font-size: 11px;
+    border-left: none;
+}
+
+.select-races-table-container td {
+    font-family: "Poppins";
+    cursor: pointer;
+}
+
+.select-races-table-container th {
+    font-family: "PoppinsBold";
+    background-color: #FFE220;
+    border-top: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.select-races-choice-view {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding-top: 5%;
+}
+
+.select-races-selected-number {
+    padding-left: 50px;
+    font-family: "PoppinsBold";
+    font-size: 18px;
+}
+
+.select-races-selected-races-green {
+    color: #34A853;
+    padding-left: 4px;
+}
+
+.select-races-selected-races-red {
+    color: #ED1566;
+    padding-left: 4px;
+}
+
+.select-races-scroll-container {
+    display: flex;
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+.select-races-line-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 1000px;
+    margin: 0 auto;
+    flex-wrap: nowrap; 
+}
+
+.select-races-selected-cell {
+    flex: 1 1 auto; 
+}
+
+.select-races-line-container:last-child .select-races-selected-cell:last-child {
+    margin-right: 0;
+}
+
+::-webkit-scrollbar {
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 10px;
+}
+
+.select-races-selected-info {
+    font-size: 12px;
+    font-family: "PoppinsBold";
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 10px;
+    background-color: #EDEDED40;
+    border-radius: 31px;
+    margin: 10px 10px;
+    width: 150px;
+    height: 80px;
+    text-align: left;
+    letter-spacing: 0;
+    position: relative;
+}
+
+.select-races-selected-info img {
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+}
+
+.select-races-selected-info h4, .select-races-selected-info p {
+    margin: 0;
+}
+
+.select-races-selected-info p {
+    font-family: "Poppins";
+}

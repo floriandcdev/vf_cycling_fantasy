@@ -1,0 +1,382 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PoppinsBold";
+    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-display: swap;
+}
+
+/* Global */
+.profil {
+    padding-top: 5%;
+    padding-left: 5%;
+    padding-right: 3%;
+    padding-bottom: 10%;
+    font-family: "Poppins";
+}
+
+.profil-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.profil-menu h4 {
+    font-size: 30px;
+    font-family: "PoppinsBold";
+    font-style: italic;
+    color: #1F384C;
+    padding: 20px 0;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+}
+
+.profil h1 {
+    font-family: "PoppinsBold";
+    font-size: 35px;
+    font-style: italic;
+    color: #1F384C;
+    letter-spacing: 10px;
+}
+
+.profil-header {
+    display: flex;
+    align-items: center;
+}
+
+.profil-header-league-choice {
+    margin-right: 30px;
+}
+
+.profil-header-league-choice label {
+    font-size: 20px;
+    margin-left: 30px;
+} 
+
+.profil-header-league-choice select {
+    font-family: "Poppins";
+    font-size: 12px;
+    width: 200px;
+    height: 30px;
+    border-radius: 22px;
+    border: none;
+    background-color: #FAFAFA;
+    margin-left: 10px;
+}
+
+.profil-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+}
+
+.profil-section {
+    padding: 20px;
+}
+
+.profil-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profil-section-header h2 {
+    font-family: "PoppinsBold";
+    font-size: 30px;
+}
+
+.profil-section-header span {
+    font-family: "PoppinsBold";
+    font-size: 20px;
+}
+
+.profil-section-header button {
+    background: #FBFCFE;
+    color: #5A6ACF;
+    font-size: 12px;
+    border: 1px solid #DDE4F0;
+    padding: 10px 70px 20px 15px;
+    width: 150px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.profil-section-title h3 {
+    font-size: 22px;
+}
+
+.profil-section-title p {
+    font-size: 15px;
+    opacity: 50%;
+}
+
+/* Top Left Content */
+.profil-section-top-left-content {
+    display: flex;
+    height: 50%;
+}
+
+.profil-cyclists-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profil-cyclists-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, auto); 
+    grid-gap: 10px;
+    position: relative;
+    border-right: 1px solid #C8CBD9;
+    border-left: 1px solid #C8CBD9;
+}
+
+.profil-cyclists-grid::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #C8CBD9, #C8CBD9) repeat-y 25%,
+                linear-gradient(to right, #C8CBD9, #C8CBD9) repeat-y 50%,
+                linear-gradient(to right, #C8CBD9, #C8CBD9) repeat-y 75%,
+                linear-gradient(to bottom, #C8CBD9, #C8CBD9) repeat-x 50%;
+    background-size: 1px 100%, 1px 100%, 1px 100%, 100% 1px;
+    z-index: 1;
+}
+
+.profil-cyclist-cell {
+    background: #EDEDED40;
+    border-radius: 30px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profil-cyclist-info h4 {
+    margin: 5px 0;
+    font-family: "PoppinsBold";
+    font-size: 12px;
+}
+
+.profil-cyclist-info p {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin: 5px 0;
+    color: #75788D;
+}
+
+.profil-cyclist-info span {
+    font-size: 11px;
+    font-family: "PoppinsBold";
+    color: black;
+    margin-left: auto;
+}
+
+.profil-interchangeable-cyclists-table table {
+    border-collapse: collapse;
+    font-family: "Poppins";
+    font-size: 12px; 
+    background-color: #FAFAFA;
+}
+
+.profil-interchangeable-cyclists-table th {
+    font-family: "PoppinsBold";
+    font-size: 11px;
+    background-color: #FFE220;
+}
+
+.profil-interchangeable-cyclists-table th,
+.profil-interchangeable-cyclists-table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+.profil-cyclists-name-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 5px;
+}
+
+.profil-cyclists-name-info h4 {
+    text-align: left;
+}
+
+.profil-cyclists-flag-icon {
+    margin-right: 10px;
+}
+
+.profil-section-top-left-content .profil-empty-cyclist-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.profil-section-top-left-content .profil-empty-cyclist-message {
+    text-align: left;
+    padding-left: 7%;
+    margin: 0;
+    font-size: 25px;
+}
+
+.profil-no-link {
+    color: inherit;
+}
+
+.profil-empty-cyclist-message span {
+    color: red;
+}
+
+/* Top Right Content */
+/* Bottom Center Content */
+/*Bottom Right Content */
+.profil-section-top-right-content table, .profil-section-bottom-center-content table, .profil-section-bottom-right-content table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Poppins";
+    font-size: 11px;
+    background-color: #FAFAFA;
+}
+
+.profil-section-top-right-content th, .profil-section-bottom-center-content th, .profil-section-bottom-right-content th,
+.profil-section-top-right-content td, .profil-section-bottom-center-content td, .profil-section-bottom-right-content td {
+    border: 1px solid #ccc;
+    padding: 9px;
+    text-align: center;
+}
+
+.profil-section-top-right-content th, .profil-section-bottom-center-content th, .profil-section-bottom-right-content th {
+    font-family: "PoppinsBold";
+    background-color: #FFE220;
+}
+
+/* Bottom Left Content */
+.profil-last-races-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    position: relative;
+    border-right: 1px solid #C8CBD9;
+}
+
+.profil-last-race-cell {
+    background: #EDEDED40;
+    position: relative;
+    border-radius: 30px;
+    margin-top: 30px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+.profil-last-races-grid::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        linear-gradient(to right, #C8CBD9, #C8CBD9) repeat-y 50%,
+        linear-gradient(to top, #C8CBD9, #C8CBD9) repeat-x 50%;
+    background-size: 1px 100%, 100% 1px, 100% 1px;
+    z-index: 1;
+}
+
+/* Bottom Center Content */
+.profil-section-bottom-center-content {
+    display: flex; 
+    justify-content: center; 
+    align-items: top;
+    height: 100%; 
+}
+
+.profil-next-races-list {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.profil-next-race {
+    text-align: center;
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: center; 
+    margin: 25px 50px;
+    border-radius: 30px;
+    padding: 5px 0;
+}
+
+.profil-empty-races-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 50%;
+}
+
+.profil-empty-races-container .profil-empty-races-message {
+    text-align: left;
+    padding-left: 7%;
+    margin: 0;
+    font-size: 25px;    
+}
+
+.profil-empty-races-message span {
+    color: red;
+}
+
+/* Sections */
+.section-top-left {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+    border-bottom: 1px solid #C8CBD9;
+    border-right: 1px solid #C8CBD9;
+    padding-right: 50px;
+    padding-bottom: 50px;
+}
+
+.section-top-right {
+    grid-column: 3 / 8;
+    grid-row: 1 / 2;
+    border-bottom: 1px solid #C8CBD9;
+    padding-bottom: 50px;
+}
+
+.section-bottom-left {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding-top: 50px;
+    border-right: 1px solid #C8CBD9;
+}
+
+.section-bottom-center {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding-top: 50px;
+    border-right: 1px solid #C8CBD9;
+}
+
+.section-bottom-right {
+    grid-column: 3 / 8;
+    grid-row: 2 / 3;
+    padding-top: 50px;
+}

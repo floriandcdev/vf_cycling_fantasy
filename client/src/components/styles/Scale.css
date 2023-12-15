@@ -1,0 +1,14 @@
+
+.table-scale {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 2px;
+}
+
+.table-scale th, .table-scale td {
+    text-align: center;
+    width: calc(100% / 23);
+    border: 1px solid black;
+    padding: 5px;
+}

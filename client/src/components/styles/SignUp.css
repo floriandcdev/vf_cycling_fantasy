@@ -1,0 +1,205 @@
+@font-face {
+    font-family: "PoppinsBold";
+    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "DMSans";
+    src: url("../../fonts/DMSans_18pt-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+.sign-up {
+    text-align: center;
+    position: relative;
+    font-family: "PoppinsBold";
+    color: white;
+}
+
+.sign-up-header {
+    position: relative;
+}
+
+.sign-up-header::before {
+    content: "";
+    position: absolute; 
+    bottom: 0; 
+    left: 0;
+    right: 0;
+    height: 35%; 
+    background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
+    z-index: 2;
+}
+
+.sign-up-header img {
+    width: 100%;
+    height: auto;
+}
+
+.sign-up-title {
+    position: absolute;
+    top: 10%; 
+    left: 50%;
+    transform: translateX(-50%); 
+    font-size: 64px;
+    font-style: italic;
+    z-index: 3;
+}
+
+.sign-up-content {
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    text-align: center;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sign-up-content p {
+    font-size: 28px;
+    padding: 5%;
+}
+
+.sign-up-content button {
+    background-color: black;
+    color: white;
+    font-family: "PoppinsBold";
+    font-size: 32px;
+    border: none;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    padding: 20px 60px;
+    cursor: pointer;   
+}
+
+.sign-up-login-link {
+    margin-top: 20px;
+}
+
+.sign-up-login-link a {
+    text-decoration: none;
+    color: black;
+}
+
+.sign-up-login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Sign-up Form */
+.sign-up-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: "DMSans";
+}
+
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 50%;
+}
+
+.sign-up-form-title {
+    text-align: center;
+    color: black;
+    font-family: "Poppins";
+    font-size: 22px;
+}
+
+.sign-up-form-control {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 10px 20px;
+    color: black;
+    width: 35%;
+}
+
+.sign-up-form-control input {
+    border: none;
+    background-color: #F6F8FB;
+    border-radius: 16px;
+    padding: 15px 30px;
+    height: 30px;
+}
+
+.sign-up-form-control select {
+    border: none;
+    background-color: #F6F8FB;
+    border-radius: 16px;
+    padding: 15px 30px;
+    height: 30px;
+}
+
+.sign-up-form-control input[type="password"] {
+    -webkit-text-security: disc;
+}
+
+.sign-up-form-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: 14px;
+}
+
+.sign-up-form-row input[type="text"],
+.sign-up-form-row input[type="email"],
+.sign-up-form-row input[type="password"],
+.sign-up-form-row select {
+    flex: 1;
+    margin: 5px;
+}
+
+.sign-up-form-row label {
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+    gap: 5px;
+    color: black;
+    padding-left: 10px;
+}
+
+.sign-up-form-row.button-row {
+    justify-content: center;
+}
+
+.sign-up-form-label-condition {
+    font-size: 14px !important;
+    padding-left: 20px !important;
+}
+
+.sign-up-form-visibility-icon {
+    position: absolute;
+    right: 35px;
+    top: 45%;
+    color: yellow;
+    cursor: pointer;
+}
+
+.sign-up-form-row.button-row button {
+    width: 50%;
+    padding: 10px;
+    margin-top: 40px;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-family: "PoppinsBold";
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+}

@@ -1,0 +1,248 @@
+@font-face {
+    font-family: "Poppins";
+    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "PoppinsBold";
+    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-display: swap;
+}
+
+.select-cyclists-bonus {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 8%;
+  }
+  
+  .select-cyclists-bonus-title {
+    width: 90%;
+    text-align: left;
+    background-color: #FFE220;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+  }
+
+.select-cyclists-bonus-title h1 {
+    margin: 0;
+    font-family: "PoppinsBold";
+    font-size: 36px;
+    padding-left: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.select-cyclists-bonus-header {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 50px 0;
+    height: 150px;
+}
+  
+.select-cyclists-bonus-rules {
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+.select-cyclists-bonus-rules p {
+    font-family: "PoppinsBold";
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.select-cyclists-bonus-change-step {
+    text-align: center;
+    display: flex;
+    gap: 10%;
+    align-items: center;
+    height: 100%;
+}
+
+.select-cyclists-bonus-change-step button {
+    font-family: "Poppins";
+    cursor: pointer;
+    letter-spacing: 2px;
+    width: 300px;
+    margin: 0;
+    font-size: 20px;
+    padding: 20px 10px;
+    background-color: #FFE220;
+    border: none;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+
+.select-cyclists-bonus-pannel-view {
+    display: flex;
+    width: 100%;
+}
+
+.select-cyclists-bonus-choice {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 70%;
+    border-right: 1px solid #C8CBD9;
+}
+  
+.select-cyclists-bonus-controls {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+    padding-left: 5%;
+    padding-bottom: 5%;
+}
+
+.select-cyclists-bonus-sort-control {
+    font-family: "PoppinsBold";
+    font-size: 18px;
+}
+  
+.select-cyclists-bonus-sort-control, .select-cyclists-bonus-search-control {
+    display: flex;
+    align-items: center;
+}
+  
+.select-cyclists-bonus-search-control input {
+    margin-right: 5px;
+}
+  
+.select-cyclists-bonus-table-container {
+    width: 80%;
+    overflow-y: auto;
+    max-height: 500px;
+    margin-left: 5%;
+    padding: 0;
+    letter-spacing: 0px;
+    border: 1px solid black;
+    border-right: none;
+    border-bottom: none;
+}
+
+.select-cyclists-bonus-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Poppins";
+    font-size: 11px;
+    background-color: #FAFAFA;
+}
+
+.select-cyclists-bonus-table-selected-row {
+    background: yellow;
+}
+
+.select-cyclists-bonus-table-container th,
+.select-cyclists-bonus-table-container td {
+    border: 1px solid black;
+    padding: 9px;
+    text-align: center;
+    font-size: 11px;
+    border-left: none;
+}
+
+.select-cyclists-bonus-table-container td {
+    font-family: "Poppins";
+    cursor: pointer;
+}
+
+.select-cyclists-bonus-table-container th {
+    font-family: "PoppinsBold";
+    background-color: #FFE220;
+    border-top: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.select-cyclists-bonus-name-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.select-cyclists-bonus-name-info span {
+    text-align: left;
+    width: 30%;
+}
+
+.select-cyclists-bonus-line-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-height: 250px;
+    overflow-y: auto;
+    width: 20%;
+    margin: 0 auto;
+    flex-wrap: nowrap; 
+}
+
+.select-cyclists-bonus-selected-cell {
+    flex: 1 1 auto; 
+}
+
+.select-cyclists-bonus-line-container:last-child .select-cyclists-bonus-selected-cell:last-child {
+    margin-right: 0;
+}
+
+::-webkit-scrollbar {
+    height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 10px;
+}
+
+.select-cyclists-bonus-selected-info {
+    font-size: 12px;
+    font-family: "PoppinsBold";
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 10px;
+    background-color: #EDEDED40;
+    border-radius: 31px;
+    margin: 10px 10px;
+    width: 150px;
+    height: 80px;
+    text-align: left;
+    letter-spacing: 0;
+    position: relative;
+}
+
+.select-cyclists-bonus-cancel-icon {
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+}
+
+.select-cyclists-bonus-selected-info h4 {
+    margin-right: 5px;
+}
+
+.select-cyclists-bonus-selected-info h4, .select-cyclists-bonus-selected-info p {
+    margin: 0;
+}
+
+.select-cyclists-bonus-selected-info p {
+    font-family: "Poppins";
+}
+
+.select-cyclists-bonus-selected-info strong {
+    font-family: "PoppinsBold";
+}
+
+.select-cyclists-bonus-flag-icon {
+    margin-right: 10px;
+}

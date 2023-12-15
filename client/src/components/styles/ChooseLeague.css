@@ -1,0 +1,171 @@
+@font-face {
+    font-family: "PoppinsBold";
+    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-display: swap;
+}
+
+.choose-league {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 8%;
+    font-family: "PoppinsBold";
+}
+
+.choose-league-left-banner {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+  
+.choose-league-title {   
+    background-color: #FFE220;
+    text-align: left;
+    width: 90%; 
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+.choose-league-title h1 {
+    margin: 0;
+    font-size: 35px;
+    padding-left: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.choose-league-choice {
+    text-align: center;
+    display: flex;
+    padding-top: 5%;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.league-info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.league-info-league-number {
+    display: flex;
+    margin-bottom: 20px;
+    min-width: 520px;
+    max-width: 520px;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+.league-info p {
+    font-family: "PoppinsBold";
+    cursor: pointer;
+    margin: 0;
+    font-size: 20px;
+    width: 80%;
+    padding: 20px;
+    background-color: #FFE220;
+    border: none;
+}
+
+.league-info button {
+    font-family: "PoppinsBold";
+    cursor: pointer;
+    margin: 0;
+    font-size: 20px;
+    width: 20%;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border: none;
+}
+
+.choose-league-create-no-link {
+    color: inherit;
+    text-decoration: none;
+    width: 520px;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+.choose-league-no-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.choose-league-no-link p, .choose-league-create-no-link p {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.choose-league-choice h2 {
+    font-family: "PoppinsBold";
+    cursor: pointer;
+    min-width: 520px;
+    max-width: 520px;
+    margin: 0;
+    font-size: 20px;
+    padding: 20px;
+    background-color: #FFE220;
+    border: none;
+    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
+                  1px -1px 40px rgb(0, 0, 0, 0.1),
+                  -1px 1px 40px rgb(0, 0, 0, 0.1),
+                  1px 1px 40px rgb(0, 0, 0, 0.1);
+}
+
+.league-join {
+    margin-top: 7%;
+}
+
+.league-join-input {
+    display: flex;
+    width: 600px;
+    border: 1px solid black;
+}
+
+.league-join-input input, .league-join-input button {
+    width: 50%;
+    padding: 20px;
+    font-family: "Poppins";
+    font-size: 20px;
+    border: none;
+}
+
+.league-join-input button {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.leahue-join-no-exist {
+    color: red;
+    text-align: center;
+}
+
+.choose-league-rules {
+    padding: 5% 0;
+    width: 80%;
+    margin: auto;
+    text-align: center;
+}
+
+.choose-league-rules p {
+    padding-bottom: 30px;
+    font-family: "Poppins";
+    font-size: 15px;
+    letter-spacing: 2px;
+}
+
