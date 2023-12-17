@@ -16,7 +16,7 @@ const Profil = () => {
     const [cyclists, setCyclists] = useState([]);
     const [rankings, setRankings] = useState([]);
     const [races, setRaces] = useState([]);
-    const [sectionActive, setSessionActive] = useState("");
+    const [sectionActive, setSessionActive] = useState("Tableau de bord");
     const [selectedLeague, setSelectedLeague] = useState();
     const [leagues, setLeagues] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -29,10 +29,6 @@ const Profil = () => {
     const showSession = (sectionName) => {
         setSessionActive(sectionName);
     };
-
-    const resetSession = () => {
-        setSessionActive("");
-    }
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -151,15 +147,19 @@ const Profil = () => {
     return (
         <main className="profil">
                 <div className="profil-menu">
-                    <img src={epopeeLogo} alt="Logo de l'épopée" width="358" height="139" />
-                    <h4 onClick={() => showSession("MyTeam")}>Mon équipe</h4>
-                    <h4 onClick={() => showSession("Ranking")}>Classements</h4>
-                    <h4 onClick={() => showSession("MyRaces")}>Mes prochaines courses</h4>
+                    <div className="profil-menu-logo">
+                        <img src={epopeeLogo} alt="Logo de l'épopée" width="358" height="139" />
+                        <p>Votre nouveau jeu de cyclisme fantasy</p>
+                    </div>
+                    <h4 onClick={() => showSession("Tableau de bord")} style={{ borderBottomColor: sectionActive === "Tableau de bord" ? "#FFE220" : "black" }}>Tableau de bord</h4>
+                    <h4 onClick={() => showSession("MyTeam")} style={{ borderBottomColor: sectionActive === "MyTeam" ? "#FFE220" : "black" }}>Mon équipe</h4>
+                    <h4 onClick={() => showSession("Ranking")} style={{ borderBottomColor: sectionActive === "Ranking" ? "#FFE220" : "black" }}>Classements</h4>
+                    <h4 onClick={() => showSession("MyRaces")} style={{ borderBottomColor: sectionActive === "MyRaces" ? "#FFE220" : "black" }}>Mes prochaines courses</h4>
                 </div>
-                {sectionActive === "MyTeam" && <MyTeam cyclists={cyclists} onBack={resetSession}/>}
-                {sectionActive === "Ranking" && <Ranking rankings={rankings} onBack={resetSession}/>}
-                {sectionActive === "MyRaces" && <MyRaces races={races} onBack={resetSession}/>}
-                {sectionActive === "" &&
+                {sectionActive === "MyTeam" && <MyTeam cyclists={cyclists}/>}
+                {sectionActive === "Ranking" && <Ranking rankings={rankings}/>}
+                {sectionActive === "MyRaces" && <MyRaces races={races}/>}
+                {sectionActive === "Tableau de bord" &&
                 <div>
                 <div className="profil-header">                    
                     <h1>Mon tableau de bord</h1>
@@ -168,7 +168,7 @@ const Profil = () => {
                         <select onChange={handleSelectChangeLeague} value={selectedLeague}>
                             {leagues.map((league) => (
                                 <option key={league.leagueId} value={league.leagueId}>
-                                    {league.leagueLabel}
+                                    {league.leagueId}
                                 </option>
                             ))}
                         </select>
@@ -204,8 +204,9 @@ const Profil = () => {
                                                         <h4>{cyclist.name}</h4>
                                                     </div>                                                
                                                     <p>{cyclist.team}</p>
-                                                    <p>Valeur : <span>{cyclist.final_value}</span></p>
+                                                    <p>Valeur : <span>{cyclist.final_value}</span></p>  
                                                 </div>
+                                                <div style={{ width: "100%", height: "10px", backgroundColor: cyclist.teamColor, marginLeft: "auto", marginRight: "auto",  }}></div>
                                             </div>
                                         ))}
                                     </div>
@@ -213,22 +214,25 @@ const Profil = () => {
                                         <table>
                                             <thead>
                                                 <tr>
-                                                    <th>Mes joueurs interchangeables</th>
+                                                    <th>Les moins rentables (points)</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {cyclists.slice(0, 5).map((cyclist, index) => (
+                                                {cyclists.slice().sort((a, b) => a.cyclistPoints - b.cyclistPoints).slice(0, 5).map((cyclist, index) => (
                                                     <tr key={index}>
                                                         <td>
-                                                            <div className="profil-cyclists-name-info">
-                                                                <img 
-                                                                    className="profil-cyclists-flag-icon"
-                                                                    src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
-                                                                    alt={`Drapeau de ${cyclist.nationality}`} 
-                                                                    width="20" 
-                                                                    height="15"
-                                                                />
-                                                                <span>{cyclist.name}</span>
+                                                            <div className="profil-cyclists-name-info-low-cyclist">
+                                                                <div className="profil-cyclists-name-info-low-cyclist-name">
+                                                                    <img 
+                                                                        className="profil-cyclists-flag-icon"
+                                                                        src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                                        alt={`Drapeau de ${cyclist.nationality}`} 
+                                                                        width="20" 
+                                                                        height="15"
+                                                                    />
+                                                                    <p>{cyclist.name}</p>
+                                                                </div>
+                                                                <span>{cyclist.cyclistPoints}</span>
                                                             </div>
                                                         </td>
                                                     </tr>
@@ -320,7 +324,9 @@ const Profil = () => {
                             </div>
                         ) : (
                             <div className="profil-empty-races-container">
-                                    <p className="profil-empty-races-message">Choisir mes courses</p>
+                                    <div className="profil-empty-races-container">
+                                        <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-races-message">Créer ou rejoindre une ligue</p></Link>
+                                    </div>
                                     <p className="profil-empty-races-message"><span>(16 janvier à 23h59 au plus tard)</span></p>
                             </div>
                         )}
@@ -356,26 +362,6 @@ const Profil = () => {
                 </div>
             </div>
             }
-
-
-            {/*
-        <main className="profil">
-            <div>
-                <Link to="/create-team">Créer une équipe (avant le 15 janvier)</Link>
-            </div>
-
-            <div>
-                <Link to="/last-races">Dernière course</Link>
-            </div>
-
-            <div>
-                <Link to="/next-races">Prochaine course</Link>
-            </div>
-
-            <div>
-                <Link to="/calendar/my-calendar">Mon Planning</Link>
-            </div>      
-    </main>*/}
         </main>
         
     );

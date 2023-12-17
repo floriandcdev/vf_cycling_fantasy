@@ -1,18 +1,12 @@
 @font-face {
-    font-family: "Inter";
-    src: url("../../fonts/Inter-Regular.ttf") format("truetype");
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "PoppinsBold";
-    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
     font-display: swap;
 }
 
@@ -41,7 +35,7 @@
     transform: translateX(-50%);
     text-align: center;
     color: white;
-    font-family: "Inter";
+    font-family: "Neris";
     font-style: italic;
     font-size: 120px;
     text-shadow: -1px -1px 1px rgb(0, 0, 0, 0.7),
@@ -64,7 +58,7 @@
 
 .home-section2-text-content {
     width: 100%;
-    font-family: "Poppins";
+    font-family: "Neris";
     display: flex;
     flex-direction: column;
     justify-content: center;    
@@ -75,7 +69,7 @@
     font-style: italic;
     display: flex;
     align-items: center;    
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     margin: 0;
 }
 
@@ -106,7 +100,7 @@
 .home-section2-button {
     background-color: #FFE220;
     color: white;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 35px;
     letter-spacing: 9px;
     border: none;
@@ -137,7 +131,7 @@
     top: 45px;
     transform: translate(-50%, 0%);
     z-index: 2;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 45px;
     color: white;
     font-style: italic;
@@ -169,14 +163,14 @@
 
 .home-section3-left-vignette h3, .home-section3-center-vignette h3, .home-section3-right-vignette h3 {
     margin-top: 0;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 35px;
     font-style: italic;
     padding-bottom: 40px;
 }
 
 .home-section3-left-vignette p, .home-section3-center-vignette p, .home-section3-right-vignette p {
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 30px;
     margin-bottom: 0;
 }

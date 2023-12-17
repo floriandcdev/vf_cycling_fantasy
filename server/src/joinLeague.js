@@ -2,10 +2,7 @@ const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
 
 const joinLeague = async (req, res) => {
-    const leagueId = parseInt(req.params.leagueId, 10);
-    if (isNaN(leagueId)) {
-        return res.status(400).send("Invalid leagueId");
-    }
+    const leagueId = req.params.leagueId;
 
     let connection;
 
@@ -19,7 +16,7 @@ const joinLeague = async (req, res) => {
             return res.status(404).json({ message: "Ligue introuvable" });
         }
 
-        res.status(200).json({ message: "Rejoint la ligue avec succès" });
+        res.status(200).json({ message: "Ligue existante" });
     } catch (error) {
         console.error("Erreur lors de la jointure à la ligue:", error);
         res.status(500).json({ message: "Erreur interne du serveur" });

@@ -1,6 +1,12 @@
 @font-face {
-    font-family: "PoppinsBold";
-    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
     font-display: swap;
 }
 
@@ -10,7 +16,7 @@
     align-items: center;
     justify-content: center;
     padding-top: 8%;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
 }
 
 .choose-league-left-banner {
@@ -56,38 +62,60 @@
     gap: 10%;
 }
 
-.league-info-league-number {
+
+.league-create-container {
     display: flex;
-    margin-bottom: 20px;
-    min-width: 520px;
-    max-width: 520px;
+    flex-direction: column;
+}
+
+.league-create-container label {
+    display: flex;
+    align-items: center;
+    font-family: "Neris";
+    font-size: 20px;
+    gap: 5px;
+    color: #1B1446;
+}
+
+.league-create-container input {
+    border: none;
+    background-color: #F6F8FB;
+    border-radius: 16px;
+    padding: 15px 30px;
+    height: 20px;
+    width: 400px;
+}
+
+.league-create-container p {
+    color: #00B512;
+    margin: 0;
+    margin-top: 10px;
+    text-align: left;
+    font-family: "Neris";
+    font-size: 14px;
+}
+
+.league-create-container span {
+    color: #EC1C24;
+    margin: 0;
+    text-align: left;
+    font-family: "Neris";
+    font-size: 14px;
+}
+
+.league-create-container button {
+    cursor: pointer;
+    margin: 0;
+    font-size: 30px;
+    font-family: "NerisBlack";
+    padding: 20px;
+    background-color: #FFE220;
+    border: none;
+    margin-top: 20%;
     box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
                   1px -1px 40px rgb(0, 0, 0, 0.1),
                   -1px 1px 40px rgb(0, 0, 0, 0.1),
                   1px 1px 40px rgb(0, 0, 0, 0.1);
-}
-
-.league-info p {
-    font-family: "PoppinsBold";
-    cursor: pointer;
-    margin: 0;
-    font-size: 20px;
-    width: 80%;
-    padding: 20px;
-    background-color: #FFE220;
-    border: none;
-}
-
-.league-info button {
-    font-family: "PoppinsBold";
-    cursor: pointer;
-    margin: 0;
-    font-size: 20px;
-    width: 20%;
-    padding: 20px;
-    background-color: white;
-    color: black;
-    border: none;
 }
 
 .choose-league-create-no-link {
@@ -110,8 +138,8 @@
     padding: 20px 0;
 }
 
-.choose-league-choice h2 {
-    font-family: "PoppinsBold";
+.choose-league-choice h2, .choose-league-create-team-button {
+    font-family: "NerisBlack";
     cursor: pointer;
     min-width: 520px;
     max-width: 520px;
@@ -139,7 +167,7 @@
 .league-join-input input, .league-join-input button {
     width: 50%;
     padding: 20px;
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 20px;
     border: none;
 }
@@ -164,7 +192,7 @@
 
 .choose-league-rules p {
     padding-bottom: 30px;
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 15px;
     letter-spacing: 2px;
 }

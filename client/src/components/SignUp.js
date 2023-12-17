@@ -5,6 +5,7 @@ import { useAuth } from "../AuthContext";
 import "./styles/SignUp.css";
 
 import eyeIcon from "../medias/png/icons/eye.png";
+import signUpBackground from "../medias/png/background/signUp_background.png";
 
 import signInImage from "../medias/png/background/signin_background.png";
 
@@ -112,16 +113,17 @@ const SignUp = () => {
 
     const renderSignUpForm = () => (
         <div className="sign-up-form-container">
+            <img src={signUpBackground} className="sign-up-background" alt="Coureur qui pose" loading="lazy" width="327" height="375" />
             <form className="sign-up-form" onSubmit={handleSubmit}>
                 <h1 className="sign-up-form-title">Créer votre compte</h1>
                 <div className="sign-up-form-row">
                     <div className="sign-up-form-control">
-                        <label htmlFor="email">PRÉNOM</label>
-                        <input id="email" type="text" onChange={handleFirstNameChange} required />
+                        <label htmlFor="firstName">PRÉNOM</label>
+                        <input id="firstName" type="text" onChange={handleFirstNameChange} required />
                     </div>
                     <div className="sign-up-form-control">
-                        <label htmlFor="email">NOM DE FAMILLE</label>
-                        <input id="email" type="text" onChange={handleLastNameChange} required />
+                        <label htmlFor="lastName">NOM DE FAMILLE</label>
+                        <input id="lastName" type="text" onChange={handleLastNameChange} required />
                     </div>
                 </div>
                 <div className="sign-up-form-row">

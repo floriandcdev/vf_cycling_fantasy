@@ -12,7 +12,7 @@ const cyclistsListUser = async (req, res) => {
         const userId = req.user.userId;
 
         const query = `
-            SELECT c.* FROM cyclists c
+            SELECT c.*, uc.cyclistPoints FROM cyclists c
             INNER JOIN user_cyclists uc ON c.cyclistId = uc.cyclistId
             WHERE uc.userId = ? AND uc.leagueId = ?
             ORDER BY c.final_value DESC`;

@@ -3,13 +3,12 @@ import { useAuth } from "../../AuthContext";
 
 import "../styles/Ranking.css";
 
-const Ranking = ({ rankings, onBack }) => {   
+const Ranking = ({ rankings }) => {   
     const { user } = useAuth();
 
     return (
         <main>
             <h1>Classement</h1>
-            <button onClick={onBack}>Retour</button>
             <table>
                 <thead>
                     <tr>

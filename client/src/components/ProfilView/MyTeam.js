@@ -1,11 +1,10 @@
 import React from "react";
 
-const MyTeam = ({ cyclists, onBack }) => {
+const MyTeam = ({ cyclists }) => {
 
     return (
         <main>
             <h1>Mon Équipe</h1>
-            <button onClick={onBack}>Retour</button>
             {cyclists.length > 0 ? (
                 <table>
                     <thead>

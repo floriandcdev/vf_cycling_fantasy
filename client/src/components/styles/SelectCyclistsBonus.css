@@ -1,12 +1,12 @@
 @font-face {
-    font-family: "Poppins";
-    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "PoppinsBold";
-    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
     font-display: swap;
 }
 
@@ -29,7 +29,7 @@
 
 .select-cyclists-bonus-title h1 {
     margin: 0;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 36px;
     padding-left: 100px;
     padding-top: 10px;
@@ -51,7 +51,7 @@
 }
 
 .select-cyclists-bonus-rules p {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 30px;
     letter-spacing: 2px;
 }
@@ -65,7 +65,7 @@
 }
 
 .select-cyclists-bonus-change-step button {
-    font-family: "Poppins";
+    font-family: "Neris";
     cursor: pointer;
     letter-spacing: 2px;
     width: 300px;
@@ -104,7 +104,7 @@
 }
 
 .select-cyclists-bonus-sort-control {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 18px;
 }
   
@@ -132,7 +132,7 @@
 .select-cyclists-bonus-table-container table {
     width: 100%;
     border-collapse: collapse;
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 11px;
     background-color: #FAFAFA;
 }
@@ -151,12 +151,12 @@
 }
 
 .select-cyclists-bonus-table-container td {
-    font-family: "Poppins";
+    font-family: "Neris";
     cursor: pointer;
 }
 
 .select-cyclists-bonus-table-container th {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     background-color: #FFE220;
     border-top: none;
     position: sticky;
@@ -206,7 +206,7 @@
 
 .select-cyclists-bonus-selected-info {
     font-size: 12px;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 20px;
@@ -236,11 +236,11 @@
 }
 
 .select-cyclists-bonus-selected-info p {
-    font-family: "Poppins";
+    font-family: "Neris";
 }
 
 .select-cyclists-bonus-selected-info strong {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
 }
 
 .select-cyclists-bonus-flag-icon {

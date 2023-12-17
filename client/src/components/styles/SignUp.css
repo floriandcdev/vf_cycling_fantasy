@@ -1,25 +1,19 @@
 @font-face {
-    font-family: "PoppinsBold";
-    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "Poppins";
-    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
-    font-display: swap;
-}
-
-@font-face {
-    font-family: "DMSans";
-    src: url("../../fonts/DMSans_18pt-Regular.ttf") format("truetype");
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
     font-display: swap;
 }
 
 .sign-up {
     text-align: center;
     position: relative;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     color: white;
 }
 
@@ -74,7 +68,7 @@
 .sign-up-content button {
     background-color: black;
     color: white;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 32px;
     border: none;
     border-top-right-radius: 50px;
@@ -102,7 +96,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: "DMSans";
+    font-family: "Neris";
 }
 
 .sign-up-form {
@@ -113,10 +107,19 @@
     width: 50%;
 }
 
+.sign-up-background {
+    position: absolute;
+    left: -2%;
+    bottom: 0;
+    width: 654px;
+    height: 750px;
+    z-index: -1;
+}
+
 .sign-up-form-title {
     text-align: center;
     color: black;
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 22px;
 }
 
@@ -199,7 +202,7 @@
     color: white;
     border: none;
     cursor: pointer;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
 }

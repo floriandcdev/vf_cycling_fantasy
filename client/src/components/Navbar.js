@@ -12,28 +12,19 @@ const Navbar = () => {
             <div className="navbar-desktop">
                 <Link to="/" className="navbar-logo">
                     <picture>
-                        <img src={logoPng} alt="Logo VF Cycling" loading="eager" width="73" height="53" />
+                        <img src={logoPng} alt="Logo VF Cycling" className="navbar-logo-image" loading="eager" width="500" height="500" />
                     </picture>
                 </Link>
 
                 <nav aria-label="desktop navigation" className="navbar-center-links">
-                    <Link to="/" className="navbar-link">Concept</Link>
-
-                    <div className="navbar-item">
-                        <Link to="/profil" className="navbar-link">Mon compte</Link>
-                        <div className="sub-menu">
-                            <Link to="/mon-equipe" className="sub-menu-link">Mon équipe</Link>
-                            <Link to="/mon-classement" className="sub-menu-link">Mon Classement</Link>
-                            <Link to="/mes-courses" className="sub-menu-link">Mes courses</Link>
-                        </div>
-                    </div>
-
-                    <Link to="/calendar" className="navbar-link">Calendrier</Link>
-                    <Link to="/quoting" className="navbar-link">Cotation</Link>
-                    <Link to="/scale" className="navbar-link">Barème</Link>
-                    <Link to="/rules" className="navbar-link">Réglement</Link>
+                    <Link to="/" className="navbar-link">ACCUEIL</Link>
+                    <Link to="/profil" className="navbar-link">MON ÉQUIPE</Link>
+                    <Link to="/calendar" className="navbar-link">CALENDRIER</Link>
+                    <Link to="/quoting" className="navbar-link">COTATION</Link>
+                    <Link to="/scale" className="navbar-link">BARÈME</Link>
+                    <Link to="/rules" className="navbar-link">RÉGLEMENT</Link>
                     <Link to="/FAQ" className="navbar-link">FAQ</Link>
-                    <Link to="/logout" className="navbar-link">Déconnexion</Link>
+                    <Link to="/logout" className="navbar-link">DÉCONNEXION</Link>
                 </nav>
             </div>
         </header>        

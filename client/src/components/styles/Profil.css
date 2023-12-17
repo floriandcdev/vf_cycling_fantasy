@@ -1,12 +1,12 @@
 @font-face {
-    font-family: "Poppins";
-    src: url("../../fonts/Poppins-Regular.ttf") format("truetype");
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "PoppinsBold";
-    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
     font-display: swap;
 }
 
@@ -16,27 +16,43 @@
     padding-left: 5%;
     padding-right: 3%;
     padding-bottom: 10%;
-    font-family: "Poppins";
+    font-family: "Neris";
 }
 
 .profil-menu {
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-bottom: 2%;
+}
+
+.profil-menu-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profil-menu-logo p {
+    font-size: "NerisBlack";
+    font-style: italic;
+    font-size: 10px;
+    margin: 0;
+    letter-spacing: 2.5px;
 }
 
 .profil-menu h4 {
     font-size: 30px;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-style: italic;
     color: #1F384C;
     padding: 20px 0;
     border-bottom: 1px solid black;
     cursor: pointer;
+    transition: border-bottom-color 0.3s;
 }
 
 .profil h1 {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 35px;
     font-style: italic;
     color: #1F384C;
@@ -58,7 +74,7 @@
 } 
 
 .profil-header-league-choice select {
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 12px;
     width: 200px;
     height: 30px;
@@ -86,12 +102,12 @@
 }
 
 .profil-section-header h2 {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 30px;
 }
 
 .profil-section-header span {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 20px;
 }
 
@@ -154,17 +170,18 @@
 
 .profil-cyclist-cell {
     background: #EDEDED40;
-    border-radius: 30px;
     margin: 20px;
+    margin-bottom: 40px;
+    margin-top: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .profil-cyclist-info h4 {
     margin: 5px 0;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 12px;
 }
 
@@ -178,27 +195,26 @@
 
 .profil-cyclist-info span {
     font-size: 11px;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     color: black;
     margin-left: auto;
 }
 
 .profil-interchangeable-cyclists-table table {
     border-collapse: collapse;
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 12px; 
     background-color: #FAFAFA;
 }
 
 .profil-interchangeable-cyclists-table th {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 11px;
     background-color: #FFE220;
 }
 
 .profil-interchangeable-cyclists-table th,
 .profil-interchangeable-cyclists-table td {
-    border: 1px solid black;
     padding: 8px;
     text-align: center;
 }
@@ -212,6 +228,28 @@
 
 .profil-cyclists-name-info h4 {
     text-align: left;
+}
+
+.profil-cyclists-name-info-low-cyclist {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.profil-cyclists-name-info-low-cyclist-name {
+    display: flex;
+}
+
+.profil-cyclists-name-info-low-cyclist-name p {
+    margin: 0;
+}
+
+.profil-cyclists-name-info-low-cyclist span {
+    text-align: right;
+    padding-left: 5px;
+    margin-left: 5px;
+    border-left: 1px solid black;
 }
 
 .profil-cyclists-flag-icon {
@@ -246,20 +284,19 @@
 .profil-section-top-right-content table, .profil-section-bottom-center-content table, .profil-section-bottom-right-content table {
     width: 100%;
     border-collapse: collapse;
-    font-family: "Poppins";
+    font-family: "Neris";
     font-size: 11px;
     background-color: #FAFAFA;
 }
 
 .profil-section-top-right-content th, .profil-section-bottom-center-content th, .profil-section-bottom-right-content th,
 .profil-section-top-right-content td, .profil-section-bottom-center-content td, .profil-section-bottom-right-content td {
-    border: 1px solid #ccc;
     padding: 9px;
     text-align: center;
 }
 
 .profil-section-top-right-content th, .profil-section-bottom-center-content th, .profil-section-bottom-right-content th {
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     background-color: #FFE220;
 }
 
@@ -276,9 +313,7 @@
     background: #EDEDED40;
     position: relative;
     border-radius: 30px;
-    margin-top: 30px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 30px 20px;
     padding: 10px;
     display: flex;
     align-items: center;
@@ -330,7 +365,7 @@
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    height: 50%;
+    height: 40%;
 }
 
 .profil-empty-races-container .profil-empty-races-message {
@@ -338,6 +373,10 @@
     padding-left: 7%;
     margin: 0;
     font-size: 25px;    
+}
+
+.profil-empty-races-message {
+    
 }
 
 .profil-empty-races-message span {

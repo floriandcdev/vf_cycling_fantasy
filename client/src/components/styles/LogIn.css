@@ -1,12 +1,12 @@
 @font-face {
-    font-family: "DMSans";
-    src: url("../../fonts/DMSans_18pt-Regular.ttf") format("truetype");
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
     font-display: swap;
 }
 
 @font-face {
-    font-family: "PoppinsBold";
-    src: url("../../fonts/Poppins-Bold.ttf") format("truetype");
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
     font-display: swap;
 }
 
@@ -46,7 +46,7 @@
     flex-direction: column;
     align-items: center;
     padding: 10px;
-    font-family: "DMSans";
+    font-family: "Neris";
     font-size: 14px;
     color: #1B1446;
 }
@@ -92,7 +92,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    font-family: "DMSans";
+    font-family: "Neris";
     font-size: 14px;
     color: #1B1446;
 }
@@ -121,7 +121,7 @@
     transition: background 0.3s;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
-    font-family: "PoppinsBold";
+    font-family: "NerisBlack";
     font-size: 16px;
     width: 100%;
 }

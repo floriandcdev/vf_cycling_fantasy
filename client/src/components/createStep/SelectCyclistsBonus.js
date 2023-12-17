@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../styles/SelectCyclistsBonus.css";
 
 import cancelIcon from "../../medias/png/icons/cancel.png";
 
 const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus, nextStep, prevStep }) => {
-    const [searchTerm, setSearchTerm] = useState("");
     
     const handleCyclistsBonus = cyclist => {
         if (cyclistsBonus.some(changeable => changeable.cyclistId === cyclist.cyclistId)) {
@@ -21,18 +20,10 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
         return cyclistsBonus.some(changeable => changeable.cyclistId === cyclistId);
     };
 
-    const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-      };
-    
-    const handleSearch = () => {
-        console.log('Recherche pour:', searchTerm);
-    };
-
     return (
         <main className="select-cyclists-bonus">
             <div className="select-cyclists-bonus-title">
-                <h1>3 - Je choisis mon cycliste bonus</h1>
+                <h1>3 - Je choisis mon coureur bonus</h1>
             </div>
             <div className="select-cyclists-bonus-header">
                 <div className="select-cyclists-bonus-rules">
@@ -99,6 +90,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                 </h4>
                                 <p>{cyclist.team}</p>
                                 <p>Valeur : <strong>{cyclist.final_value}</strong></p>
+                                <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "5px", marginLeft: "auto", marginRight: "auto" }}></div>
                             </div>
                         </div>
                     ))}

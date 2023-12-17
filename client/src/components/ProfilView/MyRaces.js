@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MyRaces = ({ races, onBack}) => {
+const MyRaces = ({ races}) => {
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -15,7 +15,6 @@ const MyRaces = ({ races, onBack}) => {
     return (
         <main>
             <h1>Calendrier des Courses</h1>
-            <button onClick={onBack}>Retour</button>
             {races.map((race, index) => (
                 <div key={index}>
                     <h2><Link to={`/show-race-detail/${race.raceId}`}>{race.name}</Link></h2>

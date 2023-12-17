@@ -170,6 +170,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                             {cyclist.name}</h4>
                                         <p>{cyclist.team}</p>
                                         <p>Valeur : <strong>{cyclist.final_value}</strong></p>
+                                        <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
                                     </div>
                                 </div>
                             ))}
@@ -191,6 +192,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                         </h4>
                                         <p>{cyclist.team}</p>
                                         <p>Valeur : <strong>{cyclist.final_value}</strong></p>
+                                        <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
                                     </div>
                                 </div>
                             ))}

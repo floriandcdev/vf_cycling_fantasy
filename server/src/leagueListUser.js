@@ -9,11 +9,9 @@ const userId = req.user.userId;
         connection = await mysql.createConnection(config);
 
         const query = `
-            SELECT l.leagueId, l.leagueLabel
+            SELECT l.leagueId
             FROM leagues l
-            WHERE l.userId = ?
-            ORDER BY leagueId`;
-        ;
+            WHERE l.userId = ?`;
 
         const [leagues] = await connection.execute(query, [userId]);
 

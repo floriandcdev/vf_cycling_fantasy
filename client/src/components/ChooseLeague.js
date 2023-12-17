@@ -7,9 +7,10 @@ import tireBannerLeft from "../medias/png/icons/tire_banner_left.png";
 const ChooseLeague = () => {
     const navigate = useNavigate();
     const [showCreateLeague, setShowCreateLeague] = useState(false);
+    const [showCreateTeam, setShowCreateTeam] = useState(false);
+    const [errorCreateLeague, setErrorCreateLeague] = useState(false);
     const [showJoinLeague, setShowJoinLeague] = useState(false);
-    const [leagueId, setLeagueId] = useState(null);
-    const [inputLeagueId, setInputLeagueId] = useState("");
+    const [leagueId, setLeagueId] = useState("");
     const [joinLeagueExist, setJoinLeagueExist] = useState(true);
     const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -18,11 +19,13 @@ const ChooseLeague = () => {
             const response = await fetch(`${apiUrl}/createLeague`, {
                 method: "POST",
                 credentials: "include"
-            });
-            const data = await response.json();
-            if (data.leagueId) {
-                setLeagueId(data.leagueId);
-                setShowCreateLeague(true);
+            })
+            if (response.ok) {
+                setShowCreateTeam(true);
+                setErrorCreateLeague(false);
+                setShowCreateLeague(false);
+            } else {
+                setErrorCreateLeague(true);
             }
         } catch (error) {
             console.error("Erreur lors de la création de la ligue:", error);
@@ -30,49 +33,20 @@ const ChooseLeague = () => {
     };
 
     const handleJoinLeague = async () => {
-        const leagueIdNum = Number(inputLeagueId);
-
-        if (isNaN(leagueIdNum)) {
-            console.error("Le leagueId doit être un nombre");
-            setJoinLeagueExist(false);
-            return;
-        }
 
         try {
-            console.log("league:",inputLeagueId);
-            const response = await fetch(`${apiUrl}/joinLeague/${inputLeagueId}`, {
+            const response = await fetch(`${apiUrl}/joinLeague/${leagueId}`, {
                 method: "POST",
                 credentials: "include"
             });
             if (response.ok) {
-                navigate(`/create-team/${inputLeagueId}`);
+                navigate(`/create-team/${leagueId}`);
             } else {
                 setJoinLeagueExist(false);
             }
         } catch (error) {
             setJoinLeagueExist(false);
             console.error("Erreur lors de la jointure à la ligue:", error);
-        }
-    };
-
-    const copyToClipboard = (text) => {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(text).then(() => {
-            }).catch(err => {
-                console.error("Erreur lors de la copie :", err);
-            });
-        } else {
-            const textarea = document.createElement("textarea");
-            textarea.value = text;
-            document.body.appendChild(textarea);
-            textarea.select();
-            try {
-                document.execCommand("copy");
-                console.log("Texte copié avec succès !");
-            } catch (err) {
-                console.error("Erreur lors de la copie pour les navigateurs plus anciens :", err);
-            }
-            document.body.removeChild(textarea);
         }
     };
 
@@ -85,11 +59,11 @@ const ChooseLeague = () => {
             {!showCreateLeague && !showJoinLeague && (
                 <div>
                     <div className="choose-league-choice">
-                        <Link className="choose-league-no-link" to="/create-team/0"><h2>Ligue générale</h2></Link>
-                        <Link className="choose-league-no-link" to="/create-team/1"><h2>Néo Ligue</h2></Link>
+                        <Link className="choose-league-no-link" to="/create-team/0"><h2>World Tour</h2></Link>
+                        <Link className="choose-league-no-link" to="/create-team/1"><h2>Néo Pro</h2></Link>
                     </div>
                     <div className="choose-league-choice">
-                        <h2 onClick={handleCreateLeague}>Créer ma ligue</h2>
+                        <h2 onClick={() => setShowCreateLeague(true)}>Créer ma ligue</h2>
                         <h2 onClick={() => setShowJoinLeague(true)}>Rejoindre une ligue</h2>
                     </div>
                 </div>
@@ -97,11 +71,29 @@ const ChooseLeague = () => {
 
             {showCreateLeague && (
                 <div className="league-info">
-                    <div className="league-info-league-number">
-                        <p>Votre numéro de ligue : {leagueId}</p>
-                        <button onClick={() => copyToClipboard(leagueId)}>Copier</button>
+                    <div className="league-create-container">
+                        <label htmlFor="leagueName">CHOISIR UN NOM DE LIGUE</label>
+                        <input
+                            id="leagueName"
+                            type="text"
+                            value={leagueId}
+                            onChange={(e) => setLeagueId(e.target.value)}
+                        />
+                        <p>Le nom doit faire 5 caractères minimum</p>
+                        <span>Le nom doit comporter au moins une majuscule et un chiffre</span>
+                        {errorCreateLeague && (
+                            <div>
+                                <span>Le nom de la ligue est incorrect ou déjà existant.</span>
+                            </div>
+                        )}
+                        <button onClick={() => handleCreateLeague()}>Je crée ma ligue</button>
                     </div>
-                    <Link className="choose-league-create-no-link" to={`/create-team/${leagueId}`}><p>Créer mon équipe</p></Link>
+                </div>
+            )}
+
+            {showCreateTeam && (
+                <div>
+                    <Link className="choose-league-create-no-link" to={`/create-team/${leagueId}`}><button className="choose-league-create-team-button">Créer mon équipe</button></Link>
                 </div>
             )}
 
@@ -110,9 +102,9 @@ const ChooseLeague = () => {
                     <div className="league-join-input">
                         <input
                             type="text"
-                            value={inputLeagueId}
-                            onChange={(e) => setInputLeagueId(e.target.value)}
-                            placeholder="Numéro de la ligue"
+                            value={leagueId}
+                            onChange={(e) => setLeagueId(e.target.value)}
+                            placeholder="Nom de la ligue"
                         />
                         <button onClick={handleJoinLeague}>Rejoindre</button>
                     </div>
