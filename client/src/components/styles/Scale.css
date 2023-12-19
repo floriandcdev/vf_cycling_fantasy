@@ -1,14 +1,30 @@
-
-.table-scale {
-    width: 100%;
-    table-layout: fixed;
-    border-collapse: separate;
-    border-spacing: 2px;
+@font-face {
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
+    font-display: swap;
 }
 
-.table-scale th, .table-scale td {
-    text-align: center;
-    width: calc(100% / 23);
-    border: 1px solid black;
-    padding: 5px;
+@font-face {
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
+    font-display: swap;
+}
+
+.scale {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.scale h1 {
+    font-family: "NerisBlack";
+    font-size: 40px;
+    font-style: italic;
+    color: #1F384C;
+    letter-spacing: 10px;
+    margin: 0;
+    padding: 3% 0;
 }

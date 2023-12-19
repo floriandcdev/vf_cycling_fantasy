@@ -1,0 +1,11 @@
+[
+    {"id": 1, "question": "Jusqu'à quelle date pouvons nous nous inscrire ?", "answer": "Vous avez jusqu'au 31 janvier 2024, mais attention, la première course étant le 16 janvier, vous prendrez du retard sur vos adversaires."},
+    {"id": 2, "question": "Quand puis-je effectuer des échanges de coureurs ?", "answer": "Il y a 3 périodes de transferts définies : 8 avril, 31 mai et 31 juillet. Lors de ces journées, vous aurez la possibilité d'effectuer 5 échanges, tant que le budget des nouveaux coureurs restent inférieure ou égale aux coureurs vendus"},
+    {"id": 3, "question": "Combien d'équipe peut-on avoir par ligue ?", "answer": "Une seule équipe de chaque est acceptée. Si exception, merci de nous contacter."},
+    {"id": 4, "question": "Que se passe t-il si un coureur marque des points lors d'une course IRL mais que je n'ai pas choisis cette course dans mon calendrier ?", "answer": "Coup dur, vous ne marquerez pas de point"},
+    {"id": 5, "question": "Concernant les choix d'objectifs, les points sur les étapes des courses à étapes sont-ils compter ?", "answer": "Non ! Seul les points au classement général seront comptés, Ainsi, les classiques ne sont pas désavantagés."},
+    {"id": 6, "question": "Dans combien de ligues pouvons nous être ?", "answer": "Pour le moment, une seule, Il faudra bien la choisir, Nous verrons l'an prochain si nous permettons l'accès à plusieurs ligues. Vous êtes par ailleurs automatiquement inscrit à la ligue générale."},
+    {"id": 7, "question": "Tous les coureurs marquent-ils des points ?", "answer": "Pour que vos coureurs marquent un point lors de la course, il devra y participer avec votre équipe."},
+    {"id": 8, "question": "Devons nous choisir nos courses en mode Néo Pro ?", "answer": "Non, le mode néo pro est simplifié, Vous avez juste à composer votre équipe et à choisir le coureur qui aura ses points doublés."},
+    {"id": 9, "question": "Avons nous accès aux résultats des courses ?", "answer": "Oui ! Vous pouvez voir le nombre de points marqué par courses et par coureurs sur votre tableau de bord. Vous pouvez aussi consulter les résultats des courses dans l'onglet \"Résultats\"."}
+]

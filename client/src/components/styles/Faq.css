@@ -1,0 +1,59 @@
+@font-face {
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
+    font-display: swap;
+}
+
+.faq {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq h1 {
+    font-family: "NerisBlack";
+    font-size: 40px;
+    font-style: italic;
+    color: #1F384C;
+    letter-spacing: 10px;
+    margin: 0;
+    padding: 3% 0;
+}
+
+.faq-container {
+    width: 70vw;
+    border-right: 3px solid black;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+    cursor: pointer;
+}
+
+.faq-question {
+    font-family: "NerisBlack";
+    font-size: 30px;
+    font-style: italic;
+    color: #1F384C;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    border-top: 3px solid black;
+}
+
+.faq-answer {
+    font-family: "Neris";
+    font-size: 20px;
+    padding: 10px;   
+    padding-bottom: 100px;
+    padding-right: 30px;
+    padding-left: 30px;
+}

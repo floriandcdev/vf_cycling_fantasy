@@ -10,41 +10,26 @@
     font-display: swap;
 }
 
-.my-ranking {
+.calendar {
+    margin: 50px 0;
     display: flex;
     flex-direction: column;
     width: 100%;
     justify-content: center;
     align-items: center;
-    padding-bottom: 50px;
 }
 
-.my-ranking-choice {
-    text-align: center;
-    display: flex;
-    gap: 10%;
-    align-items: center;
-    height: 100%;
+.calendar h1 {
+    font-family: "NerisBlack";
+    font-size: 40px;
+    font-style: italic;
+    color: #1F384C;
+    letter-spacing: 10px;
+    margin: 0;
     padding: 3% 0;
 }
 
-.my-ranking-choice button {
-    font-family: "NerisBlack";
-    font-style: italic;
-    color: white;
-    cursor: pointer;
-    font-size: 24px;
-    border-radius: 80px;
-    width: 250px;
-    height: 60px;
-    margin: 0;
-    padding: 0;
-    background-color: #FDDD07;
-    border: none;
-    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
-}
-
-.my-ranking-table {
+.calendar-table {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,15 +37,15 @@
     width: 70%;
 }
   
-.my-ranking-table-container {
+.calendar-table-container {
     width: 80%;
     overflow-y: auto;
-    max-height: 500px;
+    max-height: 800px;
     padding: 0;
     letter-spacing: 0px;
 }
 
-.my-ranking-table-container table {
+.calendar-table-container table {
     width: 100%;
     border-collapse: collapse;
     font-family: "Neris";
@@ -68,8 +53,8 @@
     background-color: #FAFAFA;
 }
 
-.my-ranking-table-container th,
-.my-ranking-table-container td {
+.calendar-table-container th,
+.calendar-table-container td {
     border: 1px solid black;
     padding: 9px;
     text-align: center;
@@ -77,13 +62,13 @@
     border-right: none;
 }
 
-.my-ranking-table-container td {
+.calendar-table-container td {
     font-family: "Neris";
     cursor: pointer;
     font-size: 14px;
 }
 
-.my-ranking-table-container th {
+.calendar-table-container th {
     font-family: "NerisBlack";
     background-color: #FFE220;
     border-top: none;
@@ -92,23 +77,3 @@
     z-index: 100;
     font-size: 16px;
 }
-
-.my-ranking-name-info {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
-
-.my-ranking-name-info span {
-    text-align: left;
-    width: 30%;
-}
-
-.my-ranking-flag-icon {
-    margin-right: 10px;
-}
-.highlighted {
-    background-color: #FDDD07;
-}
-

@@ -2,14 +2,13 @@ const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
 
 const racesListUser = async (req, res) => {
-    const leagueId = req.params.leagueId;
+    const leagueId = parseInt(req.params.selectedLeague, 10);
+    const userId = req.user.userId;
 
     let connection;
 
     try {
         connection = await mysql.createConnection(config);
-
-        const userId = req.user.userId;
 
         const query = `SELECT r.* FROM races r
                        INNER JOIN user_races u ON r.raceId = u.raceId

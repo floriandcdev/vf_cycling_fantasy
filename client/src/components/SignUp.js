@@ -104,7 +104,7 @@ const SignUp = () => {
 
             LogIn();
 
-            navigate("/profil");
+            navigate("/choose-league");
         } catch (error) {
             console.error("Erreur lors de l'enregistrement:", error);
             alert(error.message);

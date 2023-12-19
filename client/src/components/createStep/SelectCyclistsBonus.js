@@ -22,8 +22,12 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
 
     return (
         <main className="select-cyclists-bonus">
-            <div className="select-cyclists-bonus-title">
-                <h1>3 - Je choisis mon coureur bonus</h1>
+            <div className="select-cyclists-bonus-shadow-container">
+                <div className="select-cyclists-bonus-title">
+                    <h1>CRÉER SON ÉQUIPE - CHOIX DU COUREUR BONUS</h1>
+                    <div className="select-cyclists-bonus-shadow-mask-right"></div>
+                    <div className="select-cyclists-bonus-shadow-mask-bottom"></div>
+                </div>
             </div>
             <div className="select-cyclists-bonus-header">
                 <div className="select-cyclists-bonus-rules">
@@ -31,8 +35,8 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                 </div>
 
                 <div className="select-cyclists-bonus-change-step">
-                    <button onClick={prevStep}>Précédent</button>
-                    <button onClick={nextStep} disabled={cyclistsBonus.length !== 1}>Suivant</button>
+                    <button onClick={prevStep}>PRÉCÉDENT</button>
+                    <button onClick={nextStep} disabled={cyclistsBonus.length !== 1}>SUIVANT</button>
                 </div> 
             </div>
 
@@ -42,10 +46,10 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Coureur</th>
-                                    <th>Équipe</th>
-                                    <th>Nation</th>
-                                    <th>Valeur</th>
+                                    <th>COUREUR</th>
+                                    <th>ÉQUIPE</th>
+                                    <th>NATION</th>
+                                    <th>VALEUR</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,7 +69,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                         </td>
                                         <td>{cyclist.team}</td>
                                         <td>{cyclist.nationality}</td>
-                                        <td>{cyclist.final_value}</td>
+                                        <td>{cyclist.finalValue}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -89,7 +93,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                     {cyclist.name}
                                 </h4>
                                 <p>{cyclist.team}</p>
-                                <p>Valeur : <strong>{cyclist.final_value}</strong></p>
+                                <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
                                 <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "5px", marginLeft: "auto", marginRight: "auto" }}></div>
                             </div>
                         </div>

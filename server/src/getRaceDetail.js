@@ -7,7 +7,7 @@ const getRaceDetail = async (req, res) => {
         connection = await mysql.createConnection(config);
 
         const raceId = req.params.idRace;
-        const query = "SELECT competition, name, step, date_start, date_end, category FROM races WHERE raceId = ?";
+        const query = "SELECT groupCompetitionId, name, step, date_start, date_end, category FROM races WHERE raceId = ?";
         const [raceDetails] = await connection.execute(query, [raceId]);
 
         if (raceDetails.length === 0) {

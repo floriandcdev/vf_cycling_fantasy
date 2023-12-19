@@ -1,9 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import "./styles/Calendar.css";
 
 const Calendar = () => {
     const [races, setRaces] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
+    const navigate = useNavigate();
+
+    const handleRowClick = (raceId) => {
+        navigate(`/show-race-detail/${raceId}`);
+    };
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -36,14 +43,30 @@ const Calendar = () => {
     }, [apiUrl]);
 
     return (
-        <main>
+        <main className="calendar">
             <h1>Calendrier des Courses</h1>
-            {races.map((race, index) => (
-                <div key={index}>
-                    <h2><Link to={`/show-race-detail/${race.raceId}`}>{race.name}</Link></h2>
-                    <p>Date: {formatDate(race.date_start)} - {formatDate(race.date_end)} </p>
+            <div className="calendar-table">
+                    <div className="calendar-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>COURSES</th>
+                                    <th>CATÉGORIE</th>
+                                    <th>DATE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {races.map((race) => (
+                                    <tr key={race.raceId} onClick={() => handleRowClick(race.raceId)}>
+                                        <td>{race.name}</td>
+                                        <td>{race.category}</td>
+                                        <td>{formatDate(race.date_start)}</td>
+                                    </tr>                                    
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            ))}
         </main>
     );
 };

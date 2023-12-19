@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
+import createTeamConfig from "../../config/createTeamConfig.json";
 
 import "../styles/SelectCyclists.css";
 
 import cancelIcon from "../../medias/png/icons/cancel.png";
 import loupeIcon from "../../medias/png/icons/loupe.png";
 
-const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget, setBudget, selectedCyclists, setSelectedCyclists, setCyclistsBonus, cyclistsBonus, cyclists, nextStep }) => {
+const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget, setBudget, selectedCyclists, setSelectedCyclists, setCyclistsBonus, cyclistsBonus, cyclists, teamId, nextStep }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const firstLineCyclists = selectedCyclists.filter((_, index) => index % 2 === 0);
     const secondLineCyclists = selectedCyclists.filter((_, index) => index % 2 !== 0);
     const [cyclistsList, setCyclistsList] = useState(cyclists);
     const [selectedSortValue, setSelectedSortValue] = useState("value");
+    const teamLabel = teamId === 1 ? "cyclistsWorldTourNumber" : "cyclistsNeoProNumber";
 
     useEffect(() => {
         setCyclistsList(cyclists);
@@ -20,15 +22,15 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
     const handleSelectCyclist = cyclist => {
         if (selectedCyclists.some(selected => selected.cyclistId === cyclist.cyclistId)) {
             setSelectedCyclists(selectedCyclists.filter(selected => selected.cyclistId !== cyclist.cyclistId));
-            setBudget(budget + cyclist.final_value);
+            setBudget(budget + cyclist.finalValue);
             setNumberPlayerSelected(numberPlayerSelected - 1);
     
             if (cyclistsBonus.some(changeable => changeable.cyclistId === cyclist.cyclistId)) {
                 setCyclistsBonus(cyclistsBonus.filter(changeable => changeable.cyclistId !== cyclist.cyclistId));
             }
-        } else if (budget >= cyclist.final_value) {
+        } else if (budget >= cyclist.finalValue) {
             setSelectedCyclists([...selectedCyclists, cyclist]);
-            setBudget(budget - cyclist.final_value);
+            setBudget(budget - cyclist.finalValue);
             setNumberPlayerSelected(numberPlayerSelected + 1);
         }
     };
@@ -38,7 +40,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
         return isSelected;
     };
 
-    const isButtonDisabled = selectedCyclists.length < 7 || selectedCyclists.length > 10;
+    const isButtonDisabled = selectedCyclists.length < createTeamConfig[teamLabel].min || selectedCyclists.length > createTeamConfig[teamLabel].max;
 
     const handleSearchChange = (event) => {
         const newSearchTerm = event.target.value;
@@ -64,7 +66,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
     const sortCyclists = (sortBy, sortedCyclists) => {
         switch (sortBy) {
             case "value":
-                sortedCyclists.sort((a, b) => b.final_value - a.final_value);
+                sortedCyclists.sort((a, b) => b.finalValue - a.finalValue);
                 break;
             case "nation":
                 sortedCyclists.sort((a, b) => a.nationality.localeCompare(b.nationality));
@@ -79,30 +81,27 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
 
     return (
         <main className="select-cyclists">
-            <div className="select-cyclists-title">
-                <h1>2 - Je crée mon équipe</h1>
+            <div className="select-cyclists-shadow-container">
+                <div className="select-cyclists-title">
+                    <h1>CRÉER SON ÉQUIPE - CHOIX DES COUREURS</h1>
+                    <div className="select-cyclists-shadow-mask-right"></div>
+                    <div className="select-cyclists-shadow-mask-bottom"></div>
+                </div>
             </div>
             <div className="select-cyclists-rules">
-                <p >Sélectionnez entre 27 et 30 joueurs pour un budget maximale de 500 millions</p>
-            </div>
-
-            <div className="select-cyclists-header-pannel">
-                <div className="select-cyclists-header-pannel-content">
-                    <p>Nombre de joueurs sélectionnés : <span>{numberPlayerSelected}</span></p>
-                </div>                
-                <div className="select-cyclists-header-pannel-content">
-                    <p>Budget restant : <strong>{budget}M</strong></p>
-                </div>
-                <div className="select-cyclists-header-pannel-content">
-                    <Link to="/profil"><button>Retour au profil</button></Link>
-                </div>
-                <div className="select-cyclists-header-pannel-content">
-                    <button onClick={nextStep} disabled={isButtonDisabled}>Suivant</button>
-                </div>
+                <p >Sélectionnez entre {createTeamConfig[teamLabel].min} et {createTeamConfig[teamLabel].max} joueurs</p>
             </div>
 
             <div className="select-cyclists-pannel-view">
                 <div className="select-cyclists-choice">
+                <div className="select-cyclists-header-pannel">
+                    <div className="select-cyclists-header-pannel-content">
+                        <p>Nombre de joueurs sélectionnés : <span>{numberPlayerSelected}</span></p>
+                    </div>                
+                    <div className="select-cyclists-header-pannel-content">
+                        <p>Budget restant : <strong>{budget}M</strong></p>
+                    </div>
+                </div>
                     <div className="select-cyclists-controls">
                         <div className="select-cyclists-sort-control">
                             <label>Trier par</label>
@@ -121,10 +120,10 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Coureur</th>
-                                    <th>Équipe</th>
-                                    <th>Nation</th>
-                                    <th>Valeur</th>
+                                    <th>COUREUR</th>
+                                    <th>ÉQUIPE</th>
+                                    <th>NATION</th>
+                                    <th>VALEUR</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -144,7 +143,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                         </td>
                                         <td>{cyclist.team}</td>
                                         <td>{cyclist.nationality}</td>
-                                        <td>{cyclist.final_value}</td>
+                                        <td>{cyclist.finalValue}</td>
                                     </tr>
                                 ))}
                             </tbody>
@@ -153,6 +152,9 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                 </div>  
                 
                 <div className="select-cyclists-choice-view">
+                <div className="select-cyclists-next">
+                    <button onClick={nextStep} disabled={isButtonDisabled}>VALIDER</button>
+                </div>
                     <div className="select-cyclists-scroll-container">
                         <div className="select-cyclists-line-container">
                             {firstLineCyclists.map((cyclist) => (
@@ -169,7 +171,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                             />
                                             {cyclist.name}</h4>
                                         <p>{cyclist.team}</p>
-                                        <p>Valeur : <strong>{cyclist.final_value}</strong></p>
+                                        <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
                                         <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
                                     </div>
                                 </div>
@@ -191,7 +193,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                             {cyclist.name}
                                         </h4>
                                         <p>{cyclist.team}</p>
-                                        <p>Valeur : <strong>{cyclist.final_value}</strong></p>
+                                        <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
                                         <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
                                     </div>
                                 </div>

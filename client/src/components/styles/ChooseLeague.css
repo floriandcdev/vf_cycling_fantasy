@@ -20,39 +20,79 @@
 }
 
 .choose-league-left-banner {
-    position: absolute;
+    position: fixed;
     left: 0;
+    top: 0;
     bottom: 0;
+    width: 60px;
+    background-size: cover; 
+    background-repeat: no-repeat;
+}
+
+.choose-league-shadow-container {
+    position: relative;
+    width: 90%;
 }
   
 .choose-league-title {   
-    background-color: #FFE220;
+    border-top: 10px solid #FDDD07;
     text-align: left;
     width: 90%; 
-    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
-                  1px -1px 40px rgb(0, 0, 0, 0.1),
-                  -1px 1px 40px rgb(0, 0, 0, 0.1),
-                  1px 1px 40px rgb(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
+    box-shadow: -1px -1px 30px rgb(0, 0, 0, 0.1),
+                  1px -1px 30px rgb(0, 0, 0, 0.1),
+                  -1px 1px 30px rgb(0, 0, 0, 0.1),
+                  1px 1px 30px rgb(0, 0, 0, 0.1);
+}
+
+.choose-league-shadow-mask-right, .choose-league-shadow-mask-bottom {
+    position: absolute;
+    background-color: white; 
+    z-index: 2; 
+}
+
+.choose-league-shadow-mask-right {
+    top: 0;
+    right: 5%;
+    bottom: 0;
+    width: 5%; 
+}
+
+.choose-league-shadow-mask-bottom {
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    height: 30px;
 }
 
 .choose-league-title h1 {
     margin: 0;
-    font-size: 35px;
+    font-size: 40px;
     padding-left: 100px;
     padding-top: 10px;
     padding-bottom: 10px;
+    font-style: italic;
+    font-family: "NerisBlack";
+}
+
+.choose-league-body {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 5%;
 }
 
 .choose-league-choice {
     text-align: center;
     display: flex;
-    padding-top: 5%;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 10%;
 }
 
-.league-info {
+.choose-league-info {
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -63,12 +103,12 @@
 }
 
 
-.league-create-container {
+.choose-league-create-container {
     display: flex;
     flex-direction: column;
 }
 
-.league-create-container label {
+.choose-league-create-container label {
     display: flex;
     align-items: center;
     font-family: "Neris";
@@ -77,7 +117,7 @@
     color: #1B1446;
 }
 
-.league-create-container input {
+.choose-league-create-container input {
     border: none;
     background-color: #F6F8FB;
     border-radius: 16px;
@@ -86,7 +126,7 @@
     width: 400px;
 }
 
-.league-create-container p {
+.choose-league-create-container p {
     color: #00B512;
     margin: 0;
     margin-top: 10px;
@@ -95,7 +135,7 @@
     font-size: 14px;
 }
 
-.league-create-container span {
+.choose-league-create-container span {
     color: #EC1C24;
     margin: 0;
     text-align: left;
@@ -103,19 +143,8 @@
     font-size: 14px;
 }
 
-.league-create-container button {
-    cursor: pointer;
-    margin: 0;
-    font-size: 30px;
-    font-family: "NerisBlack";
-    padding: 20px;
-    background-color: #FFE220;
-    border: none;
+.choose-league-create-container button {
     margin-top: 20%;
-    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
-                  1px -1px 40px rgb(0, 0, 0, 0.1),
-                  -1px 1px 40px rgb(0, 0, 0, 0.1),
-                  1px 1px 40px rgb(0, 0, 0, 0.1);
 }
 
 .choose-league-create-no-link {
@@ -128,7 +157,7 @@
                   1px 1px 40px rgb(0, 0, 0, 0.1);
 }
 
-.choose-league-no-link {
+.choose-league-no-link, .choose-league-choose-team-title {
     color: inherit;
     text-decoration: none;
 }
@@ -138,33 +167,38 @@
     padding: 20px 0;
 }
 
-.choose-league-choice h2, .choose-league-create-team-button {
-    font-family: "NerisBlack";
-    cursor: pointer;
-    min-width: 520px;
-    max-width: 520px;
+.choose-league-choice h2 {
     margin: 0;
-    font-size: 20px;
-    padding: 20px;
-    background-color: #FFE220;
-    border: none;
-    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
-                  1px -1px 40px rgb(0, 0, 0, 0.1),
-                  -1px 1px 40px rgb(0, 0, 0, 0.1),
-                  1px 1px 40px rgb(0, 0, 0, 0.1);
 }
 
-.league-join {
+.choose-league-choice h2, .choose-league-create-container button, .choose-league-choose-team-title {
+    font-family: "NerisBlack";
+    cursor: pointer;
+    width: 400px;    
+    font-size: 30px;
+    font-style: italic;
+    padding: 25px 0;
+    background-color: #FDDD07;
+    color: white;
+    border: none;
+    border-radius: 80px;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.choose-league-join {
     margin-top: 7%;
 }
 
-.league-join-input {
+.choose-league-join-input {
     display: flex;
     width: 600px;
     border: 1px solid black;
 }
 
-.league-join-input input, .league-join-input button {
+.choose-league-join-input input, .choose-league-join-input button {
     width: 50%;
     padding: 20px;
     font-family: "Neris";
@@ -172,13 +206,13 @@
     border: none;
 }
 
-.league-join-input button {
+.choose-league-join-input button {
     background-color: black;
     color: white;
     cursor: pointer;
 }
 
-.leahue-join-no-exist {
+.choose-league-join-no-exist {
     color: red;
     text-align: center;
 }
@@ -195,5 +229,31 @@
     font-family: "Neris";
     font-size: 15px;
     letter-spacing: 2px;
+}
+
+.choose-league-choose-team {
+    display: flex;
+    padding-top: 2%;
+}
+
+.choose-league-choose-team-left-container, .choose-league-choose-team-right-container {
+    width: 50%;
+    position: relative;
+}
+
+.choose-league-choose-team-title {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.choose-league-choose-team-left-container img {
+    padding-top: 7%;
+}
+
+.choose-league-choose-team-right-container img {
+    padding-bottom: 10%;
+    padding-left: 5%;
 }
 

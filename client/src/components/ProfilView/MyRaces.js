@@ -1,7 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+import "../styles/MyRaces.css";
 
 const MyRaces = ({ races}) => {
+    const navigate = useNavigate();
+
+    const handleRowClick = (raceId) => {
+        navigate(`/show-race-detail/${raceId}`);
+    };
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -13,16 +20,34 @@ const MyRaces = ({ races}) => {
     };
 
     return (
-        <main>
+        <section className="my-races">
             <h1>Calendrier des Courses</h1>
-            {races.map((race, index) => (
-                <div key={index}>
-                    <h2><Link to={`/show-race-detail/${race.raceId}`}>{race.name}</Link></h2>
-                    <p>Date: {formatDate(race.date_start)} - {formatDate(race.date_end)} </p>
+            <div className="my-races-table">
+                    <div className="my-races-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>COURSES</th>
+                                    <th>CATÉGORIE</th>
+                                    <th>DATE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {races.map((race) => (
+                                    <tr key={race.raceId} onClick={() => handleRowClick(race.raceId)}>
+                                        <td>{race.name}</td>
+                                        <td>{race.category}</td>
+                                        <td>{formatDate(race.date_start)}</td>
+                                    </tr>                                    
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-            ))}
-        </main>
+        </section>
     );
 };
 
 export default MyRaces;
+
+/*<Link to={`/show-race-detail/${race.raceId}`}></Link>*/

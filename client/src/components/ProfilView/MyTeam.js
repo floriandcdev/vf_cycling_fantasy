@@ -1,39 +1,52 @@
 import React from "react";
 
-const MyTeam = ({ cyclists }) => {
+import "../styles/MyTeam.css";
+
+const MyTeam = ({ cyclists, teamLabel }) => {
 
     return (
-        <main>
-            <h1>Mon Équipe</h1>
+        <section className="my-team">
+            <h1>Mon Équipe : {teamLabel}</h1>
             {cyclists.length > 0 ? (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Équipe</th>
-                            <th>Division</th>
-                            <th>Nationalité</th>
-                            <th>Valeur Finale</th>
-                            <th>Points Actuels</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {cyclists.map((cyclist, index) => (
-                            <tr key={index}>
-                                <td>{cyclist.name}</td>
-                                <td>{cyclist.team}</td>
-                                <td>{cyclist.division}</td>
-                                <td>{cyclist.nationality}</td>
-                                <td>{cyclist.final_value}</td>
-                                <td>{cyclist.current_points}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <div className="my-team-table">
+                    <div className="my-team-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>COUREUR</th>
+                                    <th>ÉQUIPE</th>
+                                    <th>VALEUR</th>
+                                    <th>POINTS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {cyclists.map((cyclist) => (
+                                    <tr key={cyclist.cyclistId} >
+                                        <td>
+                                            <div className="my-team-name-info">
+                                                <img 
+                                                    className="my-team-flag-icon"
+                                                    src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                    alt={`Drapeau de ${cyclist.nationality}`} 
+                                                    width="20" 
+                                                    height="15"
+                                                />
+                                                <span>{cyclist.name}</span>
+                                            </div>
+                                        </td>
+                                        <td>{cyclist.team}</td>
+                                        <td>{cyclist.finalValue}</td>
+                                        <td>{cyclist.cyclistPoints}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             ) : (
-                <p>Aucun cycliste trouvé pour cet ID de joueur.</p>
+                <p>Aucun cycliste trouvé pour cette team dans cette ligue.</p>
             )}
-        </main>
+        </section>
     );
 };
 

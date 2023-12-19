@@ -15,7 +15,6 @@
     padding-top: 5%;
     padding-left: 5%;
     padding-right: 3%;
-    padding-bottom: 10%;
     font-family: "Neris";
 }
 
@@ -88,6 +87,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto auto;
+    height: 80vh;
 }
 
 .profil-section {
@@ -101,7 +101,22 @@
     margin-bottom: 20px;
 }
 
-.profil-section-header h2 {
+.profil-section-header-team {
+    display: flex;
+}
+
+.profil-section-header-team select {
+    font-family: "Neris";
+    font-size: 12px;
+    width: 200px;
+    height: 30px;
+    border-radius: 22px;
+    border: none;
+    background-color: #FAFAFA;
+    margin: 30px 15px;
+}
+
+.profil-section-header-team h2 {
     font-family: "NerisBlack";
     font-size: 30px;
 }
@@ -209,7 +224,7 @@
 
 .profil-interchangeable-cyclists-table th {
     font-family: "NerisBlack";
-    font-size: 11px;
+    font-size: 14px;
     background-color: #FFE220;
 }
 
@@ -268,6 +283,7 @@
     padding-left: 7%;
     margin: 0;
     font-size: 25px;
+
 }
 
 .profil-no-link {
@@ -285,7 +301,7 @@
     width: 100%;
     border-collapse: collapse;
     font-family: "Neris";
-    font-size: 11px;
+    font-size: 13px;
     background-color: #FAFAFA;
 }
 
@@ -298,6 +314,7 @@
 .profil-section-top-right-content th, .profil-section-bottom-center-content th, .profil-section-bottom-right-content th {
     font-family: "NerisBlack";
     background-color: #FFE220;
+    font-size: 14px;
 }
 
 /* Bottom Left Content */
@@ -342,6 +359,7 @@
     justify-content: center; 
     align-items: top;
     height: 100%; 
+    padding-bottom: 50px;
 }
 
 .profil-next-races-list {
@@ -373,10 +391,6 @@
     padding-left: 7%;
     margin: 0;
     font-size: 25px;    
-}
-
-.profil-empty-races-message {
-    
 }
 
 .profil-empty-races-message span {

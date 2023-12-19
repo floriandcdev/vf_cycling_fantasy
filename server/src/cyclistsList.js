@@ -2,15 +2,22 @@ const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
 
 const cyclistsList = async (req, res) => {
-    const leagueId = req.params.leagueId === "1" ? 1 : 0;
+    const cyclistGroupId = parseInt(req.params.teamId, 10);
 
     let connection;
 
     try {
         connection = await mysql.createConnection(config);
 
-        const query = "SELECT * FROM cyclists c WHERE c.leagueId = ? ";
-        const [cyclists] = await connection.execute(query, [leagueId]);
+        let cyclists;
+
+        if (cyclistGroupId === 0) {
+            const query = "SELECT * FROM cyclists";
+            [cyclists] = await connection.execute(query);
+        } else {
+            const query = "SELECT * FROM cyclists c WHERE c.cyclistGroupId = ? ";
+            [cyclists] = await connection.execute(query, [cyclistGroupId]);
+        }
 
         res.status(200).json(cyclists);
     } catch (error) {

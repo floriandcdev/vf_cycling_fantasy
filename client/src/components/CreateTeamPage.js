@@ -18,15 +18,16 @@ const CreateTeamPage = () => {
     const [bonusRaces, setBonusRaces] = useState([]);
     const [races, setRaces] = useState([]);
     const [cyclists, setCyclists] = useState([]);
-    const { leagueId } = useParams();
-    const leagueIdNumber = parseInt(leagueId, 10);
+    const params = useParams();
+    const leagueId = parseInt(params.leagueId, 10);
+    const teamId = parseInt(params.teamId, 10);
     const { user } = useAuth();
     const navigate = useNavigate();
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const nextStep = () => {
         if (step < 6) {
-            if (leagueIdNumber === 1 && step === 2) {
+            if (teamId === 2 && step === 2) {
                 setStep(step + 3);
             } else {
                 setStep(step + 1);
@@ -36,7 +37,7 @@ const CreateTeamPage = () => {
 
     const prevStep = () => {
         if (step > 1) {
-            if (leagueIdNumber === 1 && step === 5) {
+            if (teamId === 2 && step === 5) {
                 setStep(step - 3);
             } else {
                 setStep(step - 1);
@@ -54,7 +55,7 @@ const CreateTeamPage = () => {
         //Get Cyclists List function
         const fetchCyclists = async () => {
             try {
-                const response = await fetch(`${apiUrl}/cyclists-list/${leagueIdNumber}`);
+                const response = await fetch(`${apiUrl}/cyclists-list/${teamId}`);
                 const data = await response.json();
                 setCyclists(data);
             } catch (error) {
@@ -73,10 +74,12 @@ const CreateTeamPage = () => {
             }
         };
 
-        fetchCyclists();        
-        fetchRaces();
+        fetchCyclists();   
+        if (teamId === 1) {   
+            fetchRaces();
+        }
 
-    }, [apiUrl, user, navigate, leagueIdNumber]);
+    }, [apiUrl, user, navigate, teamId]);
 
     useEffect(() => {
         if (!user) {
@@ -87,18 +90,18 @@ const CreateTeamPage = () => {
         const calculateInitialBudget = (totalBudget) => {
             const totalValueOfSelectedCyclists = selectedCyclists.reduce((total, selectedCyclist) => {
                 const cyclist = cyclists.find(c => c.cyclistId === selectedCyclist.cyclistId);
-                return total + (cyclist ? cyclist.final_value : 0);
+                return total + (cyclist ? cyclist.finalValue : 0);
             }, 0);
             
             return totalBudget - totalValueOfSelectedCyclists;
         };  
 
-        const baseBudget = leagueIdNumber === 1 ? 66 : 500;
+        const baseBudget = teamId === 1 ? 500 : 66;
 
         const initialBudget = calculateInitialBudget(baseBudget);
         setBudget(initialBudget);
 
-    }, [apiUrl, user, navigate, selectedCyclists, cyclists, leagueIdNumber]);
+    }, [apiUrl, user, navigate, selectedCyclists, cyclists, teamId]);
 
     useEffect(() => {
         if (!user) {
@@ -109,7 +112,12 @@ const CreateTeamPage = () => {
         //Check if a user's team exists in the database
         const fetchTeamData = async () => {
             try {
-                const response = await fetch(`${apiUrl}/userTeam/${leagueIdNumber}`, {
+                const apiParams = new URLSearchParams({
+                    leagueId: leagueId,
+                    teamId: teamId
+                });
+
+                const response = await fetch(`${apiUrl}/userTeam/?${apiParams.toString()}`, {
                     credentials: "include"
                 });
 
@@ -129,7 +137,7 @@ const CreateTeamPage = () => {
         const loadData = async () => {
             try {
                 const teamDataExist = await fetchTeamData();
-    
+
                 if (teamDataExist) {                    
                     setSelectedCyclists(teamDataExist.selectedCyclists || []);
                     setCyclistsBonus(teamDataExist.cyclistsBonus || []);
@@ -144,7 +152,7 @@ const CreateTeamPage = () => {
     
         loadData();
         
-    }, [cyclists, apiUrl, user, navigate, leagueIdNumber]);
+    }, [cyclists, apiUrl, user, navigate, leagueId, teamId]);
 
     // Gestion des données à chaque étape
     switch(step) {
@@ -160,6 +168,7 @@ const CreateTeamPage = () => {
                 setCyclistsBonus={setCyclistsBonus}
                 cyclistsBonus={cyclistsBonus}
                 cyclists={cyclists}
+                teamId={teamId}
                 nextStep={nextStep} 
             />
         );
@@ -204,7 +213,8 @@ const CreateTeamPage = () => {
                 races={races}
                 selectedRaces={selectedRaces} 
                 bonusRaces={bonusRaces}
-                leagueId={leagueIdNumber}
+                leagueId={leagueId}
+                teamId={teamId}
                 nextStep={nextStep} 
                 prevStep={prevStep}
             />

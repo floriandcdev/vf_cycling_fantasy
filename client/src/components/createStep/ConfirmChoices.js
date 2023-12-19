@@ -2,8 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../AuthContext";
 
-const ConfirmChoices = ({ selectedCyclists, cyclistsBonus, races, selectedRaces, bonusRaces, leagueId, nextStep, prevStep }) => {
-    const obligatoryRaces = races.filter(race => race.competition_number === 0);
+const ConfirmChoices = ({ selectedCyclists, cyclistsBonus, races, selectedRaces, bonusRaces, leagueId, teamId, nextStep, prevStep }) => {
+    const obligatoryRaces = races.filter(race => race.groupCompetitionId === 0);
     const { user } = useAuth();
     const navigate = useNavigate();
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -19,7 +19,8 @@ const ConfirmChoices = ({ selectedCyclists, cyclistsBonus, races, selectedRaces,
             cyclistsBonus,
             selectedRaces: [...obligatoryRaces, ...selectedRaces],
             bonusRaces, 
-            leagueId
+            leagueId, 
+            teamId
         };
 
         fetch(`${apiUrl}/savePlayerTeam`, {
@@ -37,7 +38,6 @@ const ConfirmChoices = ({ selectedCyclists, cyclistsBonus, races, selectedRaces,
             return response.json();
         })
         .then(data => {
-
             console.log("Success:", data);
             nextStep();
         })

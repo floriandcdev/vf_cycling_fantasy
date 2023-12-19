@@ -1,29 +1,38 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styles/ChooseLeague.css";
 
 import tireBannerLeft from "../medias/png/icons/tire_banner_left.png";
+import chooseLeagueBackground from "../medias/png/background/choose_league_background.png";
+import worldTourBackground from "../medias/png/background/world_tour_background.png";
+import neoProBackground from "../medias/png/background/neo_pro_background.png";
 
 const ChooseLeague = () => {
-    const navigate = useNavigate();
     const [showCreateLeague, setShowCreateLeague] = useState(false);
-    const [showCreateTeam, setShowCreateTeam] = useState(false);
-    const [errorCreateLeague, setErrorCreateLeague] = useState(false);
     const [showJoinLeague, setShowJoinLeague] = useState(false);
+    const [showChooseTeam, setShowChooseTeam] = useState(false);
+    const [errorCreateLeague, setErrorCreateLeague] = useState(false);    
     const [leagueId, setLeagueId] = useState("");
+    const [leagueLabel, setLeagueLabel] = useState("");
     const [joinLeagueExist, setJoinLeagueExist] = useState(true);
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleCreateLeague = async () => {
         try {
-            const response = await fetch(`${apiUrl}/createLeague`, {
+            const response = await fetch(`${apiUrl}/createLeague/${leagueLabel}`, {
                 method: "POST",
                 credentials: "include"
             })
             if (response.ok) {
-                setShowCreateTeam(true);
-                setErrorCreateLeague(false);
-                setShowCreateLeague(false);
+                const data = await response.json();
+
+                if (data.league && data.league.leagueId) {
+                    setShowCreateLeague(false);
+                    setShowChooseTeam(true);
+                    setLeagueId(data.league.leagueId);
+                } else {
+                    setErrorCreateLeague(true);
+                }                
             } else {
                 setErrorCreateLeague(true);
             }
@@ -33,14 +42,20 @@ const ChooseLeague = () => {
     };
 
     const handleJoinLeague = async () => {
-
         try {
-            const response = await fetch(`${apiUrl}/joinLeague/${leagueId}`, {
+            const response = await fetch(`${apiUrl}/joinLeague/${leagueLabel}`, {
                 method: "POST",
                 credentials: "include"
             });
             if (response.ok) {
-                navigate(`/create-team/${leagueId}`);
+                const data = await response.json();
+                if (data.league && data.league.leagueId) {
+                    setShowJoinLeague(false);
+                    setShowChooseTeam(true);        
+                    setLeagueId(data.league.leagueId);          
+                } else {
+                    setJoinLeagueExist(false);
+                }
             } else {
                 setJoinLeagueExist(false);
             }
@@ -50,34 +65,42 @@ const ChooseLeague = () => {
         }
     };
 
+    const handleJoinGeneralLeague = () => {
+        setShowChooseTeam(true);
+        setLeagueId(1);
+    };
+
     return (
         <main className="choose-league">
-            <img src={tireBannerLeft} alt="Banderol de pneu" className="choose-league-left-banner" width="60" height="907" />
-            <div className="choose-league-title">
-                <h1>1 - Je choisis ma ligue</h1>
+            <div className="choose-league-left-banner" style={{ backgroundImage: `url(${tireBannerLeft})` }}></div>
+            <div className="choose-league-shadow-container">
+                <div className="choose-league-title">
+                    <h1>{showChooseTeam ? "CRÉER SON ÉQUIPE - MODE DE JEU" : "CHOISISSEZ VOTRE LIGUE"}</h1>
+                </div>
+                <div className="choose-league-shadow-mask-right"></div>
+                <div className="choose-league-shadow-mask-bottom"></div>
             </div>
-            {!showCreateLeague && !showJoinLeague && (
-                <div>
+
+            {!showCreateLeague && !showJoinLeague && !showChooseTeam && (
+                <div className="choose-league-body">
                     <div className="choose-league-choice">
-                        <Link className="choose-league-no-link" to="/create-team/0"><h2>World Tour</h2></Link>
-                        <Link className="choose-league-no-link" to="/create-team/1"><h2>Néo Pro</h2></Link>
+                        <h2 onClick={() => setShowCreateLeague(true)}>CRÉER MA LIGUE</h2>
+                        <h2 onClick={() => setShowJoinLeague(true)}>REJOINDRE UNE LIGUE</h2>
+                        <h2 onClick={() => handleJoinGeneralLeague()}>REJOINDRE LA LIGUE GÉNÉRAL</h2>
                     </div>
-                    <div className="choose-league-choice">
-                        <h2 onClick={() => setShowCreateLeague(true)}>Créer ma ligue</h2>
-                        <h2 onClick={() => setShowJoinLeague(true)}>Rejoindre une ligue</h2>
-                    </div>
+                    <img src={chooseLeagueBackground} alt="Visuel de classement" loading="lazy"/>
                 </div>
             )}
 
             {showCreateLeague && (
-                <div className="league-info">
-                    <div className="league-create-container">
+                <div className="choose-league-info">
+                    <div className="choose-league-create-container">
                         <label htmlFor="leagueName">CHOISIR UN NOM DE LIGUE</label>
                         <input
                             id="leagueName"
                             type="text"
-                            value={leagueId}
-                            onChange={(e) => setLeagueId(e.target.value)}
+                            value={leagueLabel}
+                            onChange={(e) => setLeagueLabel(e.target.value)}
                         />
                         <p>Le nom doit faire 5 caractères minimum</p>
                         <span>Le nom doit comporter au moins une majuscule et un chiffre</span>
@@ -86,33 +109,40 @@ const ChooseLeague = () => {
                                 <span>Le nom de la ligue est incorrect ou déjà existant.</span>
                             </div>
                         )}
-                        <button onClick={() => handleCreateLeague()}>Je crée ma ligue</button>
+                        <button onClick={() => handleCreateLeague()}>JE CRÉE MA LIGUE</button>
                     </div>
-                </div>
-            )}
-
-            {showCreateTeam && (
-                <div>
-                    <Link className="choose-league-create-no-link" to={`/create-team/${leagueId}`}><button className="choose-league-create-team-button">Créer mon équipe</button></Link>
                 </div>
             )}
 
             {showJoinLeague && (
-                <div className="league-join">
-                    <div className="league-join-input">
+                <div className="choose-league-join">
+                    <div className="choose-league-join-input">
                         <input
                             type="text"
-                            value={leagueId}
-                            onChange={(e) => setLeagueId(e.target.value)}
+                            value={leagueLabel}
+                            onChange={(e) => setLeagueLabel(e.target.value)}
                             placeholder="Nom de la ligue"
                         />
-                        <button onClick={handleJoinLeague}>Rejoindre</button>
+                        <button onClick={handleJoinLeague}>REJOINDRE</button>
                     </div>
                     {!joinLeagueExist && (
-                        <div className="leahue-join-no-exist">
+                        <div className="choose-league-join-no-exist">
                             <p>La ligue n'existe pas</p>
                         </div>
                     )}
+                </div>
+            )}
+
+            {showChooseTeam && (
+                <div className="choose-league-choose-team">
+                    <div className="choose-league-choose-team-left-container">
+                        <img src={worldTourBackground} alt="Cycliste qui célèbre une victoire" width="612" height="344" loading="lazy" />
+                        <Link className="choose-league-choose-team-title" to={`/create-team/${leagueId}/1`}>WORLD TOUR</Link>
+                    </div>
+                    <div className="choose-league-choose-team-right-container">
+                        <img src={neoProBackground} alt="Jeune cycliste" width="612" height="408" loading="lazy" />
+                        <Link className="choose-league-choose-team-title" to={`/create-team/${leagueId}/2`}>NÉO PRO</Link>
+                    </div>
                 </div>
             )}
 

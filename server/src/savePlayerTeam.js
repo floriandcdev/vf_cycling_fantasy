@@ -7,36 +7,25 @@ const savePlayerTeam = async (req, res) => {
         connection = await mysql.createConnection(config);
         await connection.beginTransaction();
 
-        const { selectedCyclists, cyclistsBonus, selectedRaces, bonusRaces, leagueId } = req.body;
+        const { selectedCyclists, cyclistsBonus, selectedRaces, bonusRaces, leagueId, teamId } = req.body;
         const userId = req.user.userId;
 
-        // Vérification de l'existence de l'équipe
-        const [existingEntries] = await connection.execute("SELECT * FROM user_cyclists WHERE userId = ? AND leagueId = ? LIMIT 1", [userId, leagueId]);
+        const [existingEntries] = await connection.execute("SELECT * FROM user_leagues_teams WHERE userId = ? AND leagueId = ? AND teamId = ?", [userId, leagueId, teamId]);
         if (existingEntries.length > 0) {
-            // Suppression des données existantes
-            await connection.execute("DELETE FROM user_cyclists WHERE userId = ? AND leagueId = ?", [userId, leagueId]);
+            await connection.execute("DELETE FROM user_cyclists WHERE userId = ? AND leagueId = ? AND teamId = ?", [userId, leagueId, teamId]);
             await connection.execute("DELETE FROM user_races WHERE userId = ? AND leagueId = ?", [userId, leagueId]);
-            await connection.execute("DELETE FROM leagues WHERE userId = ? AND leagueId = ?", [userId, leagueId]);
-        }
-
-        const insertCyclistQuery = "INSERT INTO user_cyclists (userId, cyclistId, isBonus, leagueId) VALUES (?, ?, ?, ?)";
-        const insertRaceQuery = "INSERT INTO user_races (userId, raceId, isBonus, leagueId) VALUES (?, ?, ?, ?)";
-
-        let leagueLabel;
-        if (leagueId === 0) {
-            leagueLabel = "Ligue Général"
-        } else if (leagueId === 1) {
-            leagueLabel = "Néo Ligue"
         } else {
-            leagueLabel = "Ligue n° : " + leagueId;
+            const insertLeagueQuery = "INSERT INTO user_leagues_teams (userId, leagueId, teamId) VALUES (?, ?, ?)";
+            await connection.execute(insertLeagueQuery, [userId, leagueId, teamId]);
         }
 
-        const insertLeagueQuery = "INSERT INTO leagues (userId, leagueId, leagueLabel) VALUES (?, ?, ?)";
+        const insertCyclistQuery = "INSERT INTO user_cyclists (userId, cyclistId, isBonus, leagueId, teamId) VALUES (?, ?, ?, ?, ?)";
+        const insertRaceQuery = "INSERT INTO user_races (userId, raceId, isBonus, leagueId) VALUES (?, ?, ?, ?)";
 
         // Insérer les cyclistes
         for (const cyclist of selectedCyclists) {
             const isBonus = cyclistsBonus.some(c => c.cyclistId === cyclist.cyclistId);
-            await connection.execute(insertCyclistQuery, [userId, cyclist.cyclistId, isBonus, leagueId]);
+            await connection.execute(insertCyclistQuery, [userId, cyclist.cyclistId, isBonus, leagueId, teamId]);
         }
 
         // Insérer les courses
@@ -45,7 +34,7 @@ const savePlayerTeam = async (req, res) => {
             await connection.execute(insertRaceQuery, [userId, race.raceId, isBonus, leagueId]);
         }
 
-        await connection.execute(insertLeagueQuery, [userId, leagueId, leagueLabel]);
+        
 
         await connection.commit();
         res.status(200).json({ message: "L'équipe du joueur a été enregistrée avec succès." });

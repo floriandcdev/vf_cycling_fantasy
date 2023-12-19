@@ -16,68 +16,100 @@
     align-items: center;
     padding-top: 8%;
 }
+
+.select-races-shadow-container {
+    position: relative;
+    width: 90%;
+}
   
 .select-races-title {
     width: 90%;
     text-align: left;
-    background-color: #FFE220;
-    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
-                  1px -1px 40px rgb(0, 0, 0, 0.1),
-                  -1px 1px 40px rgb(0, 0, 0, 0.1),
-                  1px 1px 40px rgb(0, 0, 0, 0.1);
+    border-top: 10px solid #FDDD07;
+    box-shadow: -1px -1px 30px rgb(0, 0, 0, 0.1),
+                  1px -1px 30px rgb(0, 0, 0, 0.1),
+                  -1px 1px 30px rgb(0, 0, 0, 0.1),
+                  1px 1px 30px rgb(0, 0, 0, 0.1);
+}
+
+.select-races-shadow-mask-right, .select-races-shadow-mask-bottom {
+    position: absolute;
+    background-color: white; 
+    z-index: 2; 
+}
+
+.select-races-shadow-mask-right {
+    top: 0;
+    right: 5%;
+    bottom: 0;
+    width: 5%; 
+}
+
+.select-races-shadow-mask-bottom {
+    bottom: -30px;
+    left: 0;
+    right: 0;
+    height: 31px;
 }
 
 .select-races-title h1 {
     margin: 0;
     font-family: "NerisBlack";
-    font-size: 36px;
-    padding-left: 100px;
+    font-style: italic;
+    font-size: 40px;
+    padding-left: 50px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
 .select-races-header {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 100%;
-    padding: 50px 0;
-    height: 150px;
+    padding: 20px 0;
+    height: 120px;
 }
   
 .select-races-rules {
     text-align: left;
     display: flex;
     align-items: center;
+    padding-left: 8%;
 }
 
 .select-races-rules p {
     font-family: "NerisBlack";
     font-size: 30px;
-    letter-spacing: 2px;
 }
 
 .select-races-change-step {
     text-align: center;
     display: flex;
-    gap: 10%;
+    gap: 7%;
     align-items: center;
     height: 100%;
+    padding-right: 3%;
 }
 
 .select-races-change-step button {
-    font-family: "Neris";
+    font-family: "NerisBlack";
+    font-style: italic;
+    color: white;
     cursor: pointer;
-    letter-spacing: 2px;
-    width: 300px;
+    font-size: 24px;
+    border-radius: 80px;
+    width: 250px;
+    height: 50PX;
     margin: 0;
-    font-size: 20px;
-    padding: 20px 10px;
-    background-color: #FFE220;
+    padding: 0;
+    background-color: #FDDD07;
     border: none;
-    box-shadow: -1px -1px 40px rgb(0, 0, 0, 0.1),
-                  1px -1px 40px rgb(0, 0, 0, 0.1),
-                  -1px 1px 40px rgb(0, 0, 0, 0.1),
-                  1px 1px 40px rgb(0, 0, 0, 0.1);
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+}
+
+.select-races-change-step button:disabled {
+    color: rgba(120, 120, 120, 0.5);
+    text-shadow: none;
 }
 
 .select-races-pannel-view {
@@ -101,14 +133,14 @@
     justify-content: space-between;
     width: 90%;
     margin-top: 10px;
-    padding-left: 5%;
-    padding-bottom: 5%;
+    padding-left: 10%;
+    padding-bottom: 2%;
 }
   
 .select-races-sort-control {
     font-family: "NerisBlack";
     font-size: 18px;
-    letter-spacing: 8px;
+    letter-spacing: 2px;
 }
   
 .select-races-sort-control {
@@ -124,13 +156,14 @@
     border-radius: 22px;
     border: none;
     background-color: #FAFAFA;
+    margin-left: 20px;
 }
   
 .select-races-table-container {
     width: 70%;
     overflow-y: auto;
     max-height: 1000px;
-    margin-left: 5%;
+    margin-left: 10%;
     padding: 0;
     letter-spacing: 0px;
     border: 1px solid black;
@@ -146,24 +179,25 @@
 
 .select-races-table-selected-row {
     background: yellow;
+    font-family: "NerisBlack";
 }
 
 .select-races-table-container th,
 .select-races-table-container td {
     border: 1px solid black;
     padding: 9px;
-    text-align: center;
-    font-size: 11px;
+    text-align: center;    
     border-left: none;
 }
 
 .select-races-table-container td {
-    font-family: "Neris";
     cursor: pointer;
+    font-size: 13px;
 }
 
 .select-races-table-container th {
     font-family: "NerisBlack";
+    font-size: 14px;
     background-color: #FFE220;
     border-top: none;
     position: sticky;
@@ -175,7 +209,7 @@
     display: flex;
     flex-direction: column;
     width: 30%;
-    padding-top: 5%;
+    padding-top: 3%;
 }
 
 .select-races-selected-number {
@@ -233,7 +267,6 @@
     padding-left: 20px;
     padding-right: 10px;
     background-color: #EDEDED40;
-    border-radius: 31px;
     margin: 10px 10px;
     width: 150px;
     height: 80px;

@@ -18,12 +18,24 @@ const Profil = () => {
     const [races, setRaces] = useState([]);
     const [sectionActive, setSessionActive] = useState("Tableau de bord");
     const [selectedLeague, setSelectedLeague] = useState();
+    const [selectedTeam, setSelectedTeam] = useState();
     const [leagues, setLeagues] = useState([]);
+    const [teams, setTeams] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const handleSelectChangeLeague = (event) => {
         const selectValue = parseInt(event.target.value, 10);
         setSelectedLeague(selectValue);
+
+        const availableTeamsInLeague = teams.filter(team => team.leagueId === selectValue);
+        if (!availableTeamsInLeague.some(team => team.teamId === selectedTeam)) {
+            setSelectedTeam(availableTeamsInLeague[0].teamId);
+        }
+    };
+
+    const handleSelectChangeTeam = (event) => {
+        const selectValue = parseInt(event.target.value, 10);
+        setSelectedTeam(selectValue);
     };
 
     const showSession = (sectionName) => {
@@ -47,7 +59,12 @@ const Profil = () => {
             }
             
             try {
-                const response = await fetch(`${apiUrl}/cyclists-list-user/${selectedLeague}`, {
+                const params = new URLSearchParams({
+                    selectedLeague: selectedLeague,
+                    selectedTeam: selectedTeam
+                });
+
+                const response = await fetch(`${apiUrl}/cyclists-list-user/?${params.toString()}`, {
                     credentials: "include"
                 });
                 
@@ -62,9 +79,10 @@ const Profil = () => {
                 console.error("Erreur:", error);
             }
         };
-
-        fetchCyclists();
-    }, [apiUrl, user, navigate, selectedLeague]);
+        if (selectedLeague) {
+            fetchCyclists();
+        }
+    }, [apiUrl, user, navigate, selectedLeague, selectedTeam]);
 
     useEffect(() => {
         const fetchRankings = async () => {
@@ -72,7 +90,6 @@ const Profil = () => {
                 navigate("/logIn");
                 return;
             }
-            console.log("Profil user:",user);
             
             try {
                 const response = await fetch(`${apiUrl}/ranking/${selectedLeague}`, {
@@ -91,7 +108,9 @@ const Profil = () => {
             }
         };
 
-        fetchRankings();
+        if (selectedLeague) {
+            fetchRankings();
+        }
     }, [apiUrl, user, navigate, selectedLeague]);
 
     useEffect(() => {   
@@ -117,24 +136,48 @@ const Profil = () => {
             }
         };
     
-        fetchPersonalRaces();
+        if (selectedLeague) {
+            fetchPersonalRaces();
+        }
     }, [apiUrl, user, navigate, selectedLeague]);
 
     useEffect(() => {
         const fetchLeagues = async () => {
             try {
-                const response = await fetch(`${apiUrl}/leagueListUser`, {
+                const response = await fetch(`${apiUrl}/leagueTeamListUser`, {
                     credentials: "include"
                 });
     
                 if (!response.ok) {
                     throw new Error("Erreur lors de la récupération des ligues");
                 }
-    
+        
                 const data = await response.json();
-                setLeagues(data);
+
                 if (data.length > 0) {
+                    const uniqueLeagueIds = new Set();
+                    const leaguesData = data.filter(item => {
+                        const id = parseInt(item.leagueId, 10);
+                        if (!uniqueLeagueIds.has(id)) {
+                            uniqueLeagueIds.add(id);
+                            return true;
+                        }
+                        return false;
+                    })
+                    .map(item => ({
+                        leagueId: parseInt(item.leagueId, 10),
+                        leagueLabel: item.leagueLabel
+                    }));        
+                    setLeagues(leaguesData);
+
+                    const teamsData = data.map(item => ({
+                        teamId: parseInt(item.teamId, 10),
+                        leagueId: parseInt(item.leagueId, 10)
+                    }));
+                    setTeams(teamsData);
+
                     setSelectedLeague(data[0].leagueId);
+                    setSelectedTeam(data[0].teamId);
                 }
             } catch (error) {
                 console.error("Erreur:", error);
@@ -156,7 +199,7 @@ const Profil = () => {
                     <h4 onClick={() => showSession("Ranking")} style={{ borderBottomColor: sectionActive === "Ranking" ? "#FFE220" : "black" }}>Classements</h4>
                     <h4 onClick={() => showSession("MyRaces")} style={{ borderBottomColor: sectionActive === "MyRaces" ? "#FFE220" : "black" }}>Mes prochaines courses</h4>
                 </div>
-                {sectionActive === "MyTeam" && <MyTeam cyclists={cyclists}/>}
+                {sectionActive === "MyTeam" && <MyTeam cyclists={cyclists} teamLabel={selectedTeam === 1 ? "World Tour" : "Néo Pro"}/>}
                 {sectionActive === "Ranking" && <Ranking rankings={rankings}/>}
                 {sectionActive === "MyRaces" && <MyRaces races={races}/>}
                 {sectionActive === "Tableau de bord" &&
@@ -168,7 +211,7 @@ const Profil = () => {
                         <select onChange={handleSelectChangeLeague} value={selectedLeague}>
                             {leagues.map((league) => (
                                 <option key={league.leagueId} value={league.leagueId}>
-                                    {league.leagueId}
+                                    {league.leagueLabel}
                                 </option>
                             ))}
                         </select>
@@ -179,7 +222,16 @@ const Profil = () => {
                     {/* Zone en haut à gauche */}
                     <div className="profil-section section-top-left">
                         <div className="profil-section-header">
-                            <h2>Mon équipe</h2>
+                            <div className="profil-section-header-team">
+                                <h2>Mon équipe</h2>
+                                <select onChange={handleSelectChangeTeam} value={selectedTeam}>
+                                    {teams.filter(team => team.leagueId === selectedLeague).map((team) => (
+                                        <option key={team.teamId} value={team.teamId}>
+                                            {team.teamId === 1 ? "World Tour" : "Néo Pro"}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                             <button onClick={() => showSession("MyTeam")}>Tout voir</button>
                         </div>
                         <div className="profil-section-title">
@@ -204,7 +256,7 @@ const Profil = () => {
                                                         <h4>{cyclist.name}</h4>
                                                     </div>                                                
                                                     <p>{cyclist.team}</p>
-                                                    <p>Valeur : <span>{cyclist.final_value}</span></p>  
+                                                    <p>Valeur : <span>{cyclist.finalValue}</span></p>  
                                                 </div>
                                                 <div style={{ width: "100%", height: "10px", backgroundColor: cyclist.teamColor, marginLeft: "auto", marginRight: "auto",  }}></div>
                                             </div>
@@ -265,7 +317,7 @@ const Profil = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rankings.slice(0, 7).map((ranking, index) => (
+                                    {rankings.filter(ranking => ranking.teamId === 1).slice(0, 7).map((ranking, index) => (
                                         <tr key={index}>
                                             <td>{ranking.position}</td>
                                             <td>{ranking.name}</td>
@@ -335,7 +387,7 @@ const Profil = () => {
                     {/* Zone en bas à droite */}
                     <div className="profil-section section-bottom-right">
                         <div className="profil-section-header">
-                            <span>Classement Néoligue</span>
+                            <span>Classement NéoPro</span>
                             <button onClick={() => showSession("Ranking")}>Tout voir</button>
                         </div>
                         <div className="profil-section-bottom-right-content">
@@ -348,7 +400,7 @@ const Profil = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rankings.slice(0, 7).map((ranking, index) => (
+                                    {rankings.filter(ranking => ranking.teamId === 2).slice(0, 7).map((ranking, index) => (
                                         <tr key={index}>
                                             <td>{ranking.position}</td>
                                             <td>{ranking.name}</td>

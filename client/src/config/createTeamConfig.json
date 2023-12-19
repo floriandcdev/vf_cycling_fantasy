@@ -1,0 +1,14 @@
+{
+    "cyclistsWorldTourNumber": {
+        "min": 7,
+        "max": 10
+    },
+    "cyclistsNeoProNumber": {
+        "min": 5,
+        "max": 7
+    },
+    "racesNumber": {
+        "1": 4,
+        "2": 3
+    }    
+}

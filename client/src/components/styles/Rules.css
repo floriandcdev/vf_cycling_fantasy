@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
+    font-display: swap;
+}
+
+.rules {
+    margin: 5% 50px;
+    display: flex;
+    flex-direction: column;
+    width: 95vw;
+    justify-content: center;
+    align-items: left;
+}
+
+.rules h1 {
+    font-family: "NerisBlack";
+    font-size: 40px;
+    color: black;
+}
+
+.rules-section h3 {
+    font-size: 30px;
+    font-family: "NerisBlack";
+    padding: 10px 0;
+}
+
+.rules-section p {
+    font-size: 20px;
+    font-family: "Neris";
+    line-height: 2;
+}
+
+.rules-section p strong {
+    font-size: 30px;
+    font-family: "NerisBlack";
+}

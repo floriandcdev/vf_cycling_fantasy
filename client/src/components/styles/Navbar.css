@@ -20,8 +20,9 @@
 }
 
 .navbar-logo-image {
-    height: 50px;
-    width: 50px;
+    padding-top: 4px;
+    height: 63px;
+    width: 63px;
 }
 
 .navbar-center-links {

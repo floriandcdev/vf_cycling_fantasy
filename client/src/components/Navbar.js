@@ -11,9 +11,7 @@ const Navbar = () => {
         <header className="navbar">
             <div className="navbar-desktop">
                 <Link to="/" className="navbar-logo">
-                    <picture>
                         <img src={logoPng} alt="Logo VF Cycling" className="navbar-logo-image" loading="eager" width="500" height="500" />
-                    </picture>
                 </Link>
 
                 <nav aria-label="desktop navigation" className="navbar-center-links">

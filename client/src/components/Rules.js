@@ -1,39 +1,70 @@
 import React from "react";
 
+import "./styles/Rules.css";
+
 const Rules = () => {
     return (
-        <main>
-            <h1><br />Réglement</h1>
-            <p>Description du jeu :
-            <br />VF Cycling Fantasy est un jeu de gestion d'une équipe, résultant des performances des coureurs dans la réalité. Construisez votre équipe, définissez votre calendrier de courses, vos objectifs et suivez l'évolution de votre équipe au classement.
+        <main className="rules">
+            <h1><br />Réglement de l'Épopée</h1>
+            <div className="rules-section">
+                <h3>Article 1 : Objet du Jeu</h3>
+                <p>L’Épopée est un jeu de gestion d'équipe de cyclisme en ligne qui permet aux joueurs de créer et de gérer leur propre équipe de coureurs professionnels. Les points sont attribués en fonction des performances réelles des coureurs dans les courses professionnelles tout au long de la saison.</p>
+            </div>
 
-            <br />Vous avez la possibilité de bâtir deux types d'équipes : Classique ou Néo pro. Pour cette dernière, vous n'avez accès qu'aux coureurs dans leur deux premières années de contrat. Et vous aurez un classement dédié.
+            <div className="rules-section">
+                <h3>Article 2 : Composition de l'Équipe</h3>
+                <p>
+                    1. Les équipes doivent être composées de 27 à 30 coureurs.<br />
+                    2. Chaque joueur dispose d'un budget de 500 points pour constituer son équipe.<br />
+                    3. Les coureurs ont des valeurs allant de 3 à 99 points, basées sur leurs performances et leur réputation dans le monde du cyclisme.<br />
+                    4. Les équipes peuvent être modifiées grâce à 5 coureurs interchangeables à des moments clés de la saison (8 avril - 31 mai - 31 juillet).<br />
+                    5. La valeur des 5 coureurs interchangeables doit être égale ou supérieure à celle des joueurs remplaçants.
+                </p>
+            </div>
 
-            <br />Une seule équipe de chaque est acceptée. Si exception, merci de nous contacter.
+            <div className="rules-section">
+                <h3>Article 3 : Sélection des Courses et Points</h3>
+                <p>
+                    1. Les joueurs doivent sélectionner trois courses majeures comme objectifs principaux en début de saison.<br />
+                    2. Les points des coureurs sont doublés lors de ces trois courses sélectionnées, ajoutant une dimension stratégique supplémentaire.
+                </p>
+            </div>
 
-            <br />Valeur des coureurs :
-            <br />La valeurs des coureurs a été définie selon les points marqués au classement UCI 2023. Les côtes vont de 3 à 99.
+            <div className="rules-section">
+                <h3>Article 4 : Transferts</h3>
+                <p>
+                    1. Un transfert permet de remplacer un coureur de l'équipe par un autre de valeur strictement inférieure.<br />
+                    2. Les managers peuvent effectuer des transferts à des moments spécifiques de la saison.<br />
+                    3. Chaque coureur ne peut être échangé qu'une fois.<br />
+                    4. La différence de points entre les coureurs sortant et entrant est perdue.<br />
+                </p>
+            </div>
 
-            <br />Construisez votre équipe : 
+            <div className="rules-section">
+                <h3>Article 5 : Système de Points</h3>
+                <p>
+                    1. Les points sont attribués en fonction des performances réelles des coureurs dans les courses professionnelles.<br />
+                    2. Des points supplémentaires peuvent être gagnés pour des réalisations spéciales, comme le port du maillot de leader ou des distinctions honorifiques.<br />
+                    3. Les résultats sont mis à jour après chaque course dans les 24 heures après la course.<br />
+                </p>
+            </div>
 
-            <br />Choisissez parmi les coureurs World Tour et Pro Teams entre 27 et 30 coureurs, en respectant le budget maximum de 500M. Aucune contrainte de plus n'existe excepté que vous devrez ensuite choisir parmi ces 30 coureurs, 5 cyclistes qui seront transférables. Ces 5 coureurs seront possiblement interchangeables à 3 dates : 8 avril, 31 mai et 31 juillet.
+            <div className="rules-section">
+                <h3>Article 6 : Fin de Saison</h3>
+                <p>
+                    1. À la fin de la saison, les équipes seront dissoutes.<br />
+                    2. Une nouvelle saison impliquera de nouvelles équipes pour chaque manager.<br />
+                </p>
+            </div>
 
-            <br />Pour que vos coureurs marquent un point lors de la course, il devra y participer avec votre équipe.
+            <div className="rules-section">
+                <h3>Article 7 : Vie du Jeu et Interactivité</h3>
+                <p>La vie du jeu dépend de l'engagement des joueurs.</p>
+            </div>
 
-            <br />Choisissez votre calendrier :
-
-            <br />Si l'ensemble des courses WT sont obligatoires, vous ne pouvez pas participer à toutes les courses de la saison. Il va donc falloir choisir 40 courses parmi les 58 courses UCI Pro Series existantes. Idem pour les courses du calendrier Europe Tour, Asia Tour, etc.
-
-            <br />Si votre coureur participe en vrai à la course mais que cette course ne fait pas partie de vos choix, le coureur ne marquera aucun points. Choisirez vous plutôt des courses d'un jour pour vos flandriens ou priviligirez vous les courses à étape pour vos grimpeurs?
-
-            <br />Inscription :
-
-            <br />La date limite pour valider votre équipe est à la veille du départ du Tour Down Under, le 14 janvier à 23h59..
-
-            <br />Points :
-
-            <br />Les points attribués aux coureurs seront répartis selon un barème que nous avons défini. Il est très similaire au classement UCI actuel. 
-            </p>
+            <div className="rules-section">
+                <p><strong>Note : </strong>Les règles sont susceptibles d'être ajustées pour assurer l'équité et l'amélioration de l'expérience de jeu. Les changements seront communiqués aux joueurs de manière transparente.</p>
+            </div>
         </main>
     );
 };

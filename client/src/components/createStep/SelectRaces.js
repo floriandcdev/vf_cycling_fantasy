@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import competitionsConfig from "../../config/competitionsConfig.json";
 
 import "../styles/SelectRaces.css";
 
+import createTeamConfig from "../../config/createTeamConfig.json";
 import defaultCalendarConfig from "../../config/defaultCalendarConfig.json";
 
 import cancelIcon from "../../medias/png/icons/cancel.png";
@@ -10,7 +10,7 @@ import cancelIcon from "../../medias/png/icons/cancel.png";
 const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRaces, races, nextStep, prevStep }) => {
     const [categoryChoice, setCategoryChoice] = useState("UCI");
     const [selectedCount, setSelectedCount] = useState({ "1": 0, "2": 0, "3": 0 });
-    const filteredRaces = races.filter(race => [1, 2, 3].includes(race.competition_number));
+    const filteredRaces = races.filter(race => [1, 2, 3].includes(race.groupCompetitionId));
     const firstLineRaces = selectedRaces.filter((_, index) => index % 2 === 0);
     const secondLineRaces = selectedRaces.filter((_, index) => index % 2 !== 0);
     const [calendarDefaultValue, setCalendarDefaultValue] = useState("aucun");
@@ -18,15 +18,15 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
     useEffect(() => {
         const initialCount = { "1": 0, "2": 0, "3": 0 };
         selectedRaces.forEach(race => {
-            if (race.competition_number in initialCount) {
-                initialCount[race.competition_number]++;
+            if (race.groupCompetitionId in initialCount) {
+                initialCount[race.groupCompetitionId]++;
             }
         });
         setSelectedCount(initialCount);
     }, [selectedRaces]);
 
     const handleSelectRace = (race) => {
-        const competition = race.competition_number;
+        const competition = race.groupCompetitionId;
     
         if (selectedRaces.some(selected => selected.raceId === race.raceId)) {
             setSelectedRaces(selectedRaces.filter(r => r.raceId !== race.raceId));
@@ -42,7 +42,7 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
     };
 
     const getMaxSelection = (competitionNumber) => {
-        return competitionsConfig[competitionNumber] || 0;
+        return createTeamConfig["racesNumber"][competitionNumber] || 0;
     };
 
     const isRaceSelected = raceId => {
@@ -57,7 +57,7 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
 
     const groupRacesByCompetition = () => {
         return filteredRaces.reduce((groups, race) => {
-            const groupKey = race.competition_number;
+            const groupKey = race.groupCompetitionId;
             if (!groups[groupKey]) {
                 groups[groupKey] = {
                     label: race.competition,
@@ -104,16 +104,20 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
 
     return (
         <main className="select-races">
-            <div className="select-races-title">
-                <h1>4 - Je choisis mes courses ({categoryChoice === "UCI" ? "1" : "2"}/2)</h1>
+            <div className="select-races-shadow-container">
+                <div className="select-races-title">
+                    <h1>CRÉER SON ÉQUIPE - CHOIX DES COURSES ({categoryChoice === "UCI" ? "1" : "2"}/2)</h1>
+                    <div className="select-races-shadow-mask-right"></div>
+                    <div className="select-races-shadow-mask-bottom"></div>
+                </div>
             </div>
             <div className="select-races-header">
                 <div className="select-races-rules">
                     <p >Sélectionnez vos courses {categoryChoice === "UCI" ? "UCI PRO SERIES" : "Continental TOUR"}</p>
                 </div>
                 <div className="select-races-change-step">
-                    <button onClick={handlePrevStep}>Précédent</button>
-                    <button onClick={handleNextStep} disabled={!allRacesSelected}>Suivant</button>
+                    <button onClick={handlePrevStep}>PRÉCÉDENT</button>
+                    <button onClick={handleNextStep} disabled={!allRacesSelected}>SUIVANT</button>
                 </div> 
             </div>
             {Object.keys(racesByCompetition).map(competitionNumber => {
@@ -139,8 +143,8 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                 <table>
                                     <thead>
                                         <tr>
-                                            <th>Nom de la course</th>
-                                            <th>Catégorie</th>
+                                            <th>NOM DE LA COURSE</th>
+                                            <th>CATÉGORIE</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -160,20 +164,20 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                             Courses sélectionnées : 
                                 <span className={
                                     selectedRaces
-                                        .filter(race => race.competition_number === parseInt(competitionNumber) && ((categoryChoice === "UCI" && competitionNumber === "1") || (categoryChoice !== "UCI" && competitionNumber === "2")))
-                                        .length === competitionsConfig[competitionNumber] ? "select-races-selected-races-green" : "select-races-selected-races-red"
+                                        .filter(race => race.groupCompetitionId === parseInt(competitionNumber) && ((categoryChoice === "UCI" && competitionNumber === "1") || (categoryChoice !== "UCI" && competitionNumber === "2")))
+                                        .length === createTeamConfig["racesNumber"][competitionNumber] ? "select-races-selected-races-green" : "select-races-selected-races-red"
                                 }>
                                     {selectedRaces
-                                        .filter(race => race.competition_number === parseInt(competitionNumber) && ((categoryChoice === "UCI" && competitionNumber === "1") || (categoryChoice !== "UCI" && competitionNumber === "2")))
+                                        .filter(race => race.groupCompetitionId === parseInt(competitionNumber) && ((categoryChoice === "UCI" && competitionNumber === "1") || (categoryChoice !== "UCI" && competitionNumber === "2")))
                                         .length
                                     }
                                 </span>
-                                /{competitionsConfig[competitionNumber]}
+                                /{createTeamConfig["racesNumber"][competitionNumber]}
                             </p>
                             <div className="select-races-scroll-container">
                                 <div className="select-races-line-container">
                                     {firstLineRaces
-                                        .filter(race => race.competition_number === parseInt(competitionNumber) &&
+                                        .filter(race => race.groupCompetitionId === parseInt(competitionNumber) &&
                                         ((categoryChoice === "UCI" && competitionNumber === "1") || (categoryChoice !== "UCI" && competitionNumber === "2")))
                                         .map(filteredRace => (
                                             <div className="select-races-selected-cell" key={filteredRace.raceId}>            
@@ -188,7 +192,7 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                 </div>
                                 <div className="select-races-line-container">
                                     {secondLineRaces
-                                        .filter(race => race.competition_number === parseInt(competitionNumber) &&
+                                        .filter(race => race.groupCompetitionId === parseInt(competitionNumber) &&
                                         ((categoryChoice === "UCI" && competitionNumber === "1") || (categoryChoice !== "UCI" && competitionNumber === "2")))
                                         .map(filteredRace => (
                                             <div className="select-races-selected-cell" key={filteredRace.raceId}>            
