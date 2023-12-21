@@ -1,20 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./styles/HomePage.css";
 
 import homeBackground from "../medias/png/background/home_background.png";
+import homeBackgroundMobile from "../medias/png/background/home_background_mobile.png";
 import homeCyclistZoom from "../medias/png/background/home_cyclist_zoom.png";
 import homeBikeZoom from "../medias/png/background/home_bike_zoom.png";
 
 const HomePage = () => {
+    const [isMobile] = useState(window.innerWidth <= 699);
+
     return (
         <main className="home">
             <section className="home-section1">
                 <div className="home-section1-background">
-                    <picture>
-                        <img src={homeBackground} className="home-section1-background-image" alt="Gros plan cycliste" loading="lazy" width="1919" height="400" />
-                    </picture>
+                    <img src={isMobile ? homeBackgroundMobile : homeBackground} className="home-section1-background-image" alt="Gros plan cycliste" loading="lazy" width="1919" height="400" />
                 </div>
             </section>
 

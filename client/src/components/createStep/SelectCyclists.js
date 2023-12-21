@@ -159,8 +159,8 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                         <div className="select-cyclists-line-container">
                             {firstLineCyclists.map((cyclist) => (
                                 <div className="select-cyclists-selected-cell" key={cyclist.cyclistId}>
-                                    <div className="select-cyclists-selected-info">
-                                        <img src={cancelIcon} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
+                                    <img src={cancelIcon} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
+                                    <div className="select-cyclists-selected-info">                                        
                                         <h4>
                                             <img 
                                                 className="select-cyclists-flag-icon"
@@ -180,8 +180,8 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                         <div className="select-cyclists-line-container">
                             {secondLineCyclists.map((cyclist) => (
                                 <div className="select-cyclists-selected-cell" key={cyclist.cyclistId}>            
+                                    <img src={cancelIcon} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
                                     <div className="select-cyclists-selected-info">
-                                        <img src={cancelIcon} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
                                         <h4>
                                             <img 
                                                 className="select-cyclists-flag-icon"

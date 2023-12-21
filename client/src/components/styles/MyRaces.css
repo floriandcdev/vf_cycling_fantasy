@@ -16,6 +16,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5%;
 }
 
 .my-races h1 {
@@ -23,7 +24,6 @@
     font-size: 35px;
     font-style: italic;
     color: #1F384C;
-    letter-spacing: 10px;
     margin: 0;
     padding: 3% 0;
 }
@@ -41,7 +41,6 @@
     overflow-y: auto;
     max-height: 500px;
     padding: 0;
-    letter-spacing: 0px;
 }
 
 .my-races-table-container table {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
@@ -17,6 +17,13 @@ const LogIn = () => {
     const navigate = useNavigate();
     const { LogIn } = useAuth();
     const apiUrl = process.env.REACT_APP_API_URL;   
+    const { user } = useAuth();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/profil");
+        }
+    }, [user, navigate]);
     
     const tooglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -108,6 +115,7 @@ const LogIn = () => {
                     <button type="submit" className="login-button">SE CONNECTER</button>
                 </div>
             </form>
+            <a href="/signup" className="login-forgot-password">Pas encore inscrit ? Créez votre compte.</a>
         </main>
     );
 };

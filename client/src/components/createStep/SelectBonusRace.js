@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/SelectBonusRaces.css";
 
 import cancelIcon from "../../medias/png/icons/cancel.png";
 
-const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, nextStep, prevStep }) => {
+const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, prevStep, saveData }) => {
     const bonusEligibleRaces = races.filter(race => race.groupCompetitionId === 0);
     const combinedRaces = [...selectedRaces, ...bonusEligibleRaces];
+    const [confirmValidDataPopup, setConfirmValidDataPopup] = useState(false);
+    const navigate = useNavigate();
 
     const handleSelectBonusRace = race => {
         const isRaceInBonusRaces = raceId => bonusRaces.some(br => br.raceId === raceId);
@@ -22,8 +25,33 @@ const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, next
         return bonusRaces.some(br => br.raceId === raceId);
     };
 
+    const validData = () => {
+        saveData()
+            .then(() => {
+                setConfirmValidDataPopup(true);
+            })
+            .catch((error) => {
+                console.error("Erreur lors de l'enregistrement :", error);
+            });
+    };
+
+    const handleClosePopup = () => {
+        navigate("/profil");
+    };
+
+
     return (
         <main className="select-races-bonus">
+            {
+                confirmValidDataPopup && (
+                    <div className="select-races-bonus-popup">
+                        <div className="select-races-bonus-popup-content">
+                            <p>Félicitation !<br />Vos choix d'équipe ont bien été pris en compte.</p>
+                            <button onClick={handleClosePopup}>Valider</button>
+                        </div>
+                    </div>
+                )
+            }
             <div className="select-races-bonus-shadow-container">
                 <div className="select-races-bonus-title">
                     <h1>CRÉER SON ÉQUIPE - CHOIX DES OBJECTIFS DE SAISON</h1>
@@ -37,7 +65,7 @@ const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, next
                 </div>
                 <div className="select-races-bonus-change-step">
                     <button onClick={prevStep}>PRÉCÉDENT</button>
-                    <button onClick={nextStep} disabled={bonusRaces.length !== 3}>SUIVANT</button>
+                    <button onClick={validData} disabled={bonusRaces.length !== 3}>VALIDER</button>
                 </div>  
             </div>
             <div className="select-races-bonus-pannel-view">

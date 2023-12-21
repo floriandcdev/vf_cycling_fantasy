@@ -24,7 +24,30 @@
     font-size: 40px;
     font-style: italic;
     color: #1F384C;
-    letter-spacing: 10px;
     margin: 0;
     padding: 3% 0;
+}
+
+.scale-image {
+    width: 100%;
+}
+
+@media (max-width: 699px) {
+    .scale {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .scale h1 {
+        font-size: 26px;
+        padding: 0 0;
+        margin: 0;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        text-align: center;
+    }   
 }

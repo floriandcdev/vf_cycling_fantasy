@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 
 import SelectCyclists from "./createStep/SelectCyclists.js";
 import SelectCyclistsBonus from "./createStep/SelectCyclistsBonus.js";
 import SelectRaces from "./createStep/SelectRaces";
 import SelectBonusRace from "./createStep/SelectBonusRace";
-import ConfirmChoices from "./createStep/ConfirmChoices";
 
 const CreateTeamPage = () => {
     const [step, setStep] = useState(1);
@@ -26,24 +25,61 @@ const CreateTeamPage = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
 
     const nextStep = () => {
-        if (step < 6) {
-            if (teamId === 2 && step === 2) {
-                setStep(step + 3);
-            } else {
-                setStep(step + 1);
-            }
+        if (step < 4) {
+            setStep(step + 1);
         }
     };
 
     const prevStep = () => {
         if (step > 1) {
-            if (teamId === 2 && step === 5) {
-                setStep(step - 3);
-            } else {
-                setStep(step - 1);
-            }
+            setStep(step - 1);
         }
     }; 
+
+    const saveData = () => {
+        return new Promise((resolve, reject) => {
+
+            if (!user) {
+                navigate("/logIn");
+                reject("Utilisateur non connecté");
+                return;
+            }
+
+            const obligatoryRaces = races.filter(race => race.groupCompetitionId === 0);
+
+            const playerTeamData = {
+                selectedCyclists,
+                cyclistsBonus,
+                selectedRaces: [...obligatoryRaces, ...selectedRaces],
+                bonusRaces, 
+                leagueId, 
+                teamId
+            };
+
+            fetch(`${apiUrl}/savePlayerTeam`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                credentials: "include",
+                body: JSON.stringify(playerTeamData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Success:", data);
+                resolve(data);
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                reject(error);
+            });
+        });
+    };
 
     //useEffect
     useEffect(() => {
@@ -180,6 +216,8 @@ const CreateTeamPage = () => {
                 cyclistsBonus={cyclistsBonus}
                 nextStep={nextStep} 
                 prevStep={prevStep}
+                teamId={teamId}
+                saveData={saveData}
             />
         );
         case 3:
@@ -201,30 +239,9 @@ const CreateTeamPage = () => {
                 setBonusRaces={setBonusRaces}
                 bonusRaces={bonusRaces}
                 races={races}
-                nextStep={nextStep} 
                 prevStep={prevStep}
+                saveData={saveData}
             />
-        );
-        case 5:
-        return (
-            <ConfirmChoices 
-                selectedCyclists={selectedCyclists} 
-                cyclistsBonus={cyclistsBonus}
-                races={races}
-                selectedRaces={selectedRaces} 
-                bonusRaces={bonusRaces}
-                leagueId={leagueId}
-                teamId={teamId}
-                nextStep={nextStep} 
-                prevStep={prevStep}
-            />
-        );
-        case 6:
-        return (
-            <div>
-                <p>Enregistrement confirmé</p>
-                <Link to="/profil">Retour à la page d'accueil</Link>
-            </div>
         );
         default:
         return <div>Étape non reconnue</div>;

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { useAuth } from "./AuthContext";
 import ProtectedRoutes from "./ProtectedRoutes";
+import { NavbarProvider } from ".//NavbarContext";
 
 import HomePage from "./components/HomePage";
 import Navbar from "./components/Navbar";
@@ -47,6 +48,7 @@ function App() {
     }, [LogIn, LogOut, apiUrl, setIsLoading]);
 
   return (
+    <NavbarProvider>
       <Router>
           <Navbar />
           <Routes>
@@ -66,6 +68,7 @@ function App() {
 
           </Routes>
       </Router>
+    </NavbarProvider>
   );
 }
 

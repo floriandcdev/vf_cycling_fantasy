@@ -86,7 +86,7 @@ const ChooseLeague = () => {
                     <div className="choose-league-choice">
                         <h2 onClick={() => setShowCreateLeague(true)}>CRÉER MA LIGUE</h2>
                         <h2 onClick={() => setShowJoinLeague(true)}>REJOINDRE UNE LIGUE</h2>
-                        <h2 onClick={() => handleJoinGeneralLeague()}>REJOINDRE LA LIGUE GÉNÉRAL</h2>
+                        <h2 onClick={() => handleJoinGeneralLeague()}>CRÉER UNE ÉQUIPE</h2>
                     </div>
                     <img src={chooseLeagueBackground} alt="Visuel de classement" loading="lazy"/>
                 </div>

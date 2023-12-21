@@ -21,7 +21,7 @@ const MyRaces = ({ races}) => {
 
     return (
         <section className="my-races">
-            <h1>Calendrier des Courses</h1>
+            <h1>CALENDRIER DES COURSES</h1>
             <div className="my-races-table">
                     <div className="my-races-table-container">
                         <table>

@@ -284,6 +284,7 @@
 
 .select-cyclists-selected-cell {
     flex: 1 1 auto; 
+    position: relative;
 }
 
 .select-cyclists-line-container:last-child .select-cyclists-selected-cell:last-child {
@@ -317,8 +318,10 @@
 
 .select-cyclists-cancel-icon {
     position: absolute;
-    right: 5%;
+    right: 10%;
+    top: 10%;
     cursor: pointer;
+    z-index: 1;
 }
 
 .select-cyclists-selected-info h4 {
@@ -337,3 +340,18 @@
     font-family: "NerisBlack";
 }
 
+@media (max-width: 1499px) and (min-width: 700px) {
+    .select-cyclists-title h1 {
+        font-size: 32px;
+    }
+
+    .select-cyclists-rules p {
+        font-size: 24px;
+    }
+
+    .select-cyclists-next button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+    }
+}

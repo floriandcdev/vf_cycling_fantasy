@@ -189,21 +189,21 @@ const Profil = () => {
 
     return (
         <main className="profil">
-                <div className="profil-menu">
-                    <div className="profil-menu-logo">
-                        <img src={epopeeLogo} alt="Logo de l'épopée" width="358" height="139" />
-                        <p>Votre nouveau jeu de cyclisme fantasy</p>
-                    </div>
-                    <h4 onClick={() => showSession("Tableau de bord")} style={{ borderBottomColor: sectionActive === "Tableau de bord" ? "#FFE220" : "black" }}>Tableau de bord</h4>
-                    <h4 onClick={() => showSession("MyTeam")} style={{ borderBottomColor: sectionActive === "MyTeam" ? "#FFE220" : "black" }}>Mon équipe</h4>
-                    <h4 onClick={() => showSession("Ranking")} style={{ borderBottomColor: sectionActive === "Ranking" ? "#FFE220" : "black" }}>Classements</h4>
-                    <h4 onClick={() => showSession("MyRaces")} style={{ borderBottomColor: sectionActive === "MyRaces" ? "#FFE220" : "black" }}>Mes prochaines courses</h4>
+            <div className="profil-menu">
+                <div className="profil-menu-logo">
+                    <img src={epopeeLogo} alt="Logo de l'épopée" width="358" height="139" />
+                    <p>Votre nouveau jeu de cyclisme fantasy</p>
                 </div>
-                {sectionActive === "MyTeam" && <MyTeam cyclists={cyclists} teamLabel={selectedTeam === 1 ? "World Tour" : "Néo Pro"}/>}
-                {sectionActive === "Ranking" && <Ranking rankings={rankings}/>}
-                {sectionActive === "MyRaces" && <MyRaces races={races}/>}
-                {sectionActive === "Tableau de bord" &&
-                <div>
+                <h4 onClick={() => showSession("Tableau de bord")} style={{ borderBottomColor: sectionActive === "Tableau de bord" ? "#FFE220" : "black" }}>Tableau de bord</h4>
+                <h4 onClick={() => showSession("MyTeam")} style={{ borderBottomColor: sectionActive === "MyTeam" ? "#FFE220" : "black" }}>Mon équipe</h4>
+                <h4 onClick={() => showSession("Ranking")} style={{ borderBottomColor: sectionActive === "Ranking" ? "#FFE220" : "black" }}>Classements</h4>
+                <h4 onClick={() => showSession("MyRaces")} style={{ borderBottomColor: sectionActive === "MyRaces" ? "#FFE220" : "black" }}>Mes prochaines courses</h4>
+            </div>
+            {sectionActive === "MyTeam" && <MyTeam cyclists={cyclists} teamLabel={selectedTeam === 1 ? "WORLD TOUR" : "NÉO PRO"}/>}
+            {sectionActive === "Ranking" && <Ranking rankings={rankings}/>}
+            {sectionActive === "MyRaces" && <MyRaces races={races}/>}
+            {sectionActive === "Tableau de bord" &&
+            <div>
                 <div className="profil-header">                    
                     <h1>Mon tableau de bord</h1>
                     <div className="profil-header-league-choice">
@@ -216,7 +216,7 @@ const Profil = () => {
                             ))}
                         </select>
                     </div>
-                    <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Gérer mes ligues et équipes <span>(16 janvier à 23h59 au plus tard)</span></p></Link>                                
+                    <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Gérer mes ligues et mes équipes <span>(16 janvier à 23h59 au plus tard)</span></p></Link>                                
                 </div>
                 <div className="profil-grid">
                     {/* Zone en haut à gauche */}
@@ -295,7 +295,7 @@ const Profil = () => {
                                 </div>
                             ) :(
                                 <div className="profil-empty-cyclist-container">
-                                    <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Créer ou rejoindre une ligue <span>(16 janvier à 23h59 au plus tard)</span></p></Link>
+                                    <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Créer une équipe ou rejoindre une ligue <span>(16 janvier à 23h59 au plus tard)</span></p></Link>
                                 </div>
                             )}
                         </div>

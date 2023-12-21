@@ -288,3 +288,19 @@
 .select-races-selected-info p {
     font-family: "Neris";
 }
+
+@media (max-width: 1499px) and (min-width: 700px) {
+    .select-races-title h1 {
+        font-size: 32px;
+    }
+
+    .select-races-rules p {
+        font-size: 24px;
+    }
+
+    .select-races-change-step button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+    }
+}

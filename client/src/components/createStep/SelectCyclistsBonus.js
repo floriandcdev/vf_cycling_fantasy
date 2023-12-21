@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/SelectCyclistsBonus.css";
 
 import cancelIcon from "../../medias/png/icons/cancel.png";
 
-const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus, nextStep, prevStep }) => {
+const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus, nextStep, prevStep, teamId, saveData }) => {
+    const [confirmValidDataPopup, setConfirmValidDataPopup] = useState(false);
+    const navigate = useNavigate();
+    console.log("teamId:",teamId);
     
     const handleCyclistsBonus = cyclist => {
         if (cyclistsBonus.some(changeable => changeable.cyclistId === cyclist.cyclistId)) {
@@ -20,8 +24,32 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
         return cyclistsBonus.some(changeable => changeable.cyclistId === cyclistId);
     };
 
+    const validData = () => {
+        saveData()
+            .then(() => {
+                setConfirmValidDataPopup(true);
+            })
+            .catch((error) => {
+                console.error("Erreur lors de l'enregistrement :", error);
+            });
+    };
+
+    const handleClosePopup = () => {
+        navigate("/profil");
+    };
+
     return (
         <main className="select-cyclists-bonus">
+            {
+                confirmValidDataPopup && (
+                    <div className="select-cyclists-bonus-popup">
+                        <div className="select-cyclists-bonus-popup-content">
+                            <p>Félicitation !<br />Vos choix d'équipe ont bien été pris en compte.</p>
+                            <button onClick={handleClosePopup}>Valider</button>
+                        </div>
+                    </div>
+                )
+            }
             <div className="select-cyclists-bonus-shadow-container">
                 <div className="select-cyclists-bonus-title">
                     <h1>CRÉER SON ÉQUIPE - CHOIX DU COUREUR BONUS</h1>
@@ -36,7 +64,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
 
                 <div className="select-cyclists-bonus-change-step">
                     <button onClick={prevStep}>PRÉCÉDENT</button>
-                    <button onClick={nextStep} disabled={cyclistsBonus.length !== 1}>SUIVANT</button>
+                    <button onClick={teamId === 1 ? nextStep : validData} disabled={cyclistsBonus.length !== 1}>SUIVANT</button>
                 </div> 
             </div>
 

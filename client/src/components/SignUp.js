@@ -23,6 +23,13 @@ const SignUp = () => {
     const apiUrl = process.env.REACT_APP_API_URL;
     const apiRestCountriesURL = process.env.REACT_APP_REST_COUNTRIES;
     const { LogIn } = useAuth();
+    const { user } = useAuth();
+
+    useEffect(() => {
+        if (user) {
+            navigate("/profil");
+        }
+    }, [user, navigate]);
 
     const handleStartClick = () => {
         setShowSignUp(true);

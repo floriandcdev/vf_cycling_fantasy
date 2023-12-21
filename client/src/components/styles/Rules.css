@@ -41,3 +41,29 @@
     font-size: 30px;
     font-family: "NerisBlack";
 }
+
+@media (max-width: 699px) {
+    .rules {
+        margin: 0 2%;
+        width: 95vw;
+        justify-content: center;
+        align-items: left;
+    }
+
+    .rules h1 {
+        font-size: 30px;
+        margin-top: 15%;
+    }
+
+    .rules-section h3 {
+        font-size: 22px;
+    }
+    
+    .rules-section p {
+        font-size: 16px;
+    }
+    
+    .rules-section p strong {
+        font-size: 22px;
+    }
+}

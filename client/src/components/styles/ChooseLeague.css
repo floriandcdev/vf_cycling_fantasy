@@ -254,6 +254,34 @@
 
 .choose-league-choose-team-right-container img {
     padding-bottom: 10%;
-    padding-left: 5%;
 }
 
+@media (max-width: 1499px) and (min-width: 700px) {
+    .choose-league-title h1 {
+        font-size: 36px;
+    }
+
+    .choose-league-choice h2, .choose-league-create-container button, .choose-league-choose-team-title {
+        font-family: "NerisBlack";
+        cursor: pointer;
+        width: 320px;    
+        font-size: 24px;
+        padding: 15px 0;
+    }
+
+    .choose-league-create-container label, .choose-league-join-input input, .choose-league-join-input button {
+        font-size: 16px;
+    }
+
+    .choose-league-join-input {
+        width: 450px;
+    }
+
+    .choose-league-choose-team-left-container img {
+        padding-top: 13%;
+    }
+    
+    .choose-league-choose-team-right-container img {
+        padding-bottom: 8%;
+    }
+}

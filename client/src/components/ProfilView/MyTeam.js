@@ -6,7 +6,7 @@ const MyTeam = ({ cyclists, teamLabel }) => {
 
     return (
         <section className="my-team">
-            <h1>Mon Équipe : {teamLabel}</h1>
+            <h1>MON ÉQUIPE : {teamLabel}</h1>
             {cyclists.length > 0 ? (
                 <div className="my-team-table">
                     <div className="my-team-table-container">

@@ -44,7 +44,7 @@ const Calendar = () => {
 
     return (
         <main className="calendar">
-            <h1>Calendrier des Courses</h1>
+            <h1>CALENDRIER DES COURSES</h1>
             <div className="calendar-table">
                     <div className="calendar-table-container">
                         <table>

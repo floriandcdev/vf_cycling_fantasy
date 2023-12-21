@@ -24,31 +24,17 @@
     top: 0;
     left: 0;
     width: 100%;
-    object-fit: cover;
-    padding-top: 56px;
-}
-
-.home-title {
-    position: absolute;
-    bottom: 5%;
-    left: 30%;
-    transform: translateX(-50%);
-    text-align: center;
-    color: white;
-    font-family: "Neris";
-    font-style: italic;
-    font-size: 120px;
-    text-shadow: -1px -1px 1px rgb(0, 0, 0, 0.7),
-                  1px -1px 1px rgb(0, 0, 0, 0.7),
-                  -1px 1px 1px rgb(0, 0, 0, 0.7),
-                  1px 1px 1px rgb(0, 0, 0, 0.7);
+    height: 100%;
+    object-fit: contain;
+    padding-top: 71px;
 }
 
 /* Section 2 */
 
 .home-section2 {
     display: flex;
-    margin: 5% 0;
+    margin-bottom: 5%;
+    margin-top: 1%;
 }
 
 .home-section2-left-container, .home-section2-right-container {
@@ -167,10 +153,154 @@
     font-size: 35px;
     font-style: italic;
     padding-bottom: 40px;
+    letter-spacing: 2px;
 }
 
 .home-section3-left-vignette p, .home-section3-center-vignette p, .home-section3-right-vignette p {
     font-family: "Neris";
-    font-size: 30px;
+    font-size: 24px;
     margin-bottom: 0;
+    letter-spacing: 2px;
+}
+
+
+@media (max-width: 1700px) and (min-width: 1500px) {
+    
+}
+
+@media (max-width: 1499px) and (min-width: 700px) {
+    .home-section2-text-content h1 {
+        font-size: 36px;
+    }
+    
+    .home-section2-text-content h2 {
+        font-size: 28px;
+    }
+    
+    .home-section2-text-content p {
+        font-size: 24px;  
+    }
+
+    .home-section2-button {
+        font-size: 28px;
+        letter-spacing: 6px;
+        padding: 10px 30px;   
+    }
+
+    .home-section2-right-image {
+        height: 394px;
+        width: 293px;
+    }
+
+    .home-section3-left-vignette h3, .home-section3-center-vignette h3, .home-section3-right-vignette h3 {
+        font-size: 30px;
+    }
+
+    .home-section3-left-vignette p, .home-section3-center-vignette p, .home-section3-right-vignette p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 699px) {
+    .home {
+        letter-spacing: 0px;
+    }
+
+    .home-section1-background-image {
+        top: 0;
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .home-section2 {
+        display: flex;
+        margin: 0%;
+        padding: 3%;
+    }
+
+    .home-section2-text-content {   
+        padding-left: 0;
+        align-items: center;
+        width: 100%;
+    }
+
+    .home-section2-right-container {
+        display: none;
+    }
+
+    .home-section2-text-content h1 {
+        font-size: 30px;
+        text-align: center;
+    }
+    
+    .home-section2-text-content h2 {
+        font-size: 24px;
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .home-section2-text-content p {
+        font-size: 20px;  
+        margin: 0; 
+        margin-top: 20px;
+    }
+
+    .home-section2-button {
+        font-size: 18px;
+        letter-spacing: 0px;
+        border: none;
+        border-radius: 41px;
+        padding: 10px 30px;
+        margin: 20px 0;
+        cursor: pointer;    
+    }
+
+    .home-section3 {
+        background: black;
+    }
+
+    .home-section3-background {
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .home-section3-title {
+        position: absolute;
+        left: 50%;
+        top: 30px;
+        transform: translate(-50%, 0%);
+        z-index: 2;
+        font-family: "NerisBlack";
+        font-size: 36px;
+        color: white;
+        font-style: italic;
+        width: 100%;
+    }
+
+    .home-section3-vignettes-container {
+        flex-direction: column;
+    }
+
+    .home-section3-left-vignette, .home-section3-center-vignette, .home-section3-right-vignette {
+        width: 100%;
+        padding: 20px 0;
+        text-align: center;
+    }
+
+    .home-section3-left-vignette h3, .home-section3-center-vignette h3, .home-section3-right-vignette h3 {
+        margin-top: 0;
+        font-family: "NerisBlack";
+        font-size: 26px;
+        font-style: italic;
+        padding-bottom: 0px;
+        letter-spacing: 2px;
+    }
+    
+    .home-section3-left-vignette p, .home-section3-center-vignette p, .home-section3-right-vignette p {
+        font-family: "Neris";
+        font-size: 20px;
+        margin-bottom: 0;
+        padding: 0 5px;
+        letter-spacing: 0px;
+    }
 }

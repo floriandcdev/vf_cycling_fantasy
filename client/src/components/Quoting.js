@@ -30,7 +30,7 @@ const Quoting = () => {
 
     return (
         <main className="quoting">
-            <h1>Cotation des Cyclistes</h1>
+            <h1>COTATION DES CYCLISTES</h1>
             <div className="quoting-choice">
                 <button
                     onClick={() => handleButtonClick(1)}

@@ -16,6 +16,7 @@
     width: 100%;
     justify-content: center;
     align-items: center;
+    padding-bottom: 5%;
 }
 
 .my-team h1 {
@@ -23,7 +24,6 @@
     font-size: 40px;
     font-style: italic;
     color: #1F384C;
-    letter-spacing: 10px;
     margin: 0;
     padding: 3% 0;
 }

@@ -92,7 +92,7 @@
     padding-right: 3%;
 }
 
-.select-cyclists-bonus-change-step button {
+.select-cyclists-bonus-change-step button, .select-cyclists-bonus-popup-content button {
     font-family: "NerisBlack";
     font-style: italic;
     color: white;
@@ -199,6 +199,7 @@
 
 .select-cyclists-bonus-selected-cell {
     flex: 1 1 auto; 
+    position: relative;
 }
 
 .select-cyclists-bonus-line-container:last-child .select-cyclists-bonus-selected-cell:last-child {
@@ -233,7 +234,9 @@
 .select-cyclists-bonus-cancel-icon {
     position: absolute;
     right: 5%;
+    top: 5%;
     cursor: pointer;
+    z-index: 1;
 }
 
 .select-cyclists-bonus-selected-info h4 {
@@ -254,4 +257,52 @@
 
 .select-cyclists-bonus-flag-icon {
     margin-right: 10px;
+}
+
+.select-cyclists-bonus-popup {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;    
+}
+
+.select-cyclists-bonus-popup-content {
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
+    width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.select-cyclists-bonus-popup-content p {
+    text-align: center;
+    font-family: "Neris";
+    font-size: 24px;
+}
+
+@media (max-width: 1499px) and (min-width: 700px) {
+    .select-cyclists-bonus-title h1 {
+        font-size: 32px;
+    }
+
+    .select-cyclists-bonus-rules p {
+        font-size: 24px;
+    }
+
+    .select-cyclists-bonus-change-step button, .select-cyclists-bonus-popup-content button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+    }
 }
