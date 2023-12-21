@@ -58,7 +58,18 @@ const Quoting = () => {
                         <tbody>
                             {cyclists.filter(cyclist => cyclist.cyclistGroupId === selectedCyclistList).map((cyclist, index) => (
                                 <tr key={index}>
-                                    <td>{cyclist.name}</td>
+                                    <td>
+                                        <div className="quoting-name-container">
+                                            <img 
+                                                className="quoting-flag-icon"
+                                                src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                alt={`Drapeau de ${cyclist.nationality}`} 
+                                                width="20" 
+                                                height="15"
+                                            />
+                                            <span>{cyclist.name}</span>
+                                        </div>
+                                    </td>
                                     <td>{cyclist.team}</td>
                                     <td>{cyclist.finalValue}</td>
                                 </tr>

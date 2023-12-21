@@ -4,9 +4,6 @@ import { useAuth } from "../AuthContext";
 
 import "./styles/LogIn.css";
 
-import userIcon from "../medias/png/icons/user.png";
-import lockIcon from "../medias/png/icons/lock.png";
-import eyeIcon from "../medias/png/icons/eye.png";
 import tireBannerDown from "../medias/png/icons/tire_banner_down.png";
 import tireBannerUp from "../medias/png/icons/tire_banner_up.png";
 
@@ -83,7 +80,7 @@ const LogIn = () => {
             <form onSubmit={handleSubmit} className="login-form">
                 <div className="login-form-control">
                     <label htmlFor="email">Email</label>
-                    <img src={userIcon} alt="Icone user" className="login-icon" width="24" height="24" />
+                    <img src={`${process.env.PUBLIC_URL}/icons/user.png`} alt="Icone user" className="login-icon" width="24" height="24" />
                     <input 
                         id="email"
                         type="email"
@@ -94,7 +91,7 @@ const LogIn = () => {
                 </div>
                 <div className="login-form-control">
                     <label htmlFor="password">Mot de passe</label>
-                    <img src={lockIcon} alt="Icone cadenas" className="login-icon" width="24" height="24" />
+                    <img src={`${process.env.PUBLIC_URL}/icons/lock.png`} alt="Icone cadenas" className="login-icon" width="24" height="24" />
                     <input 
                         id="password"
                         type={passwordVisible ? "text" : "password"}
@@ -102,7 +99,7 @@ const LogIn = () => {
                         onChange={handlePasswordChange}
                         required
                     />
-                    <img src={eyeIcon} alt="Icone oeil" className="login-form-visibility-icon" width="20" height="20" onClick={tooglePasswordVisibility} />
+                    <img src={`${process.env.PUBLIC_URL}/icons/eye.png`} alt="Icone oeil" className="login-form-visibility-icon" width="20" height="20" onClick={tooglePasswordVisibility} />
                 </div>
                 <div className="login-form-options">
                     <label className="login-remember-me">

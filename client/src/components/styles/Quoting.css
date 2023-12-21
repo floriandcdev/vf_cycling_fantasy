@@ -102,6 +102,22 @@
     font-size: 16px;
 }
 
+.quoting-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.quoting-name-container span {
+    text-align: left;
+    width: 30%;
+}
+
+.quoting-flag-icon {
+    margin-right: 10px;
+}
+
 @media (max-width: 699px) {
     .quoting {
         margin: 0;

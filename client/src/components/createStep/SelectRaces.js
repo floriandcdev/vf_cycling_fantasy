@@ -5,8 +5,6 @@ import "../styles/SelectRaces.css";
 import createTeamConfig from "../../config/createTeamConfig.json";
 import defaultCalendarConfig from "../../config/defaultCalendarConfig.json";
 
-import cancelIcon from "../../medias/png/icons/cancel.png";
-
 const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRaces, races, nextStep, prevStep }) => {
     const [categoryChoice, setCategoryChoice] = useState("UCI");
     const [selectedCount, setSelectedCount] = useState({ "1": 0, "2": 0, "3": 0 });
@@ -182,7 +180,7 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                         .map(filteredRace => (
                                             <div className="select-races-selected-cell" key={filteredRace.raceId}>            
                                                 <div className="select-races-selected-info">
-                                                    <img src={cancelIcon} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
+                                                    <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
                                                     <h4>{filteredRace.name}</h4>
                                                     <p>{filteredRace.category}</p>
                                                 </div>
@@ -197,7 +195,7 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                         .map(filteredRace => (
                                             <div className="select-races-selected-cell" key={filteredRace.raceId}>            
                                                 <div className="select-races-selected-info">
-                                                    <img src={cancelIcon} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
+                                                    <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
                                                     <h4>{filteredRace.name}</h4>
                                                     <p>{filteredRace.category}</p>
                                                 </div>

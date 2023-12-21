@@ -4,7 +4,6 @@ import { useAuth } from "../AuthContext";
 
 import "./styles/SignUp.css";
 
-import eyeIcon from "../medias/png/icons/eye.png";
 import signUpBackground from "../medias/png/background/signUp_background.png";
 
 import signInImage from "../medias/png/background/signin_background.png";
@@ -163,7 +162,7 @@ const SignUp = () => {
                     <div className="sign-up-form-control">
                         <label htmlFor="password">MOT DE PASSE</label>
                         <input id="password" type={passwordVisible ? "text" : "password"} value={password} onChange={handlePasswordChange} required />
-                        <img src={eyeIcon} alt="Icone oeil" className="sign-up-form-visibility-icon" width="20" height="20" onClick={tooglePasswordVisibility} />
+                        <img src={`${process.env.PUBLIC_URL}/icons/eye.png`} alt="Icone oeil" className="sign-up-form-visibility-icon" width="20" height="20" onClick={tooglePasswordVisibility} />
                     </div>
                 </div>
                 <div className="sign-up-form-row">

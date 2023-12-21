@@ -4,9 +4,6 @@ import createTeamConfig from "../../config/createTeamConfig.json";
 
 import "../styles/SelectCyclists.css";
 
-import cancelIcon from "../../medias/png/icons/cancel.png";
-import loupeIcon from "../../medias/png/icons/loupe.png";
-
 const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget, setBudget, selectedCyclists, setSelectedCyclists, setCyclistsBonus, cyclistsBonus, cyclists, teamId, nextStep }) => {
     const [searchTerm, setSearchTerm] = useState("");
     const firstLineCyclists = selectedCyclists.filter((_, index) => index % 2 === 0);
@@ -112,7 +109,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                             </select>
                         </div>
                         <div className="select-cyclists-search-control">
-                            <img src={loupeIcon} alt="Icone d'une loupe" width="22" height="22" className="select-cyclists-search-icon" />
+                            <img src={`${process.env.PUBLIC_URL}/icons/loupe.png`} alt="Icone d'une loupe" width="22" height="22" className="select-cyclists-search-icon" />
                             <input type="text" value={searchTerm} onChange={handleSearchChange} placeholder="Rechercher par nom" />
                         </div>
                     </div>
@@ -159,7 +156,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                         <div className="select-cyclists-line-container">
                             {firstLineCyclists.map((cyclist) => (
                                 <div className="select-cyclists-selected-cell" key={cyclist.cyclistId}>
-                                    <img src={cancelIcon} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
+                                    <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
                                     <div className="select-cyclists-selected-info">                                        
                                         <h4>
                                             <img 
@@ -180,7 +177,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                         <div className="select-cyclists-line-container">
                             {secondLineCyclists.map((cyclist) => (
                                 <div className="select-cyclists-selected-cell" key={cyclist.cyclistId}>            
-                                    <img src={cancelIcon} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
+                                    <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} className="select-cyclists-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectCyclist(cyclist)} />
                                     <div className="select-cyclists-selected-info">
                                         <h4>
                                             <img 

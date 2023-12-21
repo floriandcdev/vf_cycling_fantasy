@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/SelectCyclistsBonus.css";
 
-import cancelIcon from "../../medias/png/icons/cancel.png";
-
 const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus, nextStep, prevStep, teamId, saveData }) => {
     const [confirmValidDataPopup, setConfirmValidDataPopup] = useState(false);
     const navigate = useNavigate();
@@ -109,7 +107,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                     {cyclistsBonus.map(cyclist => (
                         <div className="select-cyclists-bonus-selected-cell" key={cyclist.cyclistId}>            
                             <div className="select-cyclists-bonus-selected-info">
-                                <img src={cancelIcon} className="select-cyclists-bonus-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleCyclistsBonus(cyclist)} />
+                                <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} className="select-cyclists-bonus-cancel-icon" alt="Icone de suppression" width="17" height="17" onClick={() => handleCyclistsBonus(cyclist)} />
                                 <h4>
                                     <img 
                                         className="select-cyclists-bonus-flag-icon"

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import "../styles/SelectBonusRaces.css";
 
-import cancelIcon from "../../medias/png/icons/cancel.png";
-
 const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, prevStep, saveData }) => {
     const bonusEligibleRaces = races.filter(race => race.groupCompetitionId === 0);
     const combinedRaces = [...selectedRaces, ...bonusEligibleRaces];
@@ -100,7 +98,7 @@ const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, prev
                         {bonusRaces.map(race => (
                             <div className="select-races-bonus-selected-cell" key={race.raceId}>            
                                 <div className="select-races-bonus-selected-info">
-                                    <img src={cancelIcon} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectBonusRace(race)} />
+                                    <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectBonusRace(race)} />
                                     <h4>{race.name}</h4>
                                     <p>{race.category}</p>
                                 </div>
