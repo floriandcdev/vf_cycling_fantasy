@@ -36,7 +36,7 @@ const HomePage = () => {
             </section>
 
             <section className="home-section3">
-                <img className="home-section3-background" src={homeBikeZoom} alt="Zoom sur un vélo" width="1920" height="225" loading="lazy" />
+                <img className="home-section3-background" src={homeBikeZoom} alt="Zoom sur un vélo" width="6720" height="4480" loading="lazy" />
                 <h2 className="home-section3-title">Pourquoi rejoindre l'Épopée VF</h2>
                 <div className="home-section3-vignettes-container">
                     <div className="home-section3-left-vignette">

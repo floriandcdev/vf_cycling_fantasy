@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import "./styles/ShowRaceDetail.css";
+
 const ShowRaceDetail = () => {
     const [raceDetail, setRaceDetail] = useState(null);
     const [raceRanking, setRaceRanking] = useState(null);
@@ -45,11 +47,10 @@ const ShowRaceDetail = () => {
     }, [apiUrl, idRace, raceDetail]);
 
     return (
-        <main>
+        <main className="show-race-detail">
             <h1>Détails de la Course</h1>
             {raceDetail ? (
-                <div>
-                    <p>Compétition: {raceDetail.competition}</p>
+                <div className="show-race-detail-course">
                     <p>Nom: {raceDetail.name}</p>
                     <p>Étape: {raceDetail.step}</p>
                     <p>Date de début: {formatDate(raceDetail.date_start)}</p>
@@ -57,32 +58,34 @@ const ShowRaceDetail = () => {
                     <p>Catégorie: {raceDetail.category}</p>
                     <h2>Classement de la Course</h2>
                     {raceRanking && Array.isArray(raceRanking) ? (
-                        <div>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Position</th>
-                                        <th>Nom du Coureur</th>
-                                        <th>Points</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {raceRanking.map((ranking, index) => (
-                                        <tr key={index}>
-                                            <td>{ranking.position}</td>
-                                            <td>{ranking.rider_name}</td>
-                                            <td>{ranking.points}</td>
+                        <div className="show-race-detail-table">
+                            <div className="show-race-detail-table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Position</th>
+                                            <th>Nom du Coureur</th>
+                                            <th>Points</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {raceRanking.map((ranking, index) => (
+                                            <tr key={index}>
+                                                <td>{ranking.position}</td>
+                                                <td>{ranking.rider_name}</td>
+                                                <td>{ranking.points}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     ) : (
-                        <p>La course n'a pas encore eu lieu</p>
+                        <p className="show-race-detail-empty">La course n'a pas encore eu lieu</p>
                     )}
                 </div>
             ) : (
-                <p>Chargement des détails de la course...</p>
+                <p className="show-race-detail-empty">Chargement des détails de la course...</p>
             )}
         </main>
     );

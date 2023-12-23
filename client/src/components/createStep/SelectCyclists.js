@@ -91,14 +91,14 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
 
             <div className="select-cyclists-pannel-view">
                 <div className="select-cyclists-choice">
-                <div className="select-cyclists-header-pannel">
-                    <div className="select-cyclists-header-pannel-content">
-                        <p>Nombre de joueurs sélectionnés : <span>{numberPlayerSelected}</span></p>
-                    </div>                
-                    <div className="select-cyclists-header-pannel-content">
-                        <p>Budget restant : <strong>{budget}M</strong></p>
+                    <div className="select-cyclists-header-pannel">
+                        <div className="select-cyclists-header-pannel-content">
+                            <p>Nombre de joueurs sélectionnés : <span>{numberPlayerSelected}</span></p>
+                        </div>                
+                        <div className="select-cyclists-header-pannel-content">
+                            <p>Budget restant : <strong>{budget}M</strong></p>
+                        </div>
                     </div>
-                </div>
                     <div className="select-cyclists-controls">
                         <div className="select-cyclists-sort-control">
                             <label>Trier par</label>
@@ -169,7 +169,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                             {cyclist.name}</h4>
                                         <p>{cyclist.team}</p>
                                         <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
-                                        <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
+                                        <div style={{ width: "100%", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
                                     </div>
                                 </div>
                             ))}
@@ -191,7 +191,7 @@ const SelectCyclists = ({ numberPlayerSelected, setNumberPlayerSelected, budget,
                                         </h4>
                                         <p>{cyclist.team}</p>
                                         <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
-                                        <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "10px", marginLeft: "auto", marginRight: "auto" }}></div>
+                                        <div style={{ width: "140px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "35px", marginLeft: "auto", marginRight: "auto" }}></div>
                                     </div>
                                 </div>
                             ))}

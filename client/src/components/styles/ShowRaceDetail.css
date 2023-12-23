@@ -1,0 +1,155 @@
+@font-face {
+    font-family: "NerisBlack";
+    src: url("../../fonts/Neris-Black.otf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Neris";
+    src: url("../../fonts/Neris-Light.otf") format("truetype");
+    font-display: swap;
+}
+
+.show-race-detail {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-race-detail h1 {
+    font-size: 40px;
+    padding: 3% 0;
+}
+
+.show-race-detail-course h2 {
+    font-size: 32px;
+    padding: 2% 0;
+}
+
+.show-race-detail h1, .show-race-detail-course h2 {
+    font-family: "NerisBlack";
+    font-style: italic;
+    color: #1F384C;
+    margin: 0;    
+}
+
+.show-race-detail-course {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-race-detail-course p {
+    margin: 0;
+    font-family: "Neris";
+    font-size: 20px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    width: 400px;
+}
+
+.show-race-detail-course p:first-child {
+    border-top: 1px solid black;
+}
+
+.show-race-detail-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+}
+  
+.show-race-detail-table-container {
+    width: 80%;
+    overflow-y: auto;
+    max-height: 800px;
+    padding: 0;
+    letter-spacing: 0px;
+}
+
+.show-race-detail-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: "Neris";
+    font-size: 11px;
+    background-color: #FAFAFA;
+}
+
+.show-race-detail-table-container th,
+.show-race-detail-table-container td {
+    border: 1px solid black;
+    padding: 9px;
+    text-align: center;
+    border-left: none;
+    border-right: none;
+}
+
+.show-race-detail-table-container td {
+    font-family: "Neris";
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.show-race-detail-table-container th {
+    font-family: "NerisBlack";
+    background-color: #FFE220;
+    border-top: none;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    font-size: 16px;
+}
+
+.show-race-detail-empty {
+    border: none !important;
+}
+
+@media (max-width: 699px) {
+    .show-race-detail {
+        margin: 0;
+    }
+
+    .show-race-detail h1 {
+        font-size: 28px;
+        padding: 0 0;
+        margin-top: 15%;
+        margin-bottom: 5%;
+    }   
+
+    .show-race-detail-course h2 {
+        font-size: 24px;
+        padding: 4% 0;
+    }
+
+    .show-race-detail-table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .show-race-detail-table-container {
+        scrollbar-width: none;
+        width: 100%;
+        max-height: 65vh;
+    }
+
+    .show-race-detail-table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .show-race-detail-course p {
+        border-left: none;
+        border-right: none;
+        width: 100%;
+    }
+
+}

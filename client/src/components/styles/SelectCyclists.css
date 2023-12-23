@@ -179,7 +179,6 @@
     width: 100%;
     border-collapse: collapse;
     font-family: "Neris";
-    font-size: 11px;
     background-color: #FAFAFA;
 }
 
@@ -216,11 +215,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-left: 15%;
 }
 
 .select-cyclists-name-info span {
     text-align: left;
-    width: 30%;
+    width: 60%;
 }
 
 .select-cyclists-flag-icon {
@@ -353,5 +353,147 @@
         font-size: 20px;
         border-radius: 80px;
         width: 200px;
+    }
+}
+
+
+@media (max-width: 699px) {
+    .select-cyclists {
+        padding-top: 0;
+        padding-bottom: 5%;
+    }
+
+    .select-cyclists-shadow-container {
+        width: 100%;
+    }
+
+    .select-cyclists-shadow-mask-right, .select-cyclists-shadow-mask-bottom {
+        display: none;
+    }
+
+    .select-cyclists-title {
+        text-align: center;
+        width: 100%; 
+        box-shadow: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .select-cyclists-title h1 {
+        width: 90%;
+        margin: 0;
+        font-size: 28px;
+        padding-left: 0px;
+        padding-top: 50px;
+    }
+
+    .select-cyclists-rules p {
+        font-size: 22px;
+        margin: 0;
+        padding-left: 0px;
+    }
+
+    .select-cyclists-scroll-container {
+        display: none;
+    }
+
+    .select-cyclists-pannel-view {
+        flex-direction: column;
+    }
+
+    .select-cyclists-choice:first-child {
+        order: 1;
+    }
+
+    .select-cyclists-choice-view:first-child {
+        order: 0;
+    }
+
+    .select-cyclists-choice-view {
+        width: 100%;
+    }
+
+    .select-cyclists-next {
+        padding-bottom: 0;
+    }
+
+    .select-cyclists-choice {
+        width: 100%;
+    }
+
+    .select-cyclists-header-pannel {
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    .select-cyclists-header-pannel-content {
+        padding: 0px;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .select-cyclists-header-pannel-content p {
+        margin-bottom: 0;
+    }
+
+    .select-cyclists-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-top: 10px;
+        padding-left: 0;
+        padding-bottom: 5%;
+    }
+
+    .select-cyclists-sort-control {
+        font-size: 16px;
+        letter-spacing: 0;
+    }
+
+    .select-cyclists-sort-control, .select-cyclists-search-control {
+        width: 300px;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        margin-left: 2%;
+    }
+
+    .select-cyclists-search-control input {
+        width: 235px;
+    }
+
+    .select-cyclists-table-container {
+        width: 100%;
+        overflow-y: auto;
+        max-height: 500px;
+        margin-left: 0%;
+        scrollbar-width: none;
+        border-right: none;
+        border-left: none;
+    }
+
+    .select-cyclists-table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .select-cyclists-table-container th,
+    .select-cyclists-table-container td {
+        padding: 9px 0;
+    }
+
+    .select-cyclists-table-container td {
+        cursor: pointer;
+        font-size: 11px;
+    }
+    
+    .select-cyclists-table-container th {
+        font-family: "NerisBlack";
+        background-color: #FFE220;
+        border-top: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        font-size: 12px;
     }
 }

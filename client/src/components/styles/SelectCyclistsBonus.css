@@ -179,11 +179,12 @@
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-left: 15%;
 }
 
 .select-cyclists-bonus-name-info span {
     text-align: left;
-    width: 30%;
+    width: 60%;
 }
 
 .select-cyclists-bonus-line-container {
@@ -304,5 +305,126 @@
         font-size: 20px;
         border-radius: 80px;
         width: 200px;
+    }
+}
+
+@media (max-width: 699px) {
+    .select-cyclists-bonus {
+        padding-top: 0;
+        padding-bottom: 5%;
+    }
+
+    .select-cyclists-bonus-shadow-container {
+        width: 100%;
+    }
+
+    .select-cyclists-bonus-shadow-mask-right, .select-cyclists-bonus-shadow-mask-bottom {
+        display: none;
+    }
+
+    .select-cyclists-bonus-title {
+        text-align: center;
+        width: 100%; 
+        box-shadow: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .select-cyclists-bonus-title h1 {
+        width: 90%;
+        margin: 0;
+        font-size: 28px;
+        padding-left: 0px;
+        padding-top: 50px;
+    }
+
+    .select-cyclists-bonus-header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+        height: 120px;
+        margin-bottom: 30px;
+    }
+
+    .select-cyclists-bonus-rules {
+        text-align: center;
+        padding-left: 0;
+        padding-bottom: 10%;
+    }
+
+    .select-cyclists-bonus-rules p {
+        font-size: 22px;
+        margin: 0;
+        padding-left: 0px;
+    }
+
+    .select-cyclists-bonus-change-step {
+        padding: 0 20px;
+    }
+
+    .select-cyclists-bonus-change-step button, .select-cyclists-bonus-popup-content button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+        height: 50px;
+    }
+
+    .select-cyclists-bonus-pannel-view {
+        flex-direction: column;
+    }
+
+    .select-cyclists-bonus-choice:first-child {
+        order: 1;
+    }
+
+    .select-cyclists-bonus-choice-view:first-child {
+        order: 0;
+    }
+
+    .select-cyclists-bonus-choice-view {
+        width: 100%;
+    }
+
+    .select-cyclists-bonus-choice {
+        width: 100%;
+    }
+
+    .select-cyclists-bonus-table-container {
+        width: 100%;
+        overflow-y: auto;
+        max-height: 500px;
+        margin-left: 0%;
+        scrollbar-width: none;
+        border-right: none;
+        border-left: none;
+    }
+
+    .select-cyclists-bonus-table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .select-cyclists-bonus-table-container th,
+    .select-cyclists-bonus-table-container td {
+        padding: 9px 0;
+    }
+
+    .select-cyclists-bonus-table-container td {
+        cursor: pointer;
+        font-size: 11px;
+    }
+    
+    .select-cyclists-bonus-table-container th {
+        font-family: "NerisBlack";
+        background-color: #FFE220;
+        border-top: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        font-size: 12px;
+    }
+
+    .select-cyclists-bonus-line-container {
+        display: none;
     }
 }

@@ -377,7 +377,7 @@ const Profil = () => {
                         ) : (
                             <div className="profil-empty-races-container">
                                     <div className="profil-empty-races-container">
-                                        <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-races-message">Créer ou rejoindre une ligue</p></Link>
+                                        <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-races-message">Créer une équipe</p></Link>
                                     </div>
                                     <p className="profil-empty-races-message"><span>(16 janvier à 23h59 au plus tard)</span></p>
                             </div>

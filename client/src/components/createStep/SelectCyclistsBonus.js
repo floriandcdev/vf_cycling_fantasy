@@ -79,7 +79,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                 </tr>
                             </thead>
                             <tbody>
-                                {selectedCyclists.map((cyclist) => (
+                                {selectedCyclists.filter(cyclist => cyclist.finalValue < 5).map((cyclist) => (
                                     <tr key={cyclist.cyclistId} onClick={() => handleCyclistsBonus(cyclist)} className={isCyclistsBonusSelected(cyclist.cyclistId) ? "select-cyclists-bonus-table-selected-row" : ""}>
                                         <td>
                                             <div className="select-cyclists-bonus-name-info">
@@ -120,7 +120,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                 </h4>
                                 <p>{cyclist.team}</p>
                                 <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
-                                <div style={{ width: "120px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "5px", marginLeft: "auto", marginRight: "auto" }}></div>
+                                <div style={{ width: "150px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "35px", marginLeft: "auto", marginRight: "auto" }}></div>
                             </div>
                         </div>
                     ))}

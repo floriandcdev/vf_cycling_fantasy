@@ -304,3 +304,141 @@
         width: 200px;
     }
 }
+
+@media (max-width: 699px) {
+    .select-races {
+        padding-top: 0;
+        padding-bottom: 5%;
+    }
+
+    .select-races-shadow-container {
+        width: 100%;
+    }
+
+    .select-races-shadow-mask-right, .select-races-shadow-mask-bottom {
+        display: none;
+    }
+
+    .select-races-title {
+        text-align: center;
+        width: 100%; 
+        box-shadow: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    .select-races-title h1 {
+        width: 90%;
+        margin: 0;
+        font-size: 28px;
+        padding-left: 0px;
+        padding-top: 50px;
+    }
+
+    .select-races-header {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 0;
+        height: 120px;
+        margin-bottom: 30px;
+    }
+
+    .select-races-rules {
+        text-align: center;
+        padding-left: 0;
+        padding-bottom: 10%;
+    }
+
+    .select-races-rules p {
+        font-size: 22px;
+        margin: 0;
+        padding-left: 0px;
+    }
+
+    .select-races-change-step {
+        padding: 0 20px;
+    }
+
+    .select-races-change-step button, .select-races-popup-content button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+        height: 50px;
+    }
+
+    .select-races-pannel-view {
+        flex-direction: column;
+    }
+
+    .select-races-choice:first-child {
+        order: 1;
+    }
+
+    .select-races-choice-view:first-child {
+        order: 0;
+    }
+
+    .select-races-choice-view {
+        width: 100%;
+        padding-top: 0;
+    }
+
+    .select-races-choice {
+        width: 100%;
+    }
+
+    .select-races-table-container {
+        width: 100%;
+        overflow-y: auto;
+        max-height: 500px;
+        margin-left: 0%;
+        scrollbar-width: none;
+        border-right: none;
+        border-left: none;
+    }
+
+    .select-races-table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .select-races-table-container th,
+    .select-races-table-container td {
+        padding: 9px 0;
+    }
+
+    .select-races-table-container td {
+        cursor: pointer;
+        font-size: 11px;
+    }
+    
+    .select-races-table-container th {
+        font-family: "NerisBlack";
+        background-color: #FFE220;
+        border-top: none;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        font-size: 12px;
+    }
+
+    .select-races-line-container {
+        display: none;
+    }
+
+    .select-races-controls {
+        width: 100%;
+        padding-left: 0;
+        padding-bottom: 2%;
+    }
+
+    .select-races-sort-control {
+        letter-spacing: 0;
+        font-size: 14px;
+        padding-left: 2%;
+    }
+
+    .select-races-sort-control select {
+        margin-left: 10px;
+    }
+}
