@@ -12,10 +12,10 @@ const cyclistsList = async (req, res) => {
         let cyclists;
 
         if (cyclistGroupId === 0) {
-            const query = "SELECT * FROM cyclists";
+            const query = "SELECT * FROM cyclists ORDER BY c.finalValue DESC";
             [cyclists] = await connection.execute(query);
         } else {
-            const query = "SELECT * FROM cyclists c WHERE c.cyclistGroupId = ? ";
+            const query = "SELECT * FROM cyclists c WHERE c.cyclistGroupId = ? ORDER BY c.finalValue DESC ";
             [cyclists] = await connection.execute(query, [cyclistGroupId]);
         }
 

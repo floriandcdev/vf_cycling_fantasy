@@ -12,8 +12,8 @@ const SignUp = () => {
     const [showSignUp, setShowSignUp] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
+    const [pseudo, setPseudo] = useState("");
+    const [name, setName] = useState("");
     const [nationality, setNationality] = useState("FRANCE");
     const [knowledge, setKnowledge] = useState("AMATEUR");
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -46,12 +46,12 @@ const SignUp = () => {
         setPassword(event.target.value);
     };
 
-    const handleFirstNameChange = (event) => {
-        setFirstName(event.target.value);
+    const handlePseudoChange = (event) => {
+        setPseudo(event.target.value);
     };
 
-    const handleLastNameChange = (event) => {
-        setLastName(event.target.value);
+    const handleNameChange = (event) => {
+        setName(event.target.value);
     };
 
     const handleNationalityChange = (event) => {
@@ -90,7 +90,7 @@ const SignUp = () => {
             return;
         }
     
-        const userData = { email, password, firstName, lastName, nationality, knowledge};
+        const userData = { email, password, pseudo, name, nationality, knowledge};
     
         try {
             const response = await fetch(`${apiUrl}/sign-up`, {
@@ -124,12 +124,12 @@ const SignUp = () => {
                 <h1 className="sign-up-form-title">Créer votre compte</h1>
                 <div className="sign-up-form-row">
                     <div className="sign-up-form-control">
-                        <label htmlFor="firstName">PRÉNOM</label>
-                        <input id="firstName" type="text" onChange={handleFirstNameChange} required />
+                        <label htmlFor="pseudo">PSEUDO</label>
+                        <input id="pseudo" type="text" onChange={handlePseudoChange} required />
                     </div>
                     <div className="sign-up-form-control">
-                        <label htmlFor="lastName">NOM DE FAMILLE</label>
-                        <input id="lastName" type="text" onChange={handleLastNameChange} required />
+                        <label htmlFor="name">NOM</label>
+                        <input id="name" type="text" onChange={handleNameChange} required />
                     </div>
                 </div>
                 <div className="sign-up-form-row">
@@ -182,7 +182,7 @@ const SignUp = () => {
         <main className="sign-up">
             {!showSignUp ? (
             <div className="sign-up-header">
-                <img src={signInImage} alt="Gros plan cycliste en descente" loading="lazy" width="1920" height="1020" />
+                <img src={signInImage} alt="Gros plan cycliste en descente" loading="lazy" width="2000" height="1333" />
                 <h1 className="sign-up-title">Expérience immersive de gestion cycliste</h1>                
                 <div className="sign-up-content">
                     <p>Parcourez le monde d'un simple coup de pédale, et vivez l'expérience ultime de gestion d'équipe cycliste pour des vacances inoubliables</p>

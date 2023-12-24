@@ -56,6 +56,7 @@ const Navbar = () => {
                     <Link to="/scale" className="navbar-link">BARÈME</Link>
                     <Link to="/rules" className="navbar-link">RÉGLEMENT</Link>
                     <Link to="/FAQ" className="navbar-link">FAQ</Link>
+                    <Link to="https://www.velofute.com/" className="navbar-link">VÉLOFUTÉ</Link>
                     <Link to="/logout" className="navbar-link">DÉCONNEXION</Link>
                 </nav>
             </div>

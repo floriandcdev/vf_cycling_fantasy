@@ -58,7 +58,18 @@ const Calendar = () => {
                             <tbody>
                                 {races.map((race) => (
                                     <tr key={race.raceId} onClick={() => handleRowClick(race.raceId)}>
-                                        <td>{race.name}</td>
+                                        <td>
+                                            <div className="calendar-name-container">
+                                                <img 
+                                                    className="calendar-flag-icon"
+                                                    src={`${process.env.PUBLIC_URL}/flags/${race.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                    alt={`Drapeau de ${race.country}`} 
+                                                    width="20" 
+                                                    height="15"
+                                                />
+                                                <span>{race.name}</span>
+                                            </div>
+                                        </td>
                                         <td>{race.category}</td>
                                         <td>{formatDate(race.date_start)}</td>
                                     </tr>                                    

@@ -9,7 +9,7 @@ const signUp = async (req, res) => {
     try {
         connection = await mysql.createConnection(config);
 
-        const { email, password, firstName, lastName, nationality, knowledge} = req.body;
+        const { email, password, pseudo, name, nationality, knowledge} = req.body;
 
         if (!email || !password) {
             return res.status(400).json({ message: "Email et mot de passe sont requis" });
@@ -35,8 +35,8 @@ const signUp = async (req, res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const query = "INSERT INTO users (email, password, firstName, lastName, nationality, knowledge) VALUES (?, ?, ?, ?, ?, ?)";
-        const [result] = await connection.execute(query, [email, hashedPassword, firstName, lastName, nationality, knowledge]);
+        const query = "INSERT INTO users (email, password, pseudo, name, nationality, knowledge) VALUES (?, ?, ?, ?, ?, ?)";
+        const [result] = await connection.execute(query, [email, hashedPassword, pseudo, name, nationality, knowledge]);
 
         const accessToken = jwt.sign({ userId: result.insertId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 

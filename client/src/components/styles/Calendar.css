@@ -77,6 +77,23 @@
     font-size: 16px;
 }
 
+.calendar-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 15%;
+}
+
+.calendar-name-container span {
+    text-align: left;
+    width: 60%;
+}
+
+.calendar-flag-icon {
+    margin-right: 10px;
+}
+
 @media (max-width: 699px) {
     .calendar {
         margin: 0;

@@ -1,12 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "../styles/MyTeam.css";
 
 const MyTeam = ({ cyclists, teamLabel }) => {
+    const [sortKey, setSortKey] = useState('');
+
+    const getSortedCyclists = () => {
+        return [...cyclists].sort((a, b) => {
+            switch (sortKey) {
+                case "value":
+                    return b.finalValue - a.finalValue;
+                case "points":
+                    return b.cyclistPoints - a.cyclistPoints;
+                default:
+                    return 0;
+            }
+        });
+    };
+
+    const handleSortChange = (event) => {
+        setSortKey(event.target.value);
+    };
+
+    const sortedCyclists = getSortedCyclists();
 
     return (
         <section className="my-team">
             <h1>MON ÉQUIPE : {teamLabel}</h1>
+            <div className="my-team-sort-control">
+                <label>Trier par</label>
+                <select onChange={handleSortChange}>
+                    <option value="value">Valeur</option>
+                    <option value="points">Points</option>
+                </select>
+            </div>
             {cyclists.length > 0 ? (
                 <div className="my-team-table">
                     <div className="my-team-table-container">
@@ -20,7 +47,7 @@ const MyTeam = ({ cyclists, teamLabel }) => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {cyclists.map((cyclist) => (
+                                {sortedCyclists.map((cyclist) => (
                                     <tr key={cyclist.cyclistId} >
                                         <td>
                                             <div className="my-team-name-info">

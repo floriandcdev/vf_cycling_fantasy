@@ -24,6 +24,7 @@
 
 /client/.env.development
 /client/.env.production
+/client/src/config
 
 /server/config
 /server/src/.env

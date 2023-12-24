@@ -126,7 +126,7 @@
 .select-cyclists-sort-control {
     font-family: "NerisBlack";
     font-size: 18px;
-    letter-spacing: 8px;
+    letter-spacing: 2px;
 }
   
 .select-cyclists-sort-control, .select-cyclists-search-control {
@@ -171,7 +171,7 @@
     max-height: 1000px;
     margin-left: 5%;
     padding: 0;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     border: 1px solid black;
 }
 
