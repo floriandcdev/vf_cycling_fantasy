@@ -173,6 +173,24 @@
     z-index: 100;
 }
 
+.select-races-bonus-table-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 15%;
+}
+
+.select-races-bonus-table-name-container span {
+    text-align: left;
+    width: 50%;
+}
+
+.select-races-bonus-table-flag-icon {
+    margin-right: 10px;
+}
+
+
 .select-races-bonus-choice-view {
     display: flex;
     flex-direction: column;
@@ -285,6 +303,26 @@
     font-family: "Neris";
     font-size: 24px;
 }
+
+.select-races-bonus-selected-name-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding-top: 5px;
+}
+
+.select-races-bonus-selected-name-container img {
+    position: relative;
+}
+
+.profil-cyclists-bonus-name-container h4 {
+    text-align: left;
+}
+
+.select-races-bonus-selected-flag-icon {
+    margin-right: 0px;
+}
+
 
 @media (max-width: 1499px) and (min-width: 700px) {
     .select-races-bonus-title h1 {

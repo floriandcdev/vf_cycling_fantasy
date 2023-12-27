@@ -65,7 +65,7 @@ const Calendar = () => {
                                                     src={`${process.env.PUBLIC_URL}/flags/${race.country.replace(/ /g, '_').toLowerCase()}.png`} 
                                                     alt={`Drapeau de ${race.country}`} 
                                                     width="20" 
-                                                    height="15"
+                                                    height="20"
                                                 />
                                                 <span>{race.name}</span>
                                             </div>

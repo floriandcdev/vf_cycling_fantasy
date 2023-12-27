@@ -79,7 +79,18 @@ const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, prev
                             <tbody>
                                 {combinedRaces.map((race) => (
                                     <tr key={race.raceId} onClick={() => handleSelectBonusRace(race)} className={isBonusRaceSelected(race.raceId) ? "select-races-bonus-table-selected-row" : ""}>
-                                        <td>{race.name}</td>
+                                        <td>
+                                            <div className="select-races-bonus-table-name-container">
+                                                <img 
+                                                    className="select-races-bonus-table-flag-icon"
+                                                    src={`${process.env.PUBLIC_URL}/flags/${race.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                    alt={`Drapeau de ${race.country}`} 
+                                                    width="20" 
+                                                    height="20"
+                                                />
+                                                <span>{race.name}</span>
+                                            </div>
+                                        </td>
                                         <td>{race.category}</td>
                                     </tr>
                                 ))}
@@ -99,7 +110,16 @@ const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, prev
                             <div className="select-races-bonus-selected-cell" key={race.raceId}>            
                                 <div className="select-races-bonus-selected-info">
                                     <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectBonusRace(race)} />
-                                    <h4>{race.name}</h4>
+                                    <div className="select-races-bonus-selected-name-container">
+                                        <img 
+                                            className="select-races-bonus-selected-flag-icon"
+                                            src={`${process.env.PUBLIC_URL}/flags/${race.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                            alt={`Drapeau de ${race.country}`} 
+                                            width="20" 
+                                            height="20"
+                                        />
+                                        <h4>{race.name}</h4>
+                                    </div>
                                     <p>{race.category}</p>
                                 </div>
                             </div>

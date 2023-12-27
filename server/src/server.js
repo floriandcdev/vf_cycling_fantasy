@@ -44,7 +44,7 @@ const protectedRoutes = express.Router();
 protectedRoutes.use(authenticateJWT);
 
 protectedRoutes.get("/api/cyclists-list-user", cyclistsListUser);
-protectedRoutes.get("/api/races-list-user/:selectedLeague", racesListUser);
+protectedRoutes.get("/api/races-list-user", racesListUser);
 protectedRoutes.post("/api/savePlayerTeam", savePlayerTeam);
 protectedRoutes.get("/api/userTeam", userTeam);
 protectedRoutes.get("/api/ranking/:selectedLeague", ranking);

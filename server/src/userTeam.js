@@ -3,7 +3,6 @@ const config = require("../config/mysqlConfig.json");
 
 const userTeam = async (req, res) => {
     const userId = req.user.userId;
-    const leagueId = parseInt(req.query.leagueId, 10);
     const teamId = parseInt(req.query.teamId, 10);
 
     let connection;
@@ -13,27 +12,27 @@ const userTeam = async (req, res) => {
         const [selectedCyclists] = await connection.execute(`
             SELECT c.* FROM user_cyclists uc 
             JOIN cyclists c ON uc.cyclistId = c.cyclistId 
-            WHERE uc.userId = ? AND uc.leagueId = ? AND teamId = ?
-        `, [userId, leagueId, teamId]);
+            WHERE uc.userId = ? AND teamId = ?
+        `, [userId, teamId]);
 
         const [cyclistsBonus] = await connection.execute(`
             SELECT c.* FROM user_cyclists uc 
             JOIN cyclists c ON uc.cyclistId = c.cyclistId 
-            WHERE uc.userId = ? AND uc.isBonus = 1 AND uc.leagueId = ? AND teamId = ?
-        `, [userId, leagueId, teamId]);
+            WHERE uc.userId = ? AND uc.isBonus = 1 AND teamId = ?
+        `, [userId, teamId]);
 
         if (teamId === 1) {
             const [selectedRaces] = await connection.execute(`
                 SELECT r.* FROM user_races ur 
                 JOIN races r ON ur.raceId = r.raceId 
-                WHERE ur.userId = ? AND r.competition <> 'normal' AND ur.leagueId = ?
-            `, [userId, leagueId]);
+                WHERE ur.userId = ? AND r.competition <> 'normal'
+            `, [userId]);
 
             const [bonusRaces] = await connection.execute(`
                 SELECT r.* FROM user_races ur 
                 JOIN races r ON ur.raceId = r.raceId 
-                WHERE ur.UserId = ? AND ur.isBonus = 1 AND ur.leagueId = ?
-            `, [userId, leagueId]);
+                WHERE ur.UserId = ? AND ur.isBonus = 1
+            `, [userId]);
 
             res.json({
                 selectedCyclists,

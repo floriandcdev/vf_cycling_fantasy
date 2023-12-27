@@ -18,7 +18,6 @@ const CreateTeamPage = () => {
     const [races, setRaces] = useState([]);
     const [cyclists, setCyclists] = useState([]);
     const params = useParams();
-    const leagueId = parseInt(params.leagueId, 10);
     const teamId = parseInt(params.teamId, 10);
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -52,7 +51,6 @@ const CreateTeamPage = () => {
                 cyclistsBonus,
                 selectedRaces: [...obligatoryRaces, ...selectedRaces],
                 bonusRaces, 
-                leagueId, 
                 teamId
             };
 
@@ -149,7 +147,6 @@ const CreateTeamPage = () => {
         const fetchTeamData = async () => {
             try {
                 const apiParams = new URLSearchParams({
-                    leagueId: leagueId,
                     teamId: teamId
                 });
 
@@ -188,7 +185,7 @@ const CreateTeamPage = () => {
     
         loadData();
         
-    }, [cyclists, apiUrl, user, navigate, leagueId, teamId]);
+    }, [cyclists, apiUrl, user, navigate, teamId]);
 
     // Gestion des données à chaque étape
     switch(step) {

@@ -2,7 +2,6 @@ const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
 
 const cyclistsListUser = async (req, res) => {
-    const leagueId = req.query.selectedLeague;
     const teamId = req.query.selectedTeam;
 
     let connection;
@@ -15,10 +14,10 @@ const cyclistsListUser = async (req, res) => {
         const query = `
             SELECT c.*, uc.cyclistPoints, uc.teamId FROM user_cyclists uc
             INNER JOIN cyclists c ON uc.cyclistId = c.cyclistId
-            WHERE uc.userId = ? AND uc.leagueId = ? AND uc.teamId = ?
+            WHERE uc.userId = ? AND uc.teamId = ?
             ORDER BY c.finalValue DESC`;
 
-        const [cyclists] = await connection.execute(query, [userId, leagueId, teamId]);
+        const [cyclists] = await connection.execute(query, [userId, teamId]);
 
         if (cyclists.length === 0) {
             res.status(404).json({ message: "Aucun cycliste trouvé pour cet utilisateur" });

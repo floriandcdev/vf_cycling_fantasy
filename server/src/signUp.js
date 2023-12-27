@@ -38,7 +38,21 @@ const signUp = async (req, res) => {
         const query = "INSERT INTO users (email, password, pseudo, name, nationality, knowledge) VALUES (?, ?, ?, ?, ?, ?)";
         const [result] = await connection.execute(query, [email, hashedPassword, pseudo, name, nationality, knowledge]);
 
-        const accessToken = jwt.sign({ userId: result.insertId }, process.env.JWT_SECRET, { expiresIn: "7d" });
+        const userId = result.insertId;
+
+        const insertWorldTourQuery = "INSERT INTO user_leagues_teams (userId, leagueId, teamId) VALUES (?, 1, 1)";
+        await connection.execute(insertWorldTourQuery, [userId]);
+
+        const insertNeoProQuery = "INSERT INTO user_leagues_teams (userId, leagueId, teamId) VALUES (?, 1, 2)";
+        await connection.execute(insertNeoProQuery, [userId]);
+
+        const insertRankingWorldTourQuery = "INSERT INTO ranking (userId, name, total_points, position, leagueId, teamId) VALUES (?, ?, 0, 1, 1, 1)";
+        await connection.execute(insertRankingWorldTourQuery, [userId, pseudo]);
+
+        const insertRankingNeoProQuery = "INSERT INTO ranking (userId, name, total_points, position, leagueId, teamId) VALUES (?, ?, 0, 1, 1, 2)";
+        await connection.execute(insertRankingNeoProQuery, [userId, pseudo]);
+
+        const accessToken = jwt.sign({ userId: userId }, process.env.JWT_SECRET, { expiresIn: "7d" });
 
         res.cookie("accessToken", accessToken, {
             httpOnly: true,

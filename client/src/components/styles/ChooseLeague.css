@@ -19,6 +19,54 @@
     font-family: "NerisBlack";
 }
 
+.choose-league-popup {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;    
+}
+
+.choose-league-popup-content {
+    background-color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 1);
+    width: 350px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.choose-league-popup-content p {
+    text-align: center;
+    font-family: "Neris";
+    font-size: 24px;
+}
+
+.choose-league-popup-content button {
+    font-family: "NerisBlack";
+    font-style: italic;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 80px;
+    width: 250px;
+    height: 50PX;
+    margin: 0;
+    padding: 0;
+    background-color: #FDDD07;
+    border: none;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.15);
+}
+
 .choose-league-left-banner {
     position: fixed;
     left: 0;
@@ -283,6 +331,12 @@
     .choose-league-choose-team-right-container img {
         padding-bottom: 8%;
     }
+
+    .choose-league-popup-content button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+    }
 }
 
 
@@ -431,5 +485,12 @@
         padding-bottom: 0%;
         width: 306px;
         height: 204px;
+    }
+
+    .choose-league-popup-content button {
+        font-size: 20px;
+        border-radius: 80px;
+        width: 200px;
+        height: 50px;
     }
 }

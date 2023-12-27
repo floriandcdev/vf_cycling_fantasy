@@ -27,7 +27,7 @@
     bottom: 0; 
     left: 0;
     right: 0;
-    height: 35%; 
+    height: 25%; 
     background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 1));
     z-index: 2;
 }
@@ -209,7 +209,11 @@
 
 @media (max-width: 1700px) and (min-width: 1500px) {
     .sign-up-content p {
-        padding-bottom: 4%;
+        padding: 2%;
+    }
+
+    .sign-up-login-link {
+        margin-top: 20px;
     }
 }
 
@@ -220,7 +224,7 @@
 
     .sign-up-content p {
         font-size: 22px;
-        padding-bottom: 4%;
+        padding-bottom: 2%;
     }
 
     .sign-up-content button {
@@ -231,6 +235,10 @@
     .sign-up-background {
         width: 392px;
         height: 450px;
+    }
+
+    .sign-up-login-link {
+        margin-top: 20px;
     }
 }
 

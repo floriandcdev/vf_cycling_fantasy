@@ -75,3 +75,20 @@
     z-index: 100;
     font-size: 16px;
 }
+
+.my-races-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 15%;
+}
+
+.my-races-name-container span {
+    text-align: left;
+    width: 50%;
+}
+
+.my-races-flag-icon {
+    margin-right: 10px;
+}

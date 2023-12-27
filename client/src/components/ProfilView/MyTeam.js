@@ -56,7 +56,7 @@ const MyTeam = ({ cyclists, teamLabel }) => {
                                                     src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
                                                     alt={`Drapeau de ${cyclist.nationality}`} 
                                                     width="20" 
-                                                    height="15"
+                                                    height="20"
                                                 />
                                                 <span>{cyclist.name}</span>
                                             </div>

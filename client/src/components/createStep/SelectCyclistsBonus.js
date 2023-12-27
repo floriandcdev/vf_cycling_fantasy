@@ -88,7 +88,7 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                                     src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
                                                     alt={`Drapeau de ${cyclist.nationality}`} 
                                                     width="20" 
-                                                    height="15"
+                                                    height="20"
                                                 />
                                                 <span>{cyclist.name}</span>
                                             </div>
@@ -114,13 +114,13 @@ const SelectCyclistsBonus = ({ selectedCyclists, setCyclistsBonus, cyclistsBonus
                                         src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
                                         alt={`Drapeau de ${cyclist.nationality}`} 
                                         width="20" 
-                                        height="15"
+                                        height="20"
                                     />
                                     {cyclist.name}
                                 </h4>
                                 <p>{cyclist.team}</p>
                                 <p>Valeur : <strong>{cyclist.finalValue}</strong></p>
-                                <div style={{ width: "150px", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "35px", marginLeft: "auto", marginRight: "auto" }}></div>
+                                <div style={{ width: "100%", height: "15px", backgroundColor: cyclist.teamColor, marginTop: "35px", marginLeft: "auto", marginRight: "auto" }}></div>
                             </div>
                         </div>
                     ))}

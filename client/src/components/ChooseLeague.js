@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./styles/ChooseLeague.css";
 
 import tireBannerLeft from "../medias/png/icons/tire_banner_left.png";
@@ -12,10 +12,11 @@ const ChooseLeague = () => {
     const [showJoinLeague, setShowJoinLeague] = useState(false);
     const [showChooseTeam, setShowChooseTeam] = useState(false);
     const [errorCreateLeague, setErrorCreateLeague] = useState(false);    
-    const [leagueId, setLeagueId] = useState("");
     const [leagueLabel, setLeagueLabel] = useState("");
     const [joinLeagueExist, setJoinLeagueExist] = useState(true);
     const apiUrl = process.env.REACT_APP_API_URL;
+    const navigate = useNavigate();
+    const [confirmValidDataPopup, setConfirmValidDataPopup] = useState(false);
 
     const handleCreateLeague = async () => {
         try {
@@ -26,10 +27,8 @@ const ChooseLeague = () => {
             if (response.ok) {
                 const data = await response.json();
 
-                if (data.league && data.league.leagueId) {
-                    setShowCreateLeague(false);
-                    setShowChooseTeam(true);
-                    setLeagueId(data.league.leagueId);
+                if (data) {
+                    setConfirmValidDataPopup(true);
                 } else {
                     setErrorCreateLeague(true);
                 }                
@@ -49,10 +48,8 @@ const ChooseLeague = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                if (data.league && data.league.leagueId) {
-                    setShowJoinLeague(false);
-                    setShowChooseTeam(true);        
-                    setLeagueId(data.league.leagueId);          
+                if (data) {
+                    setConfirmValidDataPopup(true);     
                 } else {
                     setJoinLeagueExist(false);
                 }
@@ -65,13 +62,26 @@ const ChooseLeague = () => {
         }
     };
 
-    const handleJoinGeneralLeague = () => {
+    const handleChooseTeam = () => {
         setShowChooseTeam(true);
-        setLeagueId(1);
+    };
+
+    const handleClosePopup = () => {
+        navigate("/profil");
     };
 
     return (
         <main className="choose-league">
+            {
+                confirmValidDataPopup && (
+                    <div className="choose-league-popup">
+                        <div className="choose-league-popup-content">
+                            <p>Félicitation !<br />Vous venez d'intégrer cette ligue.</p>
+                            <button onClick={handleClosePopup}>Valider</button>
+                        </div>
+                    </div>
+                )
+            }
             <div className="choose-league-left-banner" style={{ backgroundImage: `url(${tireBannerLeft})` }}></div>
             <div className="choose-league-shadow-container">
                 <div className="choose-league-title">
@@ -86,7 +96,7 @@ const ChooseLeague = () => {
                     <div className="choose-league-choice">
                         <h2 onClick={() => setShowCreateLeague(true)}>CRÉER MA LIGUE</h2>
                         <h2 onClick={() => setShowJoinLeague(true)}>REJOINDRE UNE LIGUE</h2>
-                        <h2 onClick={() => handleJoinGeneralLeague()}>CRÉER UNE ÉQUIPE</h2>
+                        <h2 onClick={() => handleChooseTeam()}>CRÉER UNE ÉQUIPE</h2>
                     </div>
                     <img src={chooseLeagueBackground} alt="Visuel de classement" loading="lazy"/>
                 </div>
@@ -137,11 +147,11 @@ const ChooseLeague = () => {
                 <div className="choose-league-choose-team">
                     <div className="choose-league-choose-team-left-container">
                         <img src={worldTourBackground} alt="Cycliste qui célèbre une victoire" width="612" height="344" loading="lazy" />
-                        <Link className="choose-league-choose-team-title" to={`/create-team/${leagueId}/1`}>WORLD TOUR</Link>
+                        <Link className="choose-league-choose-team-title" to={`/create-team/1`}>WORLD TOUR</Link>
                     </div>
                     <div className="choose-league-choose-team-right-container">
                         <img src={neoProBackground} alt="Jeune cycliste" width="612" height="408" loading="lazy" />
-                        <Link className="choose-league-choose-team-title" to={`/create-team/${leagueId}/2`}>NÉO PRO</Link>
+                        <Link className="choose-league-choose-team-title" to={`/create-team/2`}>NÉO PRO</Link>
                     </div>
                 </div>
             )}

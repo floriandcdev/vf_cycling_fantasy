@@ -75,6 +75,7 @@ const Navbar = () => {
                     <Link to="/scale" className="navbar-sidebar-link" onClick={() => resetNavbar()}>BARÈME</Link>
                     <Link to="/rules" className="navbar-sidebar-link" onClick={() => resetNavbar()}>RÉGLEMENT</Link>
                     <Link to="/FAQ" className="navbar-sidebar-link" onClick={() => resetNavbar()}>FAQ</Link>
+                    <Link to="https://www.velofute.com/" className="navbar-sidebar-link">VÉLOFUTÉ</Link>
                     <Link to="/logout" className="navbar-sidebar-link" onClick={() => resetNavbar()}>DÉCONNEXION</Link>
                 </nav>
             </div>

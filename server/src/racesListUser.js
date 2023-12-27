@@ -2,7 +2,6 @@ const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
 
 const racesListUser = async (req, res) => {
-    const leagueId = parseInt(req.params.selectedLeague, 10);
     const userId = req.user.userId;
 
     let connection;
@@ -12,9 +11,9 @@ const racesListUser = async (req, res) => {
 
         const query = `SELECT r.* FROM races r
                        INNER JOIN user_races u ON r.raceId = u.raceId
-                       WHERE u.userId = ? AND u.leagueId = ?
+                       WHERE u.userId = ?
                        ORDER BY r.date_start`;
-        const [races] = await connection.execute(query, [userId, leagueId]);
+        const [races] = await connection.execute(query, [userId]);
 
         if (races.length === 0) {
             res.status(404).json({ message: "Course non trouvée" });

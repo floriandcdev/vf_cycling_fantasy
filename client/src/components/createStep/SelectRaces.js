@@ -131,8 +131,8 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                     <label>Calendrier par défaut</label>
                                     <select value={calendarDefaultValue} onChange={handleDefaultCalendar}>
                                         <option value="aucun">Aucun</option>
-                                        <option value="france">France Belgique</option>
-                                        <option value="world">Mondial</option>
+                                        <option value="france">France/Belgique - Flandrien & Sprint</option>
+                                        <option value="world">Sud Europe - Grimpeur & Puncheurs</option>
                                         <option value="balance">Équilibré</option>
                                     </select>
                                 </div>
@@ -148,7 +148,18 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                     <tbody>
                                         {racesByCompetition[competitionNumber].filteredRaces.map(race => (
                                             <tr key={race.raceId} onClick={() => handleSelectRace(race)} className={isRaceSelected(race.raceId) ? "select-races-table-selected-row" : ""}>
-                                                <td>{race.name}</td>
+                                                <td>
+                                                    <div className="select-races-table-name-container">
+                                                        <img 
+                                                            className="select-races-table-flag-icon"
+                                                            src={`${process.env.PUBLIC_URL}/flags/${race.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                            alt={`Drapeau de ${race.country}`} 
+                                                            width="20" 
+                                                            height="20"
+                                                        />
+                                                        <span>{race.name}</span>
+                                                    </div>
+                                                </td>
                                                 <td>{race.category}</td>
                                             </tr>
                                         ))}
@@ -180,8 +191,17 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                         .map(filteredRace => (
                                             <div className="select-races-selected-cell" key={filteredRace.raceId}>            
                                                 <div className="select-races-selected-info">
-                                                    <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
-                                                    <h4>{filteredRace.name}</h4>
+                                                <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
+                                                    <div className="select-races-selected-name-container">
+                                                        <img 
+                                                            className="select-races-selected-flag-icon"
+                                                            src={`${process.env.PUBLIC_URL}/flags/${filteredRace.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                            alt={`Drapeau de ${filteredRace.country}`} 
+                                                            width="20" 
+                                                            height="20"
+                                                        />
+                                                        <h4>{filteredRace.name}</h4>
+                                                    </div>
                                                     <p>{filteredRace.category}</p>
                                                 </div>
                                             </div>
@@ -196,7 +216,16 @@ const SelectRaces = ({ selectedRaces, setSelectedRaces, setBonusRaces, bonusRace
                                             <div className="select-races-selected-cell" key={filteredRace.raceId}>            
                                                 <div className="select-races-selected-info">
                                                     <img src={`${process.env.PUBLIC_URL}/icons/cancel.png`} alt="Icone de suppression" width="17" height="17" onClick={() => handleSelectRace(filteredRace)} />
-                                                    <h4>{filteredRace.name}</h4>
+                                                    <div className="select-races-selected-name-container">
+                                                        <img 
+                                                            className="select-races-selected-flag-icon"
+                                                            src={`${process.env.PUBLIC_URL}/flags/${filteredRace.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                            alt={`Drapeau de ${filteredRace.country}`} 
+                                                            width="20" 
+                                                            height="20"
+                                                        />
+                                                        <h4>{filteredRace.name}</h4>
+                                                    </div>
                                                     <p>{filteredRace.category}</p>
                                                 </div>
                                             </div>

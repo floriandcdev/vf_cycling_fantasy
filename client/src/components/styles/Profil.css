@@ -287,7 +287,6 @@
     padding-left: 7%;
     margin: 0;
     font-size: 25px;
-
 }
 
 .profil-no-link {
@@ -296,6 +295,10 @@
 
 .profil-empty-cyclist-message span {
     color: red;
+}
+
+.profil-handle-team {
+    text-align: left;
 }
 
 /* Top Right Content */
@@ -401,6 +404,23 @@
     color: red;
 }
 
+.profil-section-bottom-name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-left: 10%;
+}
+
+.profil-section-bottom-name-container span {
+    text-align: left;
+    width: 60%;
+}
+
+.profil-section-bottom-flag-icon {
+    margin-right: 10px;
+}
+
 /* Sections */
 .section-top-left {
     grid-column: 1 / 3;
@@ -483,6 +503,16 @@
     .profil-interchangeable-cyclists-table th {
         font-size: 12px;
     } 
+
+    .profil-section-bottom-name-container {
+        padding-left: 0%;
+    }
+    
+    .profil-section-bottom-name-container span {
+        text-align: left;
+        width: 70%;
+    }
+    
 }
 
 @media (max-width: 699px) {

@@ -19,7 +19,7 @@ const ProtectedRoutes = () => {
         <Routes>
             <Route path="/profil" element={user ? <Profil /> : <Navigate to="/login" />} />
             <Route path="/choose-league" element={user ? <ChooseLeague /> : <Navigate to="/login" />} />
-            <Route path="/create-team/:leagueId/:teamId" element={user ? <CreateTeamPage /> : <Navigate to="/login" />} />
+            <Route path="/create-team/:teamId" element={user ? <CreateTeamPage /> : <Navigate to="/login" />} />
             <Route path="/calendar/:personal" element={user ? <Calendar /> : <Navigate to="/login" />} />
             <Route path="/ranking/" element={user ? <Ranking /> : <Navigate to="/login" />} />
         </Routes>

@@ -17,8 +17,8 @@ const Profil = () => {
     const [rankings, setRankings] = useState([]);
     const [races, setRaces] = useState([]);
     const [sectionActive, setSessionActive] = useState("Tableau de bord");
-    const [selectedLeague, setSelectedLeague] = useState();
-    const [selectedTeam, setSelectedTeam] = useState();
+    const [selectedLeague, setSelectedLeague] = useState("1");
+    const [selectedTeam, setSelectedTeam] = useState("1");
     const [leagues, setLeagues] = useState([]);
     const [teams, setTeams] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -60,7 +60,6 @@ const Profil = () => {
             
             try {
                 const params = new URLSearchParams({
-                    selectedLeague: selectedLeague,
                     selectedTeam: selectedTeam
                 });
 
@@ -69,6 +68,7 @@ const Profil = () => {
                 });
                 
                 if (!response.ok) {
+                    setCyclists([]);
                     throw new Error("Erreur lors de la récupération des cyclistes");
                 }
 
@@ -79,10 +79,10 @@ const Profil = () => {
                 console.error("Erreur:", error);
             }
         };
-        if (selectedLeague) {
-            fetchCyclists();
-        }
-    }, [apiUrl, user, navigate, selectedLeague, selectedTeam]);
+
+        fetchCyclists();
+
+    }, [apiUrl, user, navigate, selectedTeam]);
 
     useEffect(() => {
         const fetchRankings = async () => {
@@ -108,9 +108,8 @@ const Profil = () => {
             }
         };
 
-        if (selectedLeague) {
-            fetchRankings();
-        }
+        fetchRankings();
+
     }, [apiUrl, user, navigate, selectedLeague]);
 
     useEffect(() => {   
@@ -121,7 +120,7 @@ const Profil = () => {
 
         const fetchPersonalRaces = async () => {
             try {
-                const response = await fetch(`${apiUrl}/races-list-user/${selectedLeague}`, {
+                const response = await fetch(`${apiUrl}/races-list-user`, {
                     credentials: "include"
                 });
     
@@ -136,10 +135,9 @@ const Profil = () => {
             }
         };
     
-        if (selectedLeague) {
-            fetchPersonalRaces();
-        }
-    }, [apiUrl, user, navigate, selectedLeague]);
+        fetchPersonalRaces();
+
+    }, [apiUrl, user, navigate]);
 
     useEffect(() => {
         const fetchLeagues = async () => {
@@ -225,13 +223,17 @@ const Profil = () => {
                             <div className="profil-section-header-team">
                                 <h2>Mon équipe</h2>
                                 <select onChange={handleSelectChangeTeam} value={selectedTeam}>
-                                    {teams.filter(team => team.leagueId === selectedLeague).map((team) => (
-                                        <option key={team.teamId} value={team.teamId}>
-                                            {team.teamId === 1 ? "World Tour" : "Néo Pro"}
-                                        </option>
-                                    ))}
+                                    {Array.from(new Set(teams.map(team => team.teamId)))
+                                        .map(teamId => (
+                                            <option key={teamId} value={teamId}>
+                                                {teamId === 1 ? "World Tour" : "Néo Pro"}
+                                            </option>
+                                        ))}
                                 </select>
                             </div>
+                            { selectedLeague && selectedTeam && (
+                                <Link className="profil-no-link" to={`/create-team/${selectedTeam}`}><p className="profil-handle-team">Modifier mon équipe et mon planning</p></Link>   
+                            )}                            
                             <button onClick={() => showSession("MyTeam")}>Tout voir</button>
                         </div>
                         <div className="profil-section-title">
@@ -251,7 +253,7 @@ const Profil = () => {
                                                             src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
                                                             alt={`Drapeau de ${cyclist.nationality}`} 
                                                             width="20" 
-                                                            height="15"
+                                                            height="20"
                                                         />
                                                         <h4>{cyclist.name}</h4>
                                                     </div>                                                
@@ -280,7 +282,7 @@ const Profil = () => {
                                                                         src={`${process.env.PUBLIC_URL}/flags/${cyclist.nationality.replace(/ /g, '_').toLowerCase()}.png`} 
                                                                         alt={`Drapeau de ${cyclist.nationality}`} 
                                                                         width="20" 
-                                                                        height="15"
+                                                                        height="20"
                                                                     />
                                                                     <p>{cyclist.name}</p>
                                                                 </div>
@@ -293,7 +295,7 @@ const Profil = () => {
                                         </table>
                                     </div>
                                 </div>
-                            ) :(
+                            ) : (
                                 <div className="profil-empty-cyclist-container">
                                     <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Créer une équipe ou rejoindre une ligue <span>(16 janvier à 23h59 au plus tard)</span></p></Link>
                                 </div>
@@ -340,7 +342,7 @@ const Profil = () => {
                                 {races.slice(0, 2).map((race, index) => (
                                     <React.Fragment key={index}>
                                         <div className="profil-last-race-cell">Course<br />{race.name}</div>
-                                        <div className="profil-last-race-cell"><strong>Points<br />{race.competition_number}</strong></div>
+                                        <div className="profil-last-race-cell"><strong>Points<br />{race.competition_number ? race.competition_number : "0"}</strong></div>
                                     </React.Fragment>
                                 ))}
                             </div>
@@ -367,7 +369,18 @@ const Profil = () => {
                                         {races.slice(0, 7).map((race, index) => (
                                             <tr key={index}>
                                                 <td>{formatDate(race.date_start)}</td>
-                                                <td>{race.name}</td>
+                                                <td>
+                                                    <div className="profil-section-bottom-name-container">
+                                                        <img 
+                                                            className="profil-section-bottom-flag-icon"
+                                                            src={`${process.env.PUBLIC_URL}/flags/${race.country.replace(/ /g, '_').toLowerCase()}.png`} 
+                                                            alt={`Drapeau de ${race.country}`} 
+                                                            width="20" 
+                                                            height="20"
+                                                        />
+                                                        <span>{race.name}</span>
+                                                    </div>
+                                                </td>
                                                 <td>{formatDate(race.date_end)}</td>
                                             </tr>
                                         ))}
