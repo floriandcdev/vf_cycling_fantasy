@@ -37,7 +37,6 @@ const SelectBonusRace = ({ selectedRaces, setBonusRaces, bonusRaces, races, prev
         navigate("/profil");
     };
 
-
     return (
         <main className="select-races-bonus">
             {

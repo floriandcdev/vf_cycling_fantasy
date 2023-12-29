@@ -301,6 +301,10 @@
     text-align: left;
 }
 
+.profil-section-top-right-content-player-row, .profil-section-bottom-right-content-player-row {
+    background-color: #fde861;
+}
+
 /* Top Right Content */
 /* Bottom Center Content */
 /*Bottom Right Content */

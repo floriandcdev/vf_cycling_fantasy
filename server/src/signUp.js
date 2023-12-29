@@ -35,7 +35,7 @@ const signUp = async (req, res) => {
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const query = "INSERT INTO users (email, password, pseudo, name, nationality, knowledge) VALUES (?, ?, ?, ?, ?, ?)";
+        const query = "INSERT INTO users (email, password, pseudo, name, nationality, knowledge, resetToken) VALUES (?, ?, ?, ?, ?, ?, NULL)";
         const [result] = await connection.execute(query, [email, hashedPassword, pseudo, name, nationality, knowledge]);
 
         const userId = result.insertId;
@@ -61,7 +61,7 @@ const signUp = async (req, res) => {
             sameSite: "strict"
         });
 
-        res.status(201).json({ message: "Utilisateur créé avec succès" });
+        res.status(201).json({ message: "Utilisateur créé avec succès", userId: userId });
     } catch (error) {
         console.error("Erreur lors de l'enregistrement de l'utilisateur:", error);
         res.status(500).json({ message: "Erreur interne du serveur" });

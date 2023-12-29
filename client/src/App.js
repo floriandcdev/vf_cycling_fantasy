@@ -16,6 +16,8 @@ import ShowRaceDetail from "./components/ShowRaceDetail";
 import SignUp from "./components/SignUp";
 import LogInComponent from "./components/LogIn";
 import LogOutComponent from "./components/LogOut";
+import AskResetPassword from "./components/AskResetPassword";
+import ResetPassword from "./components/ResetPassword";
 
 function App() {
     const { LogIn, LogOut, setIsLoading } = useAuth();
@@ -35,7 +37,9 @@ function App() {
                     throw new Error(data.message || "Session non valide ou expirée");
                 }
                 
-                LogIn();
+                const userId = data.userId;
+                LogIn(userId);
+                
             } catch (error) {
                 console.error("Erreur de vérification de session:", error);
                 LogOut();
@@ -61,6 +65,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<LogInComponent />} />
             <Route path="/logout" element={<LogOutComponent />} />
+            <Route path="/ask-reset-password" element={<AskResetPassword />} />
+            <Route path="/reset-password" element={<ResetPassword />} />
 
             <Route path="/show-race-detail/:idRace" element={<ShowRaceDetail />} />
 

@@ -479,7 +479,7 @@
 
     .select-cyclists-table-container th,
     .select-cyclists-table-container td {
-        padding: 9px 0;
+        padding: 9px 3px;
     }
 
     .select-cyclists-table-container td {
@@ -495,5 +495,10 @@
         top: 0;
         z-index: 100;
         font-size: 12px;
+    }
+
+    .select-cyclists-name-info {
+        justify-content: flex-start;
+        padding-left: 10px;
     }
 }

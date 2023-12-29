@@ -108,7 +108,8 @@ const SignUp = () => {
                 throw new Error(data.message || "Problème lors de l'enregistrement du compte.");
             }
 
-            LogIn();
+            const userId = data.userId;
+            LogIn(userId);
 
             navigate("/choose-league");
         } catch (error) {

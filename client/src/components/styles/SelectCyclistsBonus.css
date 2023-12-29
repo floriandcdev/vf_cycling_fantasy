@@ -406,7 +406,7 @@
 
     .select-cyclists-bonus-table-container th,
     .select-cyclists-bonus-table-container td {
-        padding: 9px 0;
+        padding: 9px 3px;
     }
 
     .select-cyclists-bonus-table-container td {
@@ -426,5 +426,10 @@
 
     .select-cyclists-bonus-line-container {
         display: none;
+    }
+
+    .select-cyclists-bonus-name-info {
+        justify-content: flex-start;
+        padding-left: 10px;
     }
 }

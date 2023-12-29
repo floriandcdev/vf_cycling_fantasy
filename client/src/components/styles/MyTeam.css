@@ -112,3 +112,58 @@
 .my-team-flag-icon {
     margin-right: 10px;
 }
+
+@media (max-width: 699px) {
+    .my-team {
+        margin: 0;
+    }
+
+    .my-team h1 {
+        font-size: 26px;
+        padding: 0 0;
+        margin: 0;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        text-align: center;
+    }   
+
+    .my-team-table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .my-team-table-container {
+        scrollbar-width: none;
+        width: 100%;
+        max-height: 65vh;
+    }
+
+    .my-team-table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .my-team-name-container {
+        padding-left: 0%;
+    }
+
+    .my-team-table-container th,
+    .my-team-table-container td {
+        padding: 9px 3px;
+    }
+
+    .my-team-table-container td {
+        font-size: 12px;
+    }
+
+    .my-team-table-container th {
+        font-size: 14px;
+    }
+
+    .my-team-name-info {
+        justify-content: flex-start;
+        padding-left: 5px;
+    }
+}

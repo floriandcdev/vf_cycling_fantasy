@@ -3,8 +3,8 @@ import { useAuth } from "../../AuthContext";
 
 import "../styles/Ranking.css";
 
-const Ranking = ({ rankings }) => {   
-    const { user } = useAuth();
+const Ranking = ({ rankings }) => {  
+    const { userId } = useAuth();
     const [selectedTeam, setSelectedTeam] = useState(1);
 
     const handleButtonClick = (buttonName) => {
@@ -39,7 +39,7 @@ const Ranking = ({ rankings }) => {
                         </thead>
                         <tbody>
                             {rankings.filter(ranking => ranking.teamId === selectedTeam).map((ranking, index) => (
-                                <tr key={index} className={ranking.userId === user.id ? "highlighted" : ""}>
+                                <tr key={index} className={ranking.userId === userId ? "highlighted" : ""}>
                                     <td>{ranking.position}</td>
                                     <td>{ranking.name}</td>
                                     <td>{ranking.total_points}</td>

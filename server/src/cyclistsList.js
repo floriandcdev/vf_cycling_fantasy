@@ -18,7 +18,7 @@ const cyclistsList = async (req, res) => {
             const query = "SELECT * FROM cyclists c WHERE c.cyclistGroupId = ? ORDER BY c.finalValue DESC ";
             [cyclists] = await connection.execute(query, [cyclistGroupId]);
         }
-	console.log(cyclists);
+
         res.status(200).json(cyclists);
     } catch (error) {
         console.error("Erreur lors de la récupération des coureurs:", error);

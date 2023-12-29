@@ -7,12 +7,12 @@ const verifySession = async (req, res) => {
         return res.status(401).json({ message: "Non authentifié" });
     }
 
-    jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
         if (err) {
             return res.status(403).json({ message: "Session invalide" });
         }
 
-        res.status(200).json({ isAuthenticated: true });
+        res.status(200).json({ isAuthenticated: true, userId: decodedToken.userId });
     });
 };
 

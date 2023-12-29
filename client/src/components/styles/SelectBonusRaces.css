@@ -460,4 +460,8 @@
     .select-races-bonus-line-container {
         display: none;
     }
+
+    .select-races-bonus-table-name-container {
+        padding-left: 5px;
+    }
 }

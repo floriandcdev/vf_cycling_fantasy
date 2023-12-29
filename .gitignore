@@ -24,8 +24,9 @@
 
 /client/.env.development
 /client/.env.production
-/client/src/config
+#/client/src/config
 
-/server/config
+/server/config/mysqlConfig.json
 /server/src/.env
 /server/node_modules
+#/server/src/server.js

@@ -20,6 +20,8 @@ const signUp = require("./signUp");
 const logIn = require("./logIn");
 const logOut = require("./logOut");
 const verifySession = require("./verifySession");
+const askResetPassword = require("./askResetPassword");
+const resetPassword = require("./resetPassword");
 
 const app = express();
 
@@ -61,6 +63,8 @@ app.post("/api/sign-up", signUp);
 app.post("/api/log-in", logIn);
 app.post("/api/log-out", logOut);
 app.get("/api/verify-session", verifySession);
+app.post("/api/ask-reset-password", askResetPassword);
+app.post("/api/reset-password", resetPassword);
 
 app.get("/api/online", (req, res) => {
   res.send("API VF Cylcing Fantasy en ligne");

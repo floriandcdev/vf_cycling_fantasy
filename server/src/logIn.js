@@ -43,7 +43,7 @@ const logIn = async (req, res) => {
             sameSite: "strict"
         });
 
-        res.status(200).json({ message: "Connexion réussie" });
+        res.status(200).json({ message: "Connexion réussie", userId: user.userId });
     } catch (error) {
         console.error("Erreur lors de la connexion de l'utilisateur:", error);
         res.status(500).json({ message: "Erreur interne du serveur" });

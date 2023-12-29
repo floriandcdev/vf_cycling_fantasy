@@ -6,6 +6,8 @@ import MyTeam from "./ProfilView/MyTeam";
 import Ranking from "./ProfilView/Ranking";
 import MyRaces from "./ProfilView/MyRaces";
 
+import createTeamConfig from "../config/createTeamConfig.json";
+
 import "./styles/Profil.css";
 
 import epopeeLogo from "../medias/png/logo/epopee_logo.png";
@@ -13,6 +15,7 @@ import epopeeLogo from "../medias/png/logo/epopee_logo.png";
 const Profil = () => {
     const navigate = useNavigate();
     const { user } = useAuth();
+    const { userId } = useAuth();
     const [cyclists, setCyclists] = useState([]);
     const [rankings, setRankings] = useState([]);
     const [races, setRaces] = useState([]);
@@ -22,6 +25,12 @@ const Profil = () => {
     const [leagues, setLeagues] = useState([]);
     const [teams, setTeams] = useState([]);
     const apiUrl = process.env.REACT_APP_API_URL;
+
+    const isAfterDeadline = () => {
+        const deadline = new Date(createTeamConfig.closeDate);
+        const now = new Date();
+        return now > deadline;
+    };
 
     const handleSelectChangeLeague = (event) => {
         const selectValue = parseInt(event.target.value, 10);
@@ -214,7 +223,7 @@ const Profil = () => {
                             ))}
                         </select>
                     </div>
-                    <Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Gérer mes ligues et mes équipes <span>(16 janvier à 23h59 au plus tard)</span></p></Link>                                
+                    {!isAfterDeadline() && (<Link className="profil-no-link" to="/choose-league"><p className="profil-empty-cyclist-message">Gérer mes ligues et mes équipes <span>(16 janvier à 23h59 au plus tard)</span></p></Link>)}
                 </div>
                 <div className="profil-grid">
                     {/* Zone en haut à gauche */}
@@ -231,7 +240,7 @@ const Profil = () => {
                                         ))}
                                 </select>
                             </div>
-                            { selectedLeague && selectedTeam && (
+                            { selectedLeague && selectedTeam && !isAfterDeadline() && (
                                 <Link className="profil-no-link" to={`/create-team/${selectedTeam}`}><p className="profil-handle-team">Modifier mon équipe et mon planning</p></Link>   
                             )}                            
                             <button onClick={() => showSession("MyTeam")}>Tout voir</button>
@@ -319,13 +328,29 @@ const Profil = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rankings.filter(ranking => ranking.teamId === 1).slice(0, 7).map((ranking, index) => (
-                                        <tr key={index}>
-                                            <td>{ranking.position}</td>
-                                            <td>{ranking.name}</td>
-                                            <td>{ranking.total_points}</td>
-                                        </tr>
-                                    ))}
+                                    {
+                                        (() => {
+                                            const filteredRankings = rankings.filter(ranking => ranking.teamId === 1);
+
+                                            const playerIndex = filteredRankings.findIndex(ranking => ranking.userId === userId);
+
+                                            let start = Math.max(0, playerIndex < 3 ? 0 : playerIndex - 3);
+
+                                            if (playerIndex > filteredRankings.length - 4) {
+                                                start = filteredRankings.length - 7;
+                                            }
+
+                                            return filteredRankings
+                                                .slice(start, start + 7)
+                                                .map((ranking, index) => (
+                                                    <tr key={index} className={ranking.userId === userId ? "profil-section-top-right-content-player-row" : ""}>
+                                                        <td>{ranking.position}</td>
+                                                        <td>{ranking.name}</td>
+                                                        <td>{ranking.total_points}</td>
+                                                    </tr>
+                                                ));
+                                        })()
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -413,13 +438,29 @@ const Profil = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {rankings.filter(ranking => ranking.teamId === 2).slice(0, 7).map((ranking, index) => (
-                                        <tr key={index}>
-                                            <td>{ranking.position}</td>
-                                            <td>{ranking.name}</td>
-                                            <td>{ranking.total_points}</td>
-                                        </tr>
-                                    ))}
+                                    {
+                                        (() => {
+                                            const filteredRankings = rankings.filter(ranking => ranking.teamId === 2);
+
+                                            const playerIndex = filteredRankings.findIndex(ranking => ranking.userId === userId);
+
+                                            let start = Math.max(0, playerIndex < 3 ? 0 : playerIndex - 3);
+
+                                            if (playerIndex > filteredRankings.length - 4) {
+                                                start = filteredRankings.length - 7;
+                                            }
+
+                                            return filteredRankings
+                                                .slice(start, start + 7)
+                                                .map((ranking, index) => (
+                                                    <tr key={index} className={ranking.userId === userId ? "profil-section-bottom-right-content-player-row" : ""}>
+                                                        <td>{ranking.position}</td>
+                                                        <td>{ranking.name}</td>
+                                                        <td>{ranking.total_points}</td>
+                                                    </tr>
+                                                ));
+                                        })()
+                                    }
                                 </tbody>
                             </table>
                         </div>

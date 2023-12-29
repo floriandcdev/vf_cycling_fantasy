@@ -1,7 +1,14 @@
 const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
+const closeDate = require("../config/closeDate.json");
 
 const savePlayerTeam = async (req, res) => {
+    const now = new Date();
+    const deadline = new Date(closeDate.closeDate);
+    if (now > deadline) {
+        return res.status(403).json({ message: "La création d'une équipe n'est plus autorisée après le 17 janvier 2024." });
+    }
+    
     let connection;
     try {
         connection = await mysql.createConnection(config);

@@ -477,4 +477,8 @@
     .select-races-sort-control select {
         margin-left: 10px;
     }
+
+    .select-races-table-name-container {
+        padding-left: 5px;
+    }
 }

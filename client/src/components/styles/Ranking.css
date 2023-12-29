@@ -109,6 +109,54 @@
     margin-right: 10px;
 }
 .highlighted {
-    background-color: #FDDD07;
+    background-color: #fde861;
 }
 
+@media (max-width: 699px) {
+    .my-ranking {
+        margin: 0;
+    }
+
+    .my-ranking h1 {
+        font-size: 26px;
+        padding: 0 0;
+        margin: 0;
+        margin-top: 15%;
+        margin-bottom: 5%;
+        text-align: center;
+    }   
+
+    .my-ranking-table {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .my-ranking-table-container {
+        scrollbar-width: none;
+        width: 100%;
+        max-height: 65vh;
+    }
+
+    .my-ranking-table-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .my-ranking-choice {
+        display: flex;
+        flex-direction: column;
+        gap: 0%;
+        align-items: center;
+        height: 100%;
+        padding-bottom: 5%;
+    }
+
+    .my-ranking-choice button {
+        font-size: 20px;
+        width: 200px;
+        height: 50px;
+        margin: 5px 0;
+    }
+}

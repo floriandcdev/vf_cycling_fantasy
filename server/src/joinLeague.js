@@ -1,7 +1,14 @@
 const mysql = require("mysql2/promise");
 const config = require("../config/mysqlConfig.json");
+const closeDate = require("../config/closeDate.json");
 
 const joinLeague = async (req, res) => {
+    const now = new Date();
+    const deadline = new Date(closeDate.closeDate);
+    if (now > deadline) {
+        return res.status(403).json({ message: "Rejoindre une ligues n'est plus autorisée après le 17 janvier 2024." });
+    }
+
     const leagueLabel = req.params.leagueLabel;
     const userId = req.user.userId;
 

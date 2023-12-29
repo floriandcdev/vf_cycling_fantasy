@@ -9,7 +9,7 @@ const ShowRaceDetail = () => {
     const { idRace } = useParams();
     const apiUrl = process.env.REACT_APP_API_URL;
 
-    const specificDate = new Date(2024, 11, 22);
+    //const specificDate = new Date(2024, 11, 22);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
@@ -38,7 +38,7 @@ const ShowRaceDetail = () => {
     }, [apiUrl, idRace]);
 
     useEffect(() => {
-        if (raceDetail && new Date(raceDetail.date_end) < specificDate/*new Date()*/) {
+        if (raceDetail && new Date(raceDetail.date_end) < new Date()) {
             fetch(`${apiUrl}/race-ranking/${idRace}`)
                 .then(response => response.json())
                 .then(data => setRaceRanking(data))

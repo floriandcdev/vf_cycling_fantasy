@@ -63,7 +63,8 @@ const LogIn = () => {
 
             console.log("Login data:",data);
 
-            LogIn();
+            const userId = data.userId;
+            LogIn(userId);
 
             navigate("/profil");
         } catch (error) {
@@ -106,7 +107,7 @@ const LogIn = () => {
                         <input type="checkbox" name="remember" />
                         Se souvenir de moi
                     </label>
-                    <a href="/" className="login-forgot-password">Mot de passe oublié ?</a>
+                    <a href="/ask-reset-password" className="login-forgot-password">Mot de passe oublié ?</a>
                 </div>
                 <div className="login-button-container">
                     <button type="submit" className="login-button">SE CONNECTER</button>
