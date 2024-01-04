@@ -21,7 +21,7 @@ const sendResetEmail = async (email, resetToken) => {
         logger: true
     });
 
-    const resetUrl = `https://vf-fantasy-cyclisme.velofute.com//reset-password?token=${resetToken}`;
+    const resetUrl = `https://vf-fantasy-cyclisme.velofute.com/reset-password?token=${resetToken}`;
 
     const mailOptions = {
         from: googleConfig.id.email,
