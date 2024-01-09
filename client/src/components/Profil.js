@@ -367,7 +367,7 @@ const Profil = () => {
                                 {races.slice(0, 2).map((race, index) => (
                                     <React.Fragment key={index}>
                                         <div className="profil-last-race-cell">Course<br />{race.name}</div>
-                                        <div className="profil-last-race-cell"><strong>Points<br />{race.competition_number ? race.competition_number : "0"}</strong></div>
+                                        <div className="profil-last-race-cell"><strong>Points<br />{race.racePoints ? race.racePoints : "0"}</strong></div>
                                     </React.Fragment>
                                 ))}
                             </div>

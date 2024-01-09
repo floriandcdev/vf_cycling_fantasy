@@ -29,4 +29,6 @@
 /server/config/mysqlConfig.json
 /server/src/.env
 /server/node_modules
-#/server/src/server.js
+/server/src/server.js
+
+/script

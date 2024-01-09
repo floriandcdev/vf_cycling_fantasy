@@ -20,7 +20,7 @@ const Rules = () => {
                     4. Les équipes peuvent être modifiées à 3 reprises à des moments clés de la saison (8 avril - 31 mai - 31 juillet) grâce à 5 transferts de coureurs.<br />
                     5. La valeur des 5 coureurs recrutés doit être inférieure ou égale aux coureurs vendus.<br />
                     6. Un coureur avec une valeur de 3 ou 4 a la possibilité d'obtenir un bonus de point pour la saison (Point multiplié par deux). Le choix ne peut être changé après le début de la saison.<br />
-                    7. Les effectifs sont modifiables, tout comme le calendrier des courses et des objectifs jusqu'à la première course de la saison, le 26 janvier.
+                    7. Les effectifs sont modifiables, tout comme le calendrier des courses et des objectifs jusqu'à la première course de la saison, le 16 janvier.
                 </p>
             </div>
 

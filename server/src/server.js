@@ -25,17 +25,18 @@ const resetPassword = require("./resetPassword");
 
 const app = express();
 
-/*app.use(cors({
+app.use(cors({
   origin: true,
   optionsSuccessStatus: 200,
   credentials: true
-}));*/
+}));
 
+/*
 app.use(cors({
   origin: 'https://vf-fantasy-cyclisme.velofute.com',
   optionsSuccessStatus: 200,
   credentials: true
-}));
+}));*/
 
 app.use(express.json());
 app.use(cookieParser());
@@ -72,7 +73,7 @@ app.get("/api/online", (req, res) => {
 
 app.use("/", protectedRoutes);
 
-app.listen(6269, () => {
-  console.log("Serveur démarré sur http://localhost:6269");
+app.listen(6268, () => {
+  console.log("Serveur démarré sur http://localhost:6268");
 });
 

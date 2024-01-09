@@ -9,10 +9,14 @@ const racesListUser = async (req, res) => {
     try {
         connection = await mysql.createConnection(config);
 
-        const query = `SELECT r.* FROM races r
-                       INNER JOIN user_races u ON r.raceId = u.raceId
-                       WHERE u.userId = ?
-                       ORDER BY r.date_start`;
+        const query = `
+                        SELECT r.*, urr.racePoints
+                        FROM races r
+                        INNER JOIN user_races u ON r.raceId = u.raceId
+                        LEFT JOIN user_race_ranking urr ON r.raceId = urr.raceId AND u.userId = urr.userId
+                        WHERE u.userId = ?
+                        ORDER BY r.date_start `
+;
         const [races] = await connection.execute(query, [userId]);
 
         if (races.length === 0) {
